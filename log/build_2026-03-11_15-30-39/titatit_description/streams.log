@@ -1,0 +1,46 @@
+[0.019s] Invoking command in '/home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/aiseon/navigation2_all/leg4_MPPI/src/ddt_ros2_control/urdfs/titatit_description -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description
+[0.121s] -- The C compiler identification is GNU 11.4.0
+[0.209s] -- The CXX compiler identification is GNU 11.4.0
+[0.221s] -- Detecting C compiler ABI info
+[0.355s] -- Detecting C compiler ABI info - done
+[0.362s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.362s] -- Detecting C compile features
+[0.362s] -- Detecting C compile features - done
+[0.365s] -- Detecting CXX compiler ABI info
+[0.502s] -- Detecting CXX compiler ABI info - done
+[0.511s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.511s] -- Detecting CXX compile features
+[0.512s] -- Detecting CXX compile features - done
+[0.512s] [0mCurrently in ROS2 compilation environment[0m
+[0.515s] -- Found ament_cmake: 1.3.13 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.705s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.777s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.900s] -- Configuring done
+[0.903s] -- Generating done
+[0.903s] -- Build files have been written to: /home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description
+[0.910s] Invoked command in '/home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/aiseon/navigation2_all/leg4_MPPI/src/ddt_ros2_control/urdfs/titatit_description -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description
+[0.912s] Invoking command in '/home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description -- -j192 -l192
+[0.994s] Invoked command in '/home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description -- -j192 -l192
+[0.996s] Invoking command in '/home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description
+[1.007s] -- Install configuration: "Release"
+[1.008s] -- Execute custom install script
+[1.008s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/xacro/materials.xacro
+[1.024s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/xacro/robot.xacro
+[1.039s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/xacro/ros2control.xacro
+[1.056s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/xacro/single_robot.xacro
+[1.072s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/ament_index/resource_index/package_run_dependencies/titatit_description
+[1.086s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/ament_index/resource_index/parent_prefix_path/titatit_description
+[1.102s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/environment/ament_prefix_path.sh
+[1.116s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/environment/ament_prefix_path.dsv
+[1.131s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/environment/path.sh
+[1.146s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/environment/path.dsv
+[1.162s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/local_setup.bash
+[1.177s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/local_setup.sh
+[1.190s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/local_setup.zsh
+[1.205s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/local_setup.dsv
+[1.220s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/package.dsv
+[1.237s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/ament_index/resource_index/packages/titatit_description
+[1.251s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/cmake/titatit_descriptionConfig.cmake
+[1.265s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/cmake/titatit_descriptionConfig-version.cmake
+[1.280s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/package.xml
+[1.302s] Invoked command in '/home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description

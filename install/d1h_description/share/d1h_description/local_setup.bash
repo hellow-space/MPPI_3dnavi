@@ -1,0 +1,1 @@
+/home/aiseon/navigation2_all/leg4_MPPI/build/d1h_description/ament_cmake_environment_hooks/local_setup.bash

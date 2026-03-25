@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/aiseon/navigation2_all/leg4_MPPI/build/gazebo_bridge/libgazebo_bridge.so" "TARGETS" "gazebo_bridge" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

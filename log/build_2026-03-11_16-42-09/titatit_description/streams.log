@@ -1,0 +1,26 @@
+[0.027s] Invoking command in '/home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description -- -j192 -l192
+[0.092s] Invoked command in '/home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description -- -j192 -l192
+[0.108s] Invoking command in '/home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description
+[0.119s] -- Install configuration: "Release"
+[0.119s] -- Execute custom install script
+[0.120s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/xacro/materials.xacro
+[0.120s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/xacro/robot.xacro
+[0.120s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/xacro/ros2control.xacro
+[0.120s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/xacro/single_robot.xacro
+[0.120s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/xacro/tower.xacro
+[0.135s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/ament_index/resource_index/package_run_dependencies/titatit_description
+[0.135s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/ament_index/resource_index/parent_prefix_path/titatit_description
+[0.135s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/environment/ament_prefix_path.sh
+[0.135s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/environment/ament_prefix_path.dsv
+[0.136s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/environment/path.sh
+[0.136s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/environment/path.dsv
+[0.136s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/local_setup.bash
+[0.136s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/local_setup.sh
+[0.137s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/local_setup.zsh
+[0.137s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/local_setup.dsv
+[0.137s] -- Symlinking: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/package.dsv
+[0.155s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/ament_index/resource_index/packages/titatit_description
+[0.155s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/cmake/titatit_descriptionConfig.cmake
+[0.155s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/cmake/titatit_descriptionConfig-version.cmake
+[0.156s] -- Up-to-date symlink: /home/aiseon/navigation2_all/leg4_MPPI/install/titatit_description/share/titatit_description/package.xml
+[0.161s] Invoked command in '/home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/aiseon/navigation2_all/leg4_MPPI/build/titatit_description

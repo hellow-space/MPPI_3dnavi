@@ -1,0 +1,1 @@
+#pragma message("#include \"rl_controller_parameters.hpp\" is deprecated. Use #include <rl_controller/rl_controller_parameters.hpp> instead.")
