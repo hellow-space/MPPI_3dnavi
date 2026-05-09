@@ -1,1 +1,0 @@
-/home/aiseon/navigation2_all/leg4_MPPI/build/rl_controller/ament_cmake_core/rl_controllerConfig-version.cmake

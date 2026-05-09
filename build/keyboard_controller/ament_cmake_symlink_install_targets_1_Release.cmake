@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/aiseon/navigation2_all/leg4_MPPI/build/keyboard_controller/keyboard_controller_node" "TARGETS" "keyboard_controller_node" "DESTINATION" "lib/keyboard_controller")

@@ -1,1 +1,0 @@
-/home/aiseon/navigation2_all/leg4_MPPI/src/ddt_ros2_control/controller/rl_controller/launch/sim_gazebo.launch.py

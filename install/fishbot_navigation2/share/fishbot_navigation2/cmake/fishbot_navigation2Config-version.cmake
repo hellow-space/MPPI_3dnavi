@@ -1,1 +1,1 @@
-/home/aiseon/navigation2_all/leg4_MPPI/build/fishbot_navigation2/ament_cmake_core/fishbot_navigation2Config-version.cmake
+/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/ament_cmake_core/fishbot_navigation2Config-version.cmake

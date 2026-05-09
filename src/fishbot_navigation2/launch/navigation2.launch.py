@@ -13,8 +13,8 @@ def generate_launch_description():
     rviz_config_dir = os.path.join(nav2_bringup_dir, 'rviz', 'nav2_default_view.rviz')
     
     # 创建 Launch 配置
-    use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='true')
-    map_yaml_path = launch.substitutions.LaunchConfiguration('map', default=os.path.join(fishbot_navigation2_dir, 'maps', 'room.yaml'))
+    use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='false')
+    map_yaml_path = launch.substitutions.LaunchConfiguration('map', default=os.path.join(fishbot_navigation2_dir, 'maps', 'pcb_map222.yaml'))
     nav2_param_path = launch.substitutions.LaunchConfiguration('params_file', default=os.path.join(fishbot_navigation2_dir, 'config', 'nav2_params.yaml'))
 
     # 定义 Nav2 的启动组（包含重映射逻辑）

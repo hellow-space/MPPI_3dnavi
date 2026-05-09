@@ -1,1 +1,0 @@
-/home/aiseon/navigation2_all/leg4_MPPI/src/ddt_ros2_control/simulation/gazebo_bridge/launch/gazebo_bridge.launch.py

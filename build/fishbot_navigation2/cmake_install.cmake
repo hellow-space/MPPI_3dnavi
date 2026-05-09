@@ -1,8 +1,8 @@
-# Install script for directory: /home/aiseon/navigation2_all/leg4_MPPI/src/fishbot_navigation2
+# Install script for directory: /home/nvidia/MPPI_3dnavi/src/fishbot_navigation2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/aiseon/navigation2_all/leg4_MPPI/install/fishbot_navigation2")
+  set(CMAKE_INSTALL_PREFIX "/home/nvidia/MPPI_3dnavi/install/fishbot_navigation2")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  include("/home/aiseon/navigation2_all/leg4_MPPI/build/fishbot_navigation2/ament_cmake_symlink_install/ament_cmake_symlink_install.cmake")
+  include("/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/ament_cmake_symlink_install/ament_cmake_symlink_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -54,5 +54,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/aiseon/navigation2_all/leg4_MPPI/build/fishbot_navigation2/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

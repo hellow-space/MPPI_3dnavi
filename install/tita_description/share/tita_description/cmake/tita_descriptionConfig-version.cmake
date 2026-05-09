@@ -1,1 +1,0 @@
-/home/aiseon/navigation2_all/leg4_MPPI/build/tita_description/ament_cmake_core/tita_descriptionConfig-version.cmake

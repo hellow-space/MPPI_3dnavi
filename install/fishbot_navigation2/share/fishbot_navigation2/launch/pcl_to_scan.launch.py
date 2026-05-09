@@ -1,1 +1,1 @@
-/home/aiseon/navigation2_all/leg4_MPPI/src/fishbot_navigation2/launch/pcl_to_scan.launch.py
+/home/nvidia/MPPI_3dnavi/src/fishbot_navigation2/launch/pcl_to_scan.launch.py

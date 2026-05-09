@@ -1,1 +1,0 @@
-/home/aiseon/navigation2_all/leg4_MPPI/src/ddt_ros2_control/ros_utils/include/ros_utils/topic_names.hpp

@@ -1,1 +1,0 @@
-/home/aiseon/navigation2_all/leg4_MPPI/build/d1_description/ament_cmake_core/d1_descriptionConfig.cmake

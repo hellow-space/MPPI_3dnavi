@@ -1,1 +1,0 @@
-/home/aiseon/navigation2_all/leg4_MPPI/src/ddt_ros2_control/controller/rl_controller/include/rl_controller/inferrer/inferrer_base.hpp
