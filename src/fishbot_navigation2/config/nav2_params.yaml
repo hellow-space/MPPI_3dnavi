@@ -110,7 +110,7 @@ bt_navigator_navigate_to_pose_rclcpp_node:
 
 controller_server:
   ros__parameters:
-    transform_tolerance: 5.0   # <-- 必须加
+    transform_tolerance: 0.2   # <-- 调整至合理范围，原 5.0 过大
     use_sim_time: False
     controller_frequency: 20.0
     min_x_velocity_threshold: 0.001
@@ -191,11 +191,11 @@ controller_server:
       ObstaclesCritic:
         enabled: true
         cost_power: 1
-        repulsion_weight: 5.0
-        critical_weight: 20.0
+        repulsion_weight: 10.0        # 适度增强斥力权重，避免转弯时贴近障碍物
+        critical_weight: 25.0         # 增强临界碰撞权重，优先保证安全距离
         consider_footprint: true
         collision_cost: 10000.0
-        collision_margin_distance: 0.2
+        collision_margin_distance: 0.15 # 设置合理的碰撞余量，触发灵敏避障
         near_goal_distance: 0.5
         inflation_radius: 0.5 # (only in Humble)
         cost_scaling_factor: 10.0 # (only in Humble)
@@ -232,8 +232,8 @@ local_costmap:
       width: 5
       height: 5
       resolution: 0.05
-      footprint: "[ [0.47, 0.3], [0.47, -0.3], [-0.47, -0.3], [-0.47, 0.3] ]" # 矩形足迹
-      transform_tolerance: 5.0  # 🔥 必须加，解决TF时间戳超时
+      footprint: "[ [0.6, 0.45], [0.6, -0.45], [-0.6, -0.45], [-0.6, 0.45] ]" # 增大足迹以容纳腿部晃动
+      transform_tolerance: 0.2  # 🔥 调整至合理范围，原 5.0 过大
       plugins: ["obstacle_layer","inflation_layer"]
       
       obstacle_layer:
@@ -325,13 +325,13 @@ local_costmap:
 global_costmap:
   global_costmap:
     ros__parameters:
-      transform_tolerance: 5.0   # <-- 必须加
+      transform_tolerance: 0.5   # <-- 调整至合理范围，原 5.0 过大
       update_frequency: 1.0
       publish_frequency: 1.0
       global_frame: map
       robot_base_frame: base_link
       use_sim_time: False
-      footprint: "[ [0.47, 0.3], [0.47, -0.3], [-0.47, -0.3], [-0.47, 0.3] ]" # 矩形足迹
+      footprint: "[ [0.6, 0.45], [0.6, -0.45], [-0.6, -0.45], [-0.6, 0.45] ]" # 增大足迹以容纳腿部晃动
       resolution: 0.05
       track_unknown_space: true
       plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
@@ -353,7 +353,7 @@ global_costmap:
           sensor_frame: line_frame
           max_obstacle_height: 2.5
           min_obstacle_height: 0.1
-          transform_tolerance: 5.0  # 只加这一句
+          transform_tolerance: 0.5  # 调整至合理范围，原 5.0 过大
         # pointcloud:
         #   topic: /cloud_effected
         #   data_type: PointCloud2
@@ -430,7 +430,7 @@ behavior_server:
       plugin: "nav2_behaviors/AssistedTeleop"
     global_frame: map
     robot_base_frame: base_link
-    transform_tolerance: 5.0
+    transform_tolerance: 0.2
     use_sim_time: False
     simulate_ahead_time: 2.0
     max_rotational_vel: 1.0
