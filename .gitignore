@@ -1,0 +1,14 @@
+# ROS 2 / colcon 编译、安装和日志目录
+/build/
+/install/
+/log/
+
+# Python 字节码缓存
+__pycache__/
+*.py[cod]
+
+# VS Code 本地配置
+/.vscode/
+
+# 具体文件
+/git_commit_types.md

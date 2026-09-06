@@ -1,4 +1,4 @@
-image: pcb_map111.pgm
+image: pcb_map_gai.pgm
 resolution: 0.05
 origin: [-25.5512, -44.0167, 0.0]
 negate: 1

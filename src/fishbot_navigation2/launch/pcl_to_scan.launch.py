@@ -10,7 +10,7 @@ def generate_launch_description():
             output='screen',
             emulate_tty=True,
             remappings=[
-                ('cloud_in', '/cloud_effected'),
+                ('cloud_in', '/cloud_registered'),
                 ('scan', '/scan')
             ],
             parameters=[{

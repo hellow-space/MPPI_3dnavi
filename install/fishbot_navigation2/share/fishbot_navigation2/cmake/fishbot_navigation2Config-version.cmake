@@ -1,1 +1,0 @@
-/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/ament_cmake_core/fishbot_navigation2Config-version.cmake

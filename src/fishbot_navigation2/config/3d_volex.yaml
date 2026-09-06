@@ -1,11 +1,10 @@
 amcl:
   ros__parameters:
-    transform_tolerance: 0.2   # <-- 必须加
-    use_sim_time: False
-    alpha1: 0.2   
-    alpha2: 0.2  
-    alpha3: 0.2   
-    alpha4: 0.2 
+    use_sim_time: True
+    alpha1: 0.2
+    alpha2: 0.2
+    alpha3: 0.2
+    alpha4: 0.2
     alpha5: 0.2
     base_frame_id: "base_link"
     beam_skip_distance: 0.5
@@ -15,13 +14,13 @@ amcl:
     global_frame_id: "map"
     lambda_short: 0.1
     laser_likelihood_max_dist: 2.0
-    laser_max_range: 12.0
-    laser_min_range: 0.4
+    laser_max_range: 100.0
+    laser_min_range: -1.0
     laser_model_type: "likelihood_field"
     max_beams: 60
     max_particles: 2000
     min_particles: 500
-    odom_frame_id: "camera_init"
+    odom_frame_id: "odom"
     pf_err: 0.05
     pf_z: 0.99
     recovery_alpha_fast: 0.0
@@ -31,6 +30,7 @@ amcl:
     save_pose_rate: 0.5
     sigma_hit: 0.2
     tf_broadcast: true
+    transform_tolerance: 2.0
     update_min_a: 0.2
     update_min_d: 0.25
     z_hit: 0.5
@@ -41,12 +41,13 @@ amcl:
 
 bt_navigator:
   ros__parameters:
-    use_sim_time: False
+    use_sim_time: True
     global_frame: map
     robot_base_frame: base_link
-    odom_topic: /aft_mapped_to_init
+    odom_topic: /odom
     bt_loop_duration: 10
     default_server_timeout: 20
+    default_nav_to_pose_bt_xml: "/home/aiseon/navigation2_all/leg4_MPPI/src/fishbot_navigation2/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml"
     # 'default_nav_through_poses_bt_xml' and 'default_nav_to_pose_bt_xml' are use defaults:
     # nav2_bt_navigator/navigate_to_pose_w_replanning_and_recovery.xml
     # nav2_bt_navigator/navigate_through_poses_w_replanning_and_recovery.xml
@@ -102,21 +103,20 @@ bt_navigator:
 
 bt_navigator_navigate_through_poses_rclcpp_node:
   ros__parameters:
-    use_sim_time: False
+    use_sim_time: True
 
 bt_navigator_navigate_to_pose_rclcpp_node:
   ros__parameters:
-    use_sim_time: False
+    use_sim_time: True
 
 controller_server:
   ros__parameters:
-    transform_tolerance: 0.2   # <-- 调整至合理范围，原 5.0 过大
-    use_sim_time: False
+    use_sim_time: True
     controller_frequency: 20.0
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.001
     min_theta_velocity_threshold: 0.001
-    failure_tolerance: 0.3 
+    failure_tolerance: 0.8
     progress_checker_plugin: "progress_checker"
     goal_checker_plugins: ["precise_goal_checker"] # "precise_goal_checker"
     controller_plugins: ["FollowPath"]
@@ -143,24 +143,24 @@ controller_server:
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"
       current_goal_checker: "precise_goal_checker"
-      time_steps: 56
+      time_steps: 50
       model_dt: 0.05
       batch_size: 1000
       vx_std: 0.5
-      vy_std: 0.1
-      wz_std: 0.4
-      vx_max: 3.0
+      vy_std: 0.001
+      wz_std: 0.45
+      vx_max: 1.0
       vx_min: -0.2
-      vy_max: 3.0
-      vy_min: -3.0
-      wz_min: -3.0
-      wz_max: 3.0
+      vy_max: 0.0
+      vy_min: -0.0
+      wz_min: -1.2
+      wz_max: 1.2
       iteration_count: 1
-      prune_distance: 1.7
+      prune_distance: 1.0
       transform_tolerance: 0.1
       temperature: 0.15
-      gamma: 0.02
-      motion_model: "Omni"
+      gamma: 0.01
+      motion_model: "DiffDrive"
       visualize: true
       reset_period: 1.0 # (only in Humble)
       TrajectoryVisualizer:
@@ -168,15 +168,25 @@ controller_server:
         time_step: 3
       AckermannConstrains:
         min_turning_r: 0.2
-      critics: ["ConstraintCritic", "ObstaclesCritic", "GoalCritic", "GoalAngleCritic", "PathFollowCritic", "PreferForwardCritic","TwirlingCritic","PathAlignCritic"]
+      critics: ["ConstraintCritic", "CostCritic","ObstaclesCritic", "GoalCritic", "GoalAngleCritic", "PathFollowCritic", "PreferForwardCritic","TwirlingCritic","PathAlignCritic","PathAngleCritic"]
       ConstraintCritic:
-        enabled: true
+        enabled: false
         cost_power: 1
         cost_weight: 4.0
-      GoalCritic:
+      CostCritic:
         enabled: true
         cost_power: 1
         cost_weight: 5.0
+        consider_footprint: true
+        collision_cost: 1000000.0
+        near_collision_cost: 253
+        critical_cost: 300.0
+        near_goal_distance: 0.2
+        trajectory_point_step: 2
+      GoalCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 3.0
         threshold_to_consider: 1.0
       GoalAngleCritic:
         enabled: true
@@ -186,23 +196,23 @@ controller_server:
       PreferForwardCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 8.0
+        cost_weight: 12.0
         threshold_to_consider: 0.4
       ObstaclesCritic:
         enabled: true
         cost_power: 1
-        repulsion_weight: 10.0        # 适度增强斥力权重，避免转弯时贴近障碍物
-        critical_weight: 25.0         # 增强临界碰撞权重，优先保证安全距离
+        repulsion_weight: 12.0
+        critical_weight: 80.0
         consider_footprint: true
         collision_cost: 10000.0
-        collision_margin_distance: 0.15 # 设置合理的碰撞余量，触发灵敏避障
+        collision_margin_distance: 0.1
         near_goal_distance: 0.5
         inflation_radius: 0.5 # (only in Humble)
-        cost_scaling_factor: 10.0 # (only in Humble)
+        cost_scaling_factor: 5.0 # (only in Humble)
       PathFollowCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 15.0
+        cost_weight: 5.0
         offset_from_furthest: 5
         threshold_to_consider: 0.4
       TwirlingCritic:
@@ -211,11 +221,19 @@ controller_server:
         twirling_cost_weight: 2.0
       PathAlignCritic:            # <--- 【专治和路径垂直的杀手锏】
         enabled: true
-        cost_weight: 15.0         # <--- 权重给到极高！逼着它车头必须对准红线方向
+        cost_weight: 3.0
         max_path_occupancy_ratio: 0.05
         trajectory_point_step: 3
         threshold_to_consider: 0.4 # 距离终点 1 米时解除车头约束，方便全向平移入库
-        offset_from_furthest: 10
+        offset_from_furthest: 15
+      PathAngleCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 4.0
+        threshold_to_consider: 0.5
+        offset_from_furthest: 6
+        max_angle_to_furthest: 0.55
+        forward_preference: true
 
 
 
@@ -224,168 +242,185 @@ local_costmap:
   local_costmap:
     ros__parameters:
       update_frequency: 10.0
-      publish_frequency: 10.0
-      global_frame: map
+      publish_frequency: 2.0
+      global_frame: odom
       robot_base_frame: base_link
-      use_sim_time: False
+      use_sim_time: True
       rolling_window: true
-      width: 7
-      height: 7
+      width: 5
+      height: 5
       resolution: 0.05
-      footprint: "[ [0.6, 0.45], [0.6, -0.45], [-0.6, -0.45], [-0.6, 0.45] ]" # 增大足迹以容纳腿部晃动
-      transform_tolerance: 0.2  # 🔥 调整至合理范围，原 5.0 过大
-      plugins: ["obstacle_layer","inflation_layer"]
-      
-      obstacle_layer:
-        plugin: "nav2_costmap_2d::ObstacleLayer"
-        enabled: true
-        observation_sources: scan
-        scan:
-          topic: /scan
-          data_type: LaserScan
-          marking: true
-          clearing: true
-          obstacle_range: 3.0
-          raytrace_range: 4.0
-          inf_is_valid: true
-          max_obstacle_height: 2.5
-          min_obstacle_height: 0.1
-          sensor_frame: line_frame
-      # obstacle_layer:
-      #   plugin: "nav2_costmap_2d::ObstacleLayer"
-      #   enabled: true
-      #   observation_sources: scan
-      #   scan:
-      #     topic: /scan
-      #     data_type: LaserScan
-      #     marking: True
-      #     clearing: True
-      #     obstacle_range: 10.0
-      #     raytrace_range: 15.0
-      #     obstacle_min_range: 0.0       # 不屏蔽任何点
-      #     raytrace_min_range: 0.0
-      #     inf_is_valid: false
-      #     expected_update_rate: 0.0  # 🔥 必须加，检查scan频率
-      #     tolerate_nan: true
-      #     sensor_frame: livox_frame
+      footprint: "[ [0.5, 0.35], [0.5, -0.35], [-0.5, -0.35], [-0.5, 0.35] ]" # 矩形足迹
+      plugins: ["voxel_layer", "inflation_layer"]
+
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 5.0
         inflation_radius: 0.5
-      
-        # pointcloud:
-        #   topic: /cloud_effected
-        #   data_type: PointCloud2
-        #   sensor_frame: camera_init
-        #   marking: True
-        #   clearing: True
-        #   obstacle_max_range: 10.0
-        #   obstacle_min_range: 0.4
-        #   raytrace_max_range: 10.0
-        #   raytrace_min_range: 0.4
-        #   expected_update_rate: 10.0
-        #   observation_persistence: 0.0
-        #   inf_is_valid: True
+      # elevation_layer:
+      #   plugin: "elevation_nav2_bridge::ElevationLayer"
+      #   enabled: true
+      #   elevation_topic: "/elevation_mapping_node/elevation_map"
+      #   cost_source: "elevation"
+      #   elevation_layer_name: "elevation"
+      #   traversability_layer_name: "traversability"
+
+      #   free_traversability_threshold: 0.8
+      #   lethal_traversability_threshold: 0.25
+      #   traversability_cost_scale: 120.0
+
+      #   enable_step_height_check: true
+      #   max_step_height: 0.3
+      #   comfortable_step_height: 0.15
+      #   max_drop_height: 0.12
+      #   step_neighbor_radius: 1
+
+      #   min_height: 0.0
+      #   free_height_threshold: 0.15
+      #   lethal_height_threshold: 0.25
+      #   cost_scale: 252.0
+      #   use_relative_elevation: true
+      #   ground_reference_percentile: 0.10
+      #   unknown_as_obstacle: false
+      #   transform_tolerance: 0.2
+      #   self_clear_footprint_enabled: true
+      #   self_clear_frame: "base_link"
+      #   self_clear_footprint_padding: 0.05
+      #   publish_debug_grid: true
+      #   debug_grid_topic: "/local_elevation_traversability_debug"
+
+      voxel_layer:
+        plugin: "nav2_costmap_2d::VoxelLayer"
+        enabled: True
+        publish_voxel_map: False
+        origin_z: 0.0
+        z_resolution: 0.1
+        z_voxels: 16
+        min_obstacle_height: 0.1
+        max_obstacle_height: 1.5
+        mark_threshold: 0
+        observation_sources: pointcloud
+        pointcloud:
+          topic: /points
+          sensor_frame: radar_link
+          data_type: "PointCloud2"
+          marking: True
+          clearing: True
+          max_obstacle_height: 1.5
+          min_obstacle_height: 0.1
+          obstacle_max_range: 8.0
+          obstacle_min_range: 0.05
+          raytrace_max_range: 8.0
+          raytrace_min_range: 0.0
+          expected_update_rate: 0.0
+          observation_persistence: 0.0
+          inf_is_valid: false
+      always_send_full_costmap: False
+
+global_costmap:
+  global_costmap:
+    ros__parameters:
+      update_frequency: 1.0
+      publish_frequency: 1.0
+      global_frame: map
+      robot_base_frame: base_link
+      use_sim_time: True
+      footprint: "[ [0.5, 0.35], [0.5, -0.35], [-0.5, -0.35], [-0.5, 0.35] ]" # 矩形足迹
+      resolution: 0.05
+      track_unknown_space: true
+      plugins: ["static_layer", "obstacle_layer","inflation_layer"]
+
+      # obstacle_layer:
+      #   plugin: "nav2_costmap_2d::ObstacleLayer"
+      #   enabled: true
+      #   observation_sources: pointcloud
+      #   pointcloud:
+      #     topic: /points
+      #     sensor_frame: radar_link
+      #     data_type: "PointCloud2"
+
+      #     marking: true
+      #     clearing: true
+
+      #     min_obstacle_height: 0.10
+      #     max_obstacle_height: 1.50
+
+      #     obstacle_max_range: 4.0
+      #     obstacle_min_range: 0.05
+
+      #     raytrace_max_range: 5.0
+      #     raytrace_min_range: 0.0
+
+      #     expected_update_rate: 0.0
+      #     observation_persistence: 0.0
+      #     inf_is_valid: false
+      obstacle_layer:
+        plugin: "nav2_costmap_2d::ObstacleLayer"
+        enabled: True
+        observation_sources: scan
+        scan:
+          topic: /scan
+          sensor_frame: base_scan
+          data_type: "LaserScan"
+          max_obstacle_height: 2.0
+          min_obstacle_height: 0.1
+          clearing: True
+          marking: True
+          obstacle_max_range: 5.0
+          obstacle_min_range: 0.4
+          raytrace_max_range: 6.0
+          raytrace_min_range: 0.4
+          expected_update_rate: 0.0
+          observation_persistence: 0.0
+          inf_is_valid: false
 
       # voxel_layer:
       #   plugin: "nav2_costmap_2d::VoxelLayer"
       #   enabled: True
       #   publish_voxel_map: True
       #   origin_z: 0.0
-      #   z_resolution: 0.05
+      #   z_resolution: 0.1
       #   z_voxels: 16
-      #   min_obstacle_height: 0.1  # 注意：一定要带小数点！
-      #   max_obstacle_height: 10.0
+      #   unknown_threshold: 15
       #   mark_threshold: 0
+      #   min_obstacle_height: 0.1
+      #   max_obstacle_height: 1.5
       #   observation_sources: pointcloud
       #   pointcloud:
-      #     topic: /cloud_effected
-      #     sensor_frame: livox_frame
-      #     data_type: "PointCloud2"  # 数据类型改为PointCloud2
+      #     topic: /points
+      #     sensor_frame: radar_link
+      #     data_type: "PointCloud2"
       #     marking: True
       #     clearing: True
       #     max_obstacle_height: 1.5
       #     min_obstacle_height: 0.1
-      #     obstacle_max_range: 10.0  # 增加最大范围
-      #     obstacle_min_range: 0.4   # 避免机器人自身
-      #     raytrace_max_range: 10.0
+      #     obstacle_max_range: 8.0
+      #     obstacle_min_range: 0.4
+      #     raytrace_max_range: 8.0
       #     raytrace_min_range: 0.4
       #     expected_update_rate: 0.0
       #     observation_persistence: 0.0
-      #     inf_is_valid: true
-      #     voxel_filter: true
-      #     voxel_min_points: 0
-      #     clear_after_reading: true
-      #     model_type: "SENSOR_MODELS"
-      #     filter_ground: true  # 过滤地面点
-      #     ground_filter_distance: 0.05  # 地面滤波距离
-      #     ground_filter_angle: 0.15     # 地面滤波角度（弧度）
-      always_send_full_costmap: True
-
-global_costmap:
-  global_costmap:
-    ros__parameters:
-      transform_tolerance: 0.5   # <-- 调整至合理范围，原 5.0 过大
-      update_frequency: 1.0
-      publish_frequency: 1.0
-      global_frame: map
-      robot_base_frame: base_link
-      use_sim_time: False
-      footprint: "[ [0.6, 0.45], [0.6, -0.45], [-0.6, -0.45], [-0.6, 0.45] ]" # 增大足迹以容纳腿部晃动
-      resolution: 0.05
-      track_unknown_space: true
-      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
-
-      obstacle_layer:
-        plugin: "nav2_costmap_2d::ObstacleLayer"
-        enabled: true
-        observation_sources: scan
-        scan:
-          topic: /scan
-          data_type: LaserScan
-          marking: true
-          clearing: true
-          obstacle_range: 12.0
-          raytrace_range: 15.0
-          obstacle_min_range: 0.4
-          raytrace_min_range: 0.4
-          inf_is_valid: true
-          sensor_frame: line_frame
-          max_obstacle_height: 2.5
-          min_obstacle_height: 0.1
-          transform_tolerance: 0.5  # 调整至合理范围，原 5.0 过大
-        # pointcloud:
-        #   topic: /cloud_effected
-        #   data_type: PointCloud2
-        #   sensor_frame: livox_frame
-        #   marking: true
-        #   clearing: true
-        #   obstacle_max_range: 10.0
-        #   obstacle_min_range: 0.4
-        #   raytrace_max_range: 10.0
-        #   raytrace_min_range: 0.4
-        #   expected_update_rate: 10.0
-        #   inf_is_valid: true
+      #     inf_is_valid: false
 
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
         map_subscribe_transient_local: True
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 10.0
-        inflation_radius: 0.5
-      always_send_full_costmap: True
+        cost_scaling_factor: 3.0
+        inflation_radius: 0.7
+      always_send_full_costmap: False
 
 map_server:
   ros__parameters:
-    use_sim_time: False
+    use_sim_time: True
     # Overridden in launch by the "map" launch configuration or provided default value.
     # To use in yaml, remove the default "map" value in the tb3_simulation_launch.py file & provide full path to map below.
     yaml_filename: ""
 
 map_saver:
   ros__parameters:
-    use_sim_time: False
+    use_sim_time: True
     save_map_timeout: 5.0
     free_thresh_default: 0.25
     occupied_thresh_default: 0.65
@@ -394,17 +429,22 @@ map_saver:
 planner_server:
   ros__parameters:
     expected_planner_frequency: 1.0
-    use_sim_time: False
+    use_sim_time: True
     planner_plugins: ["GridBased"]
     GridBased:
-      plugin: "nav2_navfn_planner/NavfnPlanner"
+      plugin: "nav2_smac_planner/SmacPlanner2D"
+      allow_unknown: false
       tolerance: 0.5
-      use_astar: false
-      allow_unknown: true
+      downsample_costmap: false
+      max_iterations: 1000000
+      max_on_approach_iterations: 1000
+      max_planning_time: 2.0
+      cost_travel_multiplier: 8.0
+      use_final_approach_orientation: false
 
 smoother_server:
   ros__parameters:
-    use_sim_time: False
+    use_sim_time: True
     smoother_plugins: ["simple_smoother"]
     simple_smoother:
       plugin: "nav2_smoother::SimpleSmoother"
@@ -428,10 +468,10 @@ behavior_server:
       plugin: "nav2_behaviors/Wait"
     assisted_teleop:
       plugin: "nav2_behaviors/AssistedTeleop"
-    global_frame: map
+    global_frame: odom
     robot_base_frame: base_link
-    transform_tolerance: 0.2
-    use_sim_time: False
+    transform_tolerance: 0.1
+    use_sim_time: true
     simulate_ahead_time: 2.0
     max_rotational_vel: 1.0
     min_rotational_vel: 0.4
@@ -439,11 +479,11 @@ behavior_server:
 
 robot_state_publisher:
   ros__parameters:
-    use_sim_time: False
+    use_sim_time: True
 
 waypoint_follower:
   ros__parameters:
-    use_sim_time: False
+    use_sim_time: True
     loop_rate: 20
     stop_on_failure: false
     waypoint_task_executor_plugin: "wait_at_waypoint"
@@ -454,15 +494,15 @@ waypoint_follower:
 
 velocity_smoother:
   ros__parameters:
-    use_sim_time: False
+    use_sim_time: True
     smoothing_frequency: 20.0
     scale_velocities: False
     feedback: "OPEN_LOOP"
-    max_velocity: [3.0, 3.0, 3.0]
-    min_velocity: [-0.5, -0.5, -0.5]
-    max_accel: [3.0, 3.0, 3.0]
-    max_decel: [-0.5, -0.5, -0.5]
-    odom_topic: /aft_mapped_to_init
+    max_velocity: [1.0, 0.0, 1.4]
+    min_velocity: [0.0, 0.0, -1.4]
+    max_accel: [3.5, 0.0, 4.0]
+    max_decel: [-3.5, 0.0, -4.0]
+    odom_topic: "odom"
     odom_duration: 0.1
     deadband_velocity: [0.0, 0.0, 0.0]
-    velocity_timeout: 0.3
+    velocity_timeout: 1.0

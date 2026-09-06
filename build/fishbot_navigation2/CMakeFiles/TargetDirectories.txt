@@ -1,9 +1,0 @@
-/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/CMakeFiles/uninstall.dir
-/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/CMakeFiles/fishbot_navigation2_uninstall.dir
-/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/CMakeFiles/test.dir
-/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/CMakeFiles/edit_cache.dir
-/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/CMakeFiles/rebuild_cache.dir
-/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/CMakeFiles/list_install_components.dir
-/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/CMakeFiles/install.dir
-/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/CMakeFiles/install/local.dir
-/home/nvidia/MPPI_3dnavi/build/fishbot_navigation2/CMakeFiles/install/strip.dir
