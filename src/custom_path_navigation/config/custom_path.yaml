@@ -1,0 +1,14 @@
+custom_path_executor:
+  ros__parameters:
+    fixed_frame: map
+    robot_frame: base_link
+    start_tolerance: 0.5
+    min_raw_spacing: 0.02
+    min_path_length: 0.20
+    sample_spacing: 0.05
+    smoothing_passes: 1
+    follow_path_action: /follow_path
+    controller_id: FollowPath
+    goal_checker_id: precise_goal_checker
+    action_server_timeout: 2.0
+    cancel_timeout: 2.0

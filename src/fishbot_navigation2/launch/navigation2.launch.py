@@ -10,7 +10,11 @@ def generate_launch_description():
     # 获取默认路径
     fishbot_navigation2_dir = get_package_share_directory('fishbot_navigation2')
     nav2_bringup_dir = get_package_share_directory('nav2_bringup')
-    rviz_config_dir = os.path.join(nav2_bringup_dir, 'rviz', 'nav2_default_view.rviz')
+    rviz_config_dir = os.path.join(fishbot_navigation2_dir, 'rviz', 'navigation.rviz')
+    robot_urdf_path = os.path.join(
+        fishbot_navigation2_dir, 'urdf', 'navigation_footprint.urdf')
+    with open(robot_urdf_path, encoding='utf-8') as robot_urdf_file:
+        robot_description = robot_urdf_file.read()
     
     # 创建 Launch 配置
     use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='false')
@@ -44,6 +48,20 @@ def generate_launch_description():
 
         # 加载 Nav2 组（包含重映射）
         nav2_group,
+
+        # 为 RViz 提供与 Nav2 footprint 一致的简化机器人方框。
+        Node(
+            package='robot_state_publisher',
+            executable='robot_state_publisher',
+            name='navigation_footprint_publisher',
+            parameters=[{
+                'robot_description': robot_description,
+                'use_sim_time': use_sim_time,
+            }],
+            remappings=[
+                ('robot_description', '/navigation_footprint/robot_description'),
+            ],
+            output='screen'),
 
         # 启动 Rviz2
         Node(

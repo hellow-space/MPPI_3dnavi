@@ -1,0 +1,7 @@
+<library path="draw_follow_path_tool">
+  <class name="custom_path_navigation/DrawFollowPath"
+         type="custom_path_navigation::DrawFollowPathTool"
+         base_class_type="rviz_common::Tool">
+    <description>Draw an entire planar FollowPath candidate, then press Enter to execute.</description>
+  </class>
+</library>

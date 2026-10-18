@@ -1,0 +1,10 @@
+<library path="height_obstacle_layer">
+  <class
+    name="height_obstacle_layer::HeightObstacleLayer"
+    type="height_obstacle_layer::HeightObstacleLayer"
+    base_class_type="nav2_costmap_2d::Layer">
+    <description>
+      Converts local elevation max-min differences into lethal Nav2 costmap obstacles.
+    </description>
+  </class>
+</library>

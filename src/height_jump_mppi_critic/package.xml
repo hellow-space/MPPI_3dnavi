@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>height_jump_mppi_critic</name>
+  <version>0.1.0</version>
+  <description>Binary local elevation feasibility for Nav2 MPPI on ROS2 Humble.</description>
+  <maintainer email="cleanrobot@example.com">cleanrobot</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>nav2_mppi_controller</depend>
+  <depend>nav2_costmap_2d</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <depend>rcl_interfaces</depend>
+  <depend>pluginlib</depend>
+  <depend>grid_map_core</depend>
+  <depend>grid_map_ros</depend>
+  <depend>grid_map_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

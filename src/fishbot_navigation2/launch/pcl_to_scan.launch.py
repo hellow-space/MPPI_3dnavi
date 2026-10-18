@@ -15,16 +15,16 @@ def generate_launch_description():
             ],
             parameters=[{
                 'use_sim_time': False,
-                'target_frame': 'line_frame',
-                'transform_tolerance': 5.0,
-                'min_height': -0.3,
-                'max_height': 1.0,
+                'target_frame': 'scan_level_frame',
+                'transform_tolerance': 0.1,
+                'min_height': -0.2, #等着调
+                'max_height': 1.0,  #等着调
                 'angle_min': -3.14159,
                 'angle_max':  3.14159,
                 'angle_increment': 0.0087,
                 'scan_time': 0.1,
                 'range_min': 0.15,
-                'range_max': 5.0,
+                'range_max': 6.0,
                 'use_inf': True,
                 'inf_epsilon': 1.0
             }]

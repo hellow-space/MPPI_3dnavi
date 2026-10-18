@@ -1,0 +1,5 @@
+<library path="height_jump_mppi_critic">
+  <class type="mppi::critics::HeightJumpCritic" base_class_type="mppi::critics::CriticFunction">
+    <description>Binary height feasibility with a fixed startup unknown region.</description>
+  </class>
+</library>

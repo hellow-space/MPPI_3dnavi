@@ -10,5 +10,22 @@ __pycache__/
 # VS Code 本地配置
 /.vscode/
 
+# 本地 AI 工具目录；docs/ 中的设计和实验文档仍纳入版本管理
+/.agents/
+/.codex/
+/.superpowers/
+
+# 实验录包数据（保留工具脚本、配置和说明文档）
+/nav_experiment_toolkit/bags/
+/rosbag_recording/bags/
+
+# 源码交付压缩包
+/nav_experiment_toolkit.zip
+/height_jump_mppi_critic_humble_source.tar.gz
+
+# TF 工具生成的快照
+/scripts/frames_*.gv
+/scripts/frames_*.pdf
+
 # 具体文件
 /git_commit_types.md

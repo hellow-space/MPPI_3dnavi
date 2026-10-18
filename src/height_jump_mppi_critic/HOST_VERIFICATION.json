@@ -1,0 +1,135 @@
+{
+  "verification_date": "2026-09-20",
+  "scope": "Target Jetson ARM64 ROS2 Humble Release build, isolated synthetic ROS2 tests, real Nav2 CriticManager/pluginlib loading, and read-only observation of the running raw elevation node. No autonomous navigation was started.",
+  "platform": {
+    "architecture": "aarch64",
+    "os": "Ubuntu 22.04.5 LTS",
+    "kernel": "5.15.148-tegra",
+    "compiler": "gcc 11.4.0"
+  },
+  "elevation_source": {
+    "path": "/home/nvidia/elevation_map/src/elevation_mapping_cupy",
+    "commit": "7c47b94dfb5b4dbd521bbfb5986e7bc4518e2747",
+    "modified": false
+  },
+  "packages": [
+    "ros-humble-nav2-mppi-controller\t1.1.20-1jammy.20260318.083257\tarm64",
+    "ros-humble-grid-map-core\t2.0.1-1jammy.20260307.155349\tarm64",
+    "ros-humble-grid-map-msgs\t2.0.1-1jammy.20260423.010831\tarm64",
+    "ros-humble-grid-map-ros\t2.0.1-1jammy.20260426.030724\tarm64"
+  ],
+  "dependency_check": {
+    "command": "rosdep check --from-paths src/height_jump_mppi_critic --ignore-src",
+    "result": "All system dependencies have been satisfied",
+    "exit": 0
+  },
+  "build": {
+    "type": "Release",
+    "command": "CMAKE_BUILD_PARALLEL_LEVEL=2 colcon build --packages-select height_jump_mppi_critic --executor sequential --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+    "exit": 0,
+    "compile_flags_verified": [
+      "-O3",
+      "-DNDEBUG",
+      "-fno-fast-math"
+    ],
+    "artifact": "ELF 64-bit LSB shared object, ARM aarch64",
+    "ldd_r_exit": 0
+  },
+  "isolated_test_environment": {
+    "ROS_DOMAIN_ID": 87,
+    "ROS_LOCALHOST_ONLY": 1
+  },
+  "tests": {
+    "test_plugin.gtest.xml": {
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "disabled": 0
+    },
+    "test_map.gtest.xml": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "disabled": 0
+    },
+    "test_evaluator.gtest.xml": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "disabled": 0
+    },
+    "ctest_entries": 3,
+    "colcon_aggregate": {
+      "tests": 24,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    "test_exit": 0,
+    "test_result_exit": 0
+  },
+  "plugin_integration": {
+    "loader": "nav2_mppi_controller::CriticManager via pluginlib",
+    "loaded_type": "mppi::critics::HeightJumpCritic",
+    "real_ros2_grid_map_publish_subscribe": true,
+    "rollout_scoring_verified": true,
+    "binary_costs_verified": [
+      0,
+      1000000
+    ],
+    "all_rejected_fail_flag_verified": true,
+    "startup_exemption_requires_explicit_positive_radius": true
+  },
+  "running_elevation_read_only_observation": {
+    "ROS_DOMAIN_ID": 42,
+    "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp",
+    "node": "/elevation_mapping_node",
+    "topic": "/elevation_mapping_node/elevation_map",
+    "topic_type": "grid_map_msgs/msg/GridMap",
+    "publisher_qos": "reliable, volatile, keep_last(10)",
+    "observed_publish_rate_hz": 9.99,
+    "map_frame": "map",
+    "map_resolution_m": 0.1,
+    "map_length_m": [
+      20.0,
+      20.0
+    ],
+    "layers": [
+      "elevation",
+      "variance"
+    ],
+    "elevation_cells": 40000,
+    "elevation_finite": 2598,
+    "elevation_nan": 37402,
+    "elevation_inf": 0,
+    "message_stamp_utc": "2026-09-20T03:56:30.231705386Z",
+    "observed_age_seconds": 838.8,
+    "pointcloud_topic": "/cloud_registered",
+    "pointcloud_publishers": 0,
+    "tf_publishers": 0,
+    "tf_map_to_odom_to_base_link_available": false,
+    "health_conclusion": "Not usable by the critic at observation time: the map header was stale and navigation TF was unavailable."
+  },
+  "navigation_configuration": {
+    "default_launch_params": "src/fishbot_navigation2/config/nav2_params.yaml",
+    "controller_id": "FollowPath",
+    "plugin": "nav2_mppi_controller::MPPIController",
+    "local_costmap_global_frame": "map",
+    "existing_critics_preserved": [
+      "ConstraintCritic",
+      "ObstaclesCritic",
+      "GoalCritic",
+      "GoalAngleCritic",
+      "PathFollowCritic",
+      "PreferForwardCritic",
+      "TwirlingCritic",
+      "PathAlignCritic"
+    ],
+    "append_critic": "HeightJumpCritic",
+    "max_height_jump": "UNSET_REQUIRES_ROBOT_CALIBRATION",
+    "startup_unknown_enabled": false,
+    "unknown_ignore_radius": "UNSET_REQUIRES_SAFETY_VALIDATION"
+  },
+  "external_repositories_modified": false,
+  "autonomous_navigation_started": false
+}
