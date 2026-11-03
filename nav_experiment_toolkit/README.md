@@ -61,55 +61,9 @@ source /opt/ros/humble/setup.bash
 source ~/你的工作空间/install/setup.bash
 ```
 
-## 1. 录制前检查
+录包与检查命令统一见[桌面录包指南](/home/nvidia/Desktop/rosbag_guide.md)。
 
-```bash
-./scripts/check_before_record.sh
-```
-
-## 2. 一次实验只录一个导航任务
-
-```bash
-./scripts/record_nav_baseline.sh
-```
-
-包含：
-
-```text
-/map
-/tf
-/tf_static
-/aft_mapped_to_init
-/path
-/amcl_pose
-/command/cmd_twist
-/cmd_vel
-/goal_pose
-/plan
-/transformed_global_plan
-/trajectories
-/local_costmap/costmap
-/global_costmap/costmap
-```
-
-如果存在：
-
-```text
-/navigate_to_pose/_action/status
-```
-
-脚本也会自动加入。
-
-## 3. 检查 bag
-
-```bash
-./scripts/inspect_bag.sh bags/nav_baseline/nav_baseline_XXXX
-```
-
-重点确认 `/map`、`/tf`、`/plan`、`/transformed_global_plan`、`/cmd_vel`
-的 Message Count > 0。
-
-## 4. RViz 标准重播
+## RViz 标准重播
 
 ```bash
 ./scripts/replay_nav_rviz.sh bags/nav_baseline/nav_baseline_XXXX
@@ -137,36 +91,11 @@ TF
 ros2 bag play BAG --clock
 ```
 
-## 高程导航独立录制与回放
-
-高程模板记录核心实验链路：点云 → 高程/方差 → 高度差 → 代价地图 → 路径/控制。
-适用于已启动 HeightObstacleLayer 的高程导航实验。
+## 高程导航回放
 
 ```bash
-./scripts/check_before_record.sh elevation
-./scripts/record_nav_elevation.sh
-./scripts/inspect_bag.sh bags/nav_elevation/nav_elevation_XXXX
 ./scripts/replay_nav_elevation_rviz.sh bags/nav_elevation/nav_elevation_XXXX
 ```
-
-核心话题清单统一放在 `config/elevation_recording_topics.sh`：
-
-- 建图：`/cloud_registered`、`/elevation_mapping_node/elevation_map`（完整 GridMap，含已发布的 elevation/variance）。
-- 判定：`/height_obstacle_layer/height_difference_map`、`/local_costmap/costmap`、`/global_costmap/costmap`。
-- 定位：`/tf`、`/tf_static`、`/aft_mapped_to_init`、`/map`。
-- 导航：`/goal_pose`、`/plan`、`/transformed_global_plan`、`/command/cmd_twist`、`/cmd_vel`。
-- 任务：NavigateToPose 和 FollowPath 的 `/_action/status`；手绘路径的 `/custom_path/raw_path`、`/custom_path/preview_path`、`/custom_path/status`。
-
-任务话题即使录制启动时不存在，也会等待发现；只使用其中一种任务入口时，另一组没有消息正常。
-已启用隐藏话题录制；action status 提供状态，不包含完整 result 服务响应或全部错误细节。
-默认不录 `/trajectories`、`/path`、`/amcl_pose`，减少体积和重复信息。
-当前 costmap 配置为全量发布，因此不增加 updates 话题。
-
-录制脚本会检查建图、判定、定位的核心话题，缺失时退出。
-检查只确认话题存在，不代表有有效消息；录制后用 `inspect_bag.sh` 确认消息数。
-先录制并等待订阅，再发目标；任务前后各保留5–10秒，最后 Ctrl-C 停止。
-若更改高程话题名，在检查和录制命令前都设置 `ELEVATION_TOPIC=/实际话题`。
-仅启动高程建图、没有导航时，使用 `../rosbag_recording/scripts/record_terrain_elevation.sh`。
 
 高程 RViz 使用倾斜三维视角显示：
 
@@ -180,7 +109,7 @@ Robot Footprint Box
 TF
 ```
 
-## 5. 自动定量分析
+## 自动定量分析
 
 ```bash
 ./scripts/analyze_nav_bag.sh bags/nav_baseline/nav_baseline_XXXX

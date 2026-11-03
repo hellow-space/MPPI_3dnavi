@@ -1,164 +1,283 @@
 Panels:
-  - Class: rviz_common/Displays
-    Name: Displays
+- Class: rviz_common/Displays
+  Name: Displays
+- Class: rviz_common/Views
+  Name: Views
 Visualization Manager:
   Displays:
-    - Alpha: 0.550000011920929
-      Class: rviz_default_plugins/RobotModel
-      Collision Enabled: false
-      Description File: ""
-      Description Source: Topic
-      Description Topic:
-        Depth: 1
-        Durability Policy: Transient Local
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /navigation_footprint/robot_description
-      Enabled: true
-      Links:
-        All Links Enabled: true
-        Expand Joint Details: false
-        Expand Link Details: false
-        Expand Tree: false
-        Link Tree Style: ""
-      Mass Properties:
-        Inertia: false
-        Mass: false
-      Name: Robot Footprint Box
-      TF Prefix: ""
-      Update Interval: 0
-      Value: true
-      Visual Enabled: true
-
-    - Alpha: 0.4
-      Class: rviz_default_plugins/Map
-      Enabled: true
-      Name: Static Map
-      Topic:
-        Depth: 5
-        Durability Policy: Transient Local
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /map
-      Value: true
-
-    - Alpha: 0.9
-      Autocompute Intensity Bounds: true
-      Class: grid_map_rviz_plugin/GridMap
-      Color: 200; 200; 200
-      Color Layer: elevation
-      Color Transformer: GridMapLayer
-      Enabled: true
-      Height Layer: elevation
-      Height Transformer: GridMapLayer
-      History Length: 1
-      Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Max Intensity: 1
-      Min Color: 0; 0; 0
-      Min Intensity: 0
-      Name: Elevation Map
-      Show Grid Lines: false
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /elevation_mapping_node/elevation_map
-      Use Rainbow: true
-      Value: true
-
-    - Alpha: 1
-      Buffer Length: 1
-      Class: rviz_default_plugins/Path
-      Color: 0; 255; 0
-      Enabled: true
-      Line Style: Lines
-      Line Width: 0.05
-      Name: Global Plan
-      Pose Style: None
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /plan
-      Value: true
-
-    - Alpha: 1
-      Buffer Length: 1
-      Class: rviz_default_plugins/Path
-      Color: 255; 255; 0
-      Enabled: true
-      Line Style: Lines
-      Line Width: 0.07
-      Name: FAST-LIO2 Path
-      Pose Style: None
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /path
-      Value: true
-
-    - Alpha: 1
-      Buffer Length: 1
-      Class: rviz_default_plugins/Path
-      Color: 255; 0; 0
-      Enabled: true
-      Line Style: Lines
-      Line Width: 0.05
-      Name: MPPI Reference
-      Pose Style: None
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /transformed_global_plan
-      Value: true
-
-    - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
-      Name: MPPI Rollouts
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Best Effort
-        Value: /trajectories
-      Value: true
-
-    - Class: rviz_default_plugins/TF
-      Enabled: true
-      Frame Timeout: 15
-      Frames:
-        All Enabled: true
-      Marker Scale: 0.4
-      Name: TF
-      Show Arrows: true
-      Show Axes: true
-      Show Names: false
-      Update Interval: 0
-      Value: true
-
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Enabled: true
+    Name: Static Map
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /map
+    Value: true
+  - Alpha: 0.3
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Draw Behind: false
+    Enabled: true
+    Name: Global Costmap
+    Topic:
+      Depth: 1
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /global_costmap/costmap
+    Use Timestamp: false
+    Value: true
+  - Alpha: 0.7
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Draw Behind: false
+    Enabled: true
+    Name: Local Costmap
+    Topic:
+      Depth: 1
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /local_costmap/costmap
+    Use Timestamp: false
+    Value: true
+  - Alpha: 0.55
+    Autocompute Intensity Bounds: true
+    Class: grid_map_rviz_plugin/GridMap
+    Color: 200; 200; 200
+    Color Layer: elevation
+    Color Transformer: IntensityLayer
+    Enabled: false
+    Height Layer: elevation
+    Height Transformer: GridMapLayer
+    History Length: 1
+    Invert Rainbow: false
+    Max Color: 255; 255; 255
+    Max Intensity: 1
+    Min Color: 0; 0; 0
+    Min Intensity: -1
+    Name: Elevation Map
+    Show Grid Lines: false
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      Filter size: 10
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /elevation_mapping_node/elevation_map
+    Use Rainbow: true
+    Value: false
+  - Class: rviz_default_plugins/PointCloud2
+    Name: Registered cloud
+    Enabled: false
+    Alpha: 0.35
+    Color Transformer: AxisColor
+    Position Transformer: XYZ
+    Decay Time: 0
+    Size (m): 0.025
+    Style: Points
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /cloud_registered
+    Value: false
+  - Alpha: 0.550000011920929
+    Class: rviz_default_plugins/RobotModel
+    Collision Enabled: false
+    Description File: ''
+    Description Source: Topic
+    Description Topic:
+      Depth: 1
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /navigation_footprint/robot_description
+    Enabled: true
+    Links:
+      All Links Enabled: true
+      Expand Joint Details: false
+      Expand Link Details: false
+      Expand Tree: false
+      Link Tree Style: ''
+    Mass Properties:
+      Inertia: false
+      Mass: false
+    Name: Robot Footprint Box
+    TF Prefix: ''
+    Update Interval: 0
+    Value: true
+    Visual Enabled: true
+  - Alpha: 1
+    Buffer Length: 1
+    Class: rviz_default_plugins/Path
+    Color: 255; 0; 0
+    Enabled: true
+    Line Style: Lines
+    Line Width: 0.05
+    Name: Global Plan
+    Pose Style: None
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /plan
+    Value: true
+  - Alpha: 1
+    Buffer Length: 1
+    Class: rviz_default_plugins/Path
+    Color: 0; 100; 255
+    Enabled: true
+    Line Style: Lines
+    Line Width: 0.05
+    Name: MPPI Reference
+    Pose Style: None
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /transformed_global_plan
+    Value: true
+  - Alpha: 1
+    Buffer Length: 1
+    Class: rviz_default_plugins/Path
+    Color: 255; 255; 0
+    Enabled: true
+    Line Style: Lines
+    Line Width: 0.07
+    Name: FAST-LIO2 Path
+    Pose Style: None
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /path
+    Value: true
+  - Class: rviz_default_plugins/MarkerArray
+    Enabled: true
+    Name: MPPI Rollouts
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /trajectories
+    Value: true
+  - Alpha: 1
+    Class: rviz_default_plugins/Polygon
+    Color: 25; 255; 0
+    Enabled: true
+    Name: Local Footprint
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      Filter size: 10
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /local_costmap/published_footprint
+    Value: true
+  - Alpha: 1
+    Autocompute Intensity Bounds: false
+    Class: grid_map_rviz_plugin/GridMap
+    Color: 200; 200; 200
+    Color Layer: variance
+    Color Transformer: IntensityLayer
+    Enabled: false
+    Height Layer: elevation
+    Height Transformer: GridMapLayer
+    History Length: 1
+    Invert Rainbow: false
+    Max Color: 240; 60; 35
+    Max Intensity: 0.01
+    Min Color: 30; 90; 210
+    Min Intensity: 0.0
+    Name: Variance (optional)
+    Show Grid Lines: false
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      Filter size: 10
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /elevation_mapping_node/elevation_map
+    Use Rainbow: false
+    Value: false
+  - Alpha: 0.55
+    Autocompute Intensity Bounds: false
+    Class: grid_map_rviz_plugin/GridMap
+    Color: 200; 200; 200
+    Color Layer: height_difference
+    Color Transformer: IntensityLayer
+    Enabled: false
+    Height Layer: height_difference
+    Height Transformer: Flat
+    History Length: 1
+    Invert Rainbow: false
+    Max Color: 255; 255; 255
+    Max Intensity: 0.3
+    Min Color: 0; 0; 0
+    Min Intensity: 0.0
+    Name: Height Difference (optional)
+    Show Grid Lines: false
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      Filter size: 10
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /height_obstacle_layer/height_difference_map
+    Use Rainbow: true
+    Value: false
+  - Class: rviz_default_plugins/TF
+    Enabled: true
+    Frame Timeout: 15
+    Frames:
+      All Enabled: true
+    Marker Scale: 0.4
+    Name: TF
+    Show Arrows: true
+    Show Axes: true
+    Show Names: false
+    Update Interval: 0
+    Value: true
   Enabled: true
   Global Options:
-    Background Color: 35; 35; 35
+    Background Color: 48; 48; 48
     Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
-    - Class: rviz_default_plugins/Interact
-    - Class: rviz_default_plugins/MoveCamera
-    - Class: rviz_default_plugins/Select
-    - Class: rviz_default_plugins/FocusCamera
-    - Class: rviz_default_plugins/Measure
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/Select
+  - Class: rviz_default_plugins/FocusCamera
+  - Class: rviz_default_plugins/Measure
   Views:
     Current:
-      Class: rviz_default_plugins/Orbit
+      Angle: -1.5708
+      Class: rviz_default_plugins/TopDownOrtho
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Scale: 160
+      Target Frame: <Fixed Frame>
+      Value: TopDownOrtho (rviz_default_plugins)
+      X: 0
+      Y: 0
+    Saved:
+    - Class: rviz_default_plugins/Orbit
       Distance: 18
       Focal Point:
         X: 0
@@ -168,7 +287,6 @@ Visualization Manager:
       Pitch: 0.65
       Target Frame: map
       Yaw: 0.785
-    Saved: []
 Window Geometry:
   Height: 900
   Width: 1400

@@ -165,8 +165,9 @@ controller_server:
       visualize: true
       reset_period: 1.0 # (only in Humble)
       TrajectoryVisualizer:
-        trajectory_step: 5
-        time_step: 3
+        # 降低 MarkerArray 构建/传输开销，保留 RViz 轨迹显示；不减少优化采样。
+        trajectory_step: 20
+        time_step: 5
       AckermannConstrains:
         min_turning_r: 0.2
       # 高程差是唯一的地形可通行性判断；其余 critic 只负责运动约束与路径跟踪。
@@ -238,12 +239,14 @@ local_costmap:
       resolution: 0.05
       footprint: "[ [0.6, 0.45], [0.6, -0.45], [-0.6, -0.45], [-0.6, 0.45] ]" # 增大足迹以容纳腿部晃动
       transform_tolerance: 0.2  # 🔥 调整至合理范围，原 5.0 过大
-      # controller_server/MPPI 需要 Costmap2DROS 接口。Humble 无法从 YAML 的空数组
-      # 推断 plugins 的 string[] 类型，因此保留一个没有障碍源的惰性 inflation 层；
-      # 不加载 static、obstacle 或 voxel 层，也不订阅任何环境感知话题。
+      # Humble 无法从 YAML 的空数组推断 plugins 的 string[] 类型，因此保留
+      # 一个禁用的占位层。没有障碍源时，启用的 InflationLayer 在清图 reset 后
+      # 缺少更新范围，会一直 current=false，使 controller 等待地图而不再发速度。
+      # 纯 Jump 模式的高程检查仍由 HeightJumpCritic 执行。
       plugins: ["inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
+        enabled: false
         cost_scaling_factor: 5.0
         inflation_radius: 0.5
       always_send_full_costmap: True

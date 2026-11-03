@@ -22,6 +22,10 @@ ELEVATION_TASK_TOPICS=(
   /goal_pose
   /plan
   /transformed_global_plan
+  /path
+  /trajectories
+  /local_costmap/published_footprint
+  /global_costmap/published_footprint
   /navigate_to_pose/_action/status
   /follow_path/_action/status
   /custom_path/raw_path

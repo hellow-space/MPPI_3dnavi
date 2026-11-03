@@ -143,7 +143,9 @@ void HeightJumpCritic::score(CriticData & data)
     RCLCPP_INFO(logger_, "HeightJump fixed startup region: frame=%s x=%.3f y=%.3f radius=%.3f",
       fixed_frame_.c_str(), p.first, p.second, startup_radius_);
   }
-  const auto query = [&map](double x, double y) {return map->query(x, y);};
+  const height_jump::TerrainQuery terrain_query(map);
+  // evaluate copies its callable: capture a reference to avoid shared_ptr copies per point.
+  const auto query = [&terrain_query](double x, double y) {return terrain_query(x, y);};
   const auto exempt = [&](double x, double y) {
       if (!startup_enabled_) {return false;}
       const auto p = to_map.inverse(x, y);

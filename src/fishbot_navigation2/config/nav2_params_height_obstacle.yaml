@@ -165,8 +165,9 @@ controller_server:
       visualize: true
       reset_period: 1.0 # (only in Humble)
       TrajectoryVisualizer:
-        trajectory_step: 5
-        time_step: 3
+        # 降低 MarkerArray 构建/传输开销，保留 RViz 轨迹显示；不减少优化采样。
+        trajectory_step: 20
+        time_step: 5
       AckermannConstrains:
         min_turning_r: 0.2
       # CostCritic 消费 HeightObstacleLayer + InflationLayer 的真实代价；

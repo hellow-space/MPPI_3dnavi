@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import shlex
 import subprocess
 import tempfile
 import unittest
@@ -119,7 +120,8 @@ def display_topics(config):
     for display in config["Visualization Manager"]["Displays"]:
         topic = display.get("Topic")
         if isinstance(topic, dict) and "Value" in topic:
-            topics[topic["Value"]] = display
+            if topic["Value"] not in topics or display.get("Enabled", False):
+                topics[topic["Value"]] = display
     return topics
 
 
@@ -165,7 +167,8 @@ def run_elevation_replay():
             "fi\n"
             "printf -v call 'ros2'\n"
             "for arg in \"$@\"; do printf -v call '%s %q' \"$call\" \"$arg\"; done\n"
-            "printf '%s\\n' \"$call\" > \"$FAKE_ROS2_LOG\"\n",
+            "printf 'domain=%s\\n' \"${ROS_DOMAIN_ID:-}\" > \"$FAKE_ROS2_LOG\"\n"
+            "printf '%s\\n' \"$call\" >> \"$FAKE_ROS2_LOG\"\n",
             encoding="utf-8",
         )
         (bin_path / "sleep").write_text(
@@ -186,6 +189,7 @@ def run_elevation_replay():
         env["FAKE_RVIZ_LOG"] = str(rviz_log)
         env["FAKE_RSP_LOG"] = str(rsp_log)
         env["FAKE_ROS2_LOG"] = str(ros2_log)
+        env["ROS_DOMAIN_ID"] = "42"
         result = subprocess.run(
             [str(ELEVATION_REPLAY), str(bag_path)],
             check=False,
@@ -237,33 +241,33 @@ class NavigationRecordingProfilesTest(unittest.TestCase):
         for topic in ("/navigate_to_pose/_action/status", "/follow_path/_action/status",
                       "/custom_path/raw_path", "/custom_path/preview_path",
                       "/custom_path/status", "/command/cmd_twist", "/cmd_vel",
-                      "/goal_pose", "/plan", "/transformed_global_plan"):
+                      "/goal_pose", "/plan", "/transformed_global_plan",
+                      "/path", "/trajectories", "/local_costmap/published_footprint",
+                      "/global_costmap/published_footprint"):
             self.assertIn(topic, recorded_topics)
-        for topic in ("/trajectories", "/path", "/amcl_pose"):
-            self.assertNotIn(topic, recorded_topics)
+        self.assertNotIn("/amcl_pose", recorded_topics)
 
-    def test_elevation_required_inputs_are_shared_by_precheck_and_recorder(self):
+    def test_elevation_precheck_requires_inputs_but_recorder_accepts_missing_topics(self):
         result = run_baseline_check(ELEVATION_REQUIRED, "elevation")
         self.assertEqual(result.returncode, 0, result.stdout)
         for missing in ELEVATION_REQUIRED:
             with self.subTest(missing=missing):
                 published = ELEVATION_REQUIRED - {missing}
                 result, args = run_record_script(ELEVATION_RECORD, published)
-                self.assertNotEqual(result.returncode, 0)
-                self.assertEqual(args, [])
-                self.assertIn(missing, result.stderr)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertIn(missing, args)
                 check = run_baseline_check(published, "elevation")
                 self.assertNotEqual(check.returncode, 0)
                 self.assertIn(f"[MISSING] {missing}", check.stdout)
 
-    def test_elevation_recording_refuses_to_start_without_the_elevation_topic(self):
+    def test_elevation_recording_waits_for_topics_when_started_before_publishers(self):
         result, args = run_record_script(ELEVATION_RECORD, [])
 
-        self.assertNotEqual(result.returncode, 0)
-        self.assertEqual(args, [])
-        self.assertIn(ELEVATION_TOPIC, result.stderr)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(ELEVATION_TOPIC, args)
+        self.assertIn("/height_obstacle_layer/height_difference_map", args)
 
-    def test_elevation_rviz_emphasizes_grid_map_without_costmaps(self):
+    def test_elevation_rviz_shows_navigation_context_with_grid_map(self):
         config = load_rviz(ELEVATION_RVIZ)
         topics = display_topics(config)
         elevation = topics[ELEVATION_TOPIC]
@@ -275,13 +279,21 @@ class NavigationRecordingProfilesTest(unittest.TestCase):
         self.assertEqual(elevation["Class"], "grid_map_rviz_plugin/GridMap")
         self.assertEqual(elevation["Height Layer"], "elevation")
         self.assertEqual(elevation["Color Layer"], "elevation")
-        self.assertIs(elevation["Enabled"], True)
-        self.assertNotIn(LOCAL_COSTMAP, topics)
-        self.assertNotIn(GLOBAL_COSTMAP, topics)
+        self.assertIn("/cloud_registered", topics)
+        for topic in (LOCAL_COSTMAP, GLOBAL_COSTMAP, "/plan",
+                      "/transformed_global_plan"):
+            self.assertIn(topic, topics)
+            self.assertIs(topics[topic]["Enabled"], True, topic)
+        for topic in (LOCAL_COSTMAP, GLOBAL_COSTMAP):
+            self.assertEqual(topics[topic]["Color Scheme"], "costmap")
+            self.assertEqual(topics[topic]["Topic"]["Durability Policy"],
+                             "Transient Local")
+        self.assertEqual(elevation["Color Transformer"], "IntensityLayer")
+        self.assertEqual(elevation["Topic"]["Reliability Policy"], "Best Effort")
         self.assertIn("Robot Footprint Box", display_names)
         self.assertEqual(
             config["Visualization Manager"]["Views"]["Current"]["Class"],
-            "rviz_default_plugins/Orbit",
+            "rviz_default_plugins/TopDownOrtho",
         )
 
     def test_elevation_replay_uses_only_the_elevation_rviz_template(self):
@@ -292,6 +304,17 @@ class NavigationRecordingProfilesTest(unittest.TestCase):
         self.assertIn("ros2 bag play", calls)
         self.assertIn("--clock", calls)
         self.assertIn("robot_state_publisher --ros-args", calls)
+        self.assertIn("domain=43", calls)
+        play = next(shlex.split(line) for line in calls.splitlines()
+                    if line.startswith("ros2 bag play "))
+        self.assertIn("--loop", play)
+        self.assertEqual(play[play.index("--rate") + 1], "0.5")
+        topics = set(play[play.index("--topics") + 1:])
+        self.assertTrue({"/map", "/tf", "/tf_static", ELEVATION_TOPIC,
+                         LOCAL_COSTMAP, GLOBAL_COSTMAP, "/plan",
+                         "/transformed_global_plan", "/cloud_registered"} <= topics)
+        self.assertNotIn("/cmd_vel", topics)
+        self.assertNotIn("/command/cmd_twist", topics)
 
 
 if __name__ == "__main__":

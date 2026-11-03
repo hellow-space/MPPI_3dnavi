@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.16)
+project(mppi_frequency_probe LANGUAGES CXX)
+find_package(ament_cmake REQUIRED)
+foreach(dep nav2_mppi_controller nav2_costmap_2d nav2_controller rclcpp rclcpp_lifecycle grid_map_ros grid_map_msgs)
+  find_package(${dep} REQUIRED)
+endforeach()
+add_executable(probe probe.cpp)
+target_compile_features(probe PRIVATE cxx_std_17)
+# Match the installed Nav2 xtensor ABI (xsimd aligned allocator, 32 bytes).
+target_compile_definitions(probe PRIVATE XTENSOR_USE_XSIMD XTENSOR_DEFAULT_ALIGNMENT=32)
+target_compile_options(probe PRIVATE -O3 -fno-fast-math)
+ament_target_dependencies(probe nav2_mppi_controller nav2_costmap_2d nav2_controller rclcpp rclcpp_lifecycle grid_map_ros grid_map_msgs)

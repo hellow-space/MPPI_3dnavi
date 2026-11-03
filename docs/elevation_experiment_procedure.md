@@ -12,25 +12,11 @@
 
 1. 找到对应场景，将机器人放到起点，先站起来。
 2. 启动平时使用的定位、高程图和高程导航，等待机器人姿态与 RViz 显示稳定。
-3. 检查录制所需话题：
-
-   ```bash
-   cd /home/nvidia/MPPI_3dnavi
-   bash nav_experiment_toolkit/scripts/check_before_record.sh elevation
-   ```
-
-   如果提示核心话题缺失，先处理再录制。
-
-4. 开启统一录包：
-
-   ```bash
-   bash nav_experiment_toolkit/scripts/record_nav_elevation.sh
-   ```
-
-5. 等录制开始后，原地停约 10 秒。
-6. 执行本场景的动作。
-7. 动作结束后停约 10 秒，在录包终端按一次 `Ctrl+C`，等待录制结束。
-8. 保留整个 bag 文件夹，包括 `metadata.yaml` 和数据文件。
+3. 按照[桌面录包指南](/home/nvidia/Desktop/rosbag_guide.md)完成检查并开始录包。
+4. 等录制开始后，原地停约 10 秒。
+5. 执行本场景的动作。
+6. 动作结束后停约 10 秒，在录包终端按一次 `Ctrl+C`，等待录制结束。
+7. 保留整个 bag 文件夹，包括 `metadata.yaml` 和数据文件。
 
 每个场景先做一次即可。保持同一套参数，使用平时已经验证稳定的速度和控制方式。斜坡、楼梯选择机器人已经确认可以通过的场地。
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# HeightJump / HeightObstacle 通用录包；在已配置 ROS 环境的宿主机终端执行。
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -8,16 +9,6 @@ STAMP="$(date +'%Y-%m-%d_%H-%M-%S')"
 OUT_DIR="${OUT_ROOT}/nav_elevation_${STAMP}"
 source "${ROOT_DIR}/config/elevation_recording_topics.sh"
 
-AVAILABLE_TOPICS="$(ros2 topic list --include-hidden-topics)"
-MISSING=0
-for topic in "${ELEVATION_REQUIRED_TOPICS[@]}"; do
-  if ! grep -Fxq "$topic" <<< "$AVAILABLE_TOPICS"; then
-    echo "[ERROR] required topic not found: $topic" >&2
-    MISSING=1
-  fi
-done
-if (( MISSING )); then exit 1; fi
-
 mkdir -p "$OUT_ROOT"
 
 TOPICS=(
@@ -25,15 +16,8 @@ TOPICS=(
   "${ELEVATION_TASK_TOPICS[@]}"
 )
 
-echo "=========================================="
-echo " NAVIGATION ELEVATION RECORDING"
-echo "=========================================="
-echo "Output: $OUT_DIR"
-printf '  %s\n' "${TOPICS[@]}"
-echo
-echo "Wait for recorder subscriptions, then start one navigation task per bag."
-echo "Task topics not yet present will be discovered automatically."
-echo "Keep 5-10 seconds before/after the task, then press Ctrl-C once."
-echo "=========================================="
+echo "录包保存到：$OUT_DIR"
+echo '等待录制器建立订阅后再发导航目标，按 Ctrl+C 结束录包。'
+# 未发布的话题由 rosbag 持续发现；HeightJump 缺少高度差图也可录制。
 
-ros2 bag record --include-hidden-topics --output "$OUT_DIR" "${TOPICS[@]}"
+exec ros2 bag record --include-hidden-topics --output "$OUT_DIR" "${TOPICS[@]}"

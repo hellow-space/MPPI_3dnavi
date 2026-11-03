@@ -1,0 +1,151 @@
+{
+  "nav_elevation_2026-11-01_17-03-23": {
+    "duration_s": 214.630967974,
+    "topics": {
+      "/path": {
+        "count": 2147
+      },
+      "/local_costmap/costmap": {
+        "count": 1367
+      },
+      "/map": {
+        "count": 1
+      },
+      "/local_costmap/published_footprint": {
+        "count": 2146
+      },
+      "/transformed_global_plan": {
+        "count": 0
+      },
+      "/trajectories": {
+        "count": 0
+      },
+      "/cloud_registered": {
+        "count": 2146
+      },
+      "/global_costmap/published_footprint": {
+        "count": 214
+      },
+      "/tf_static": {
+        "count": 5
+      },
+      "/tf": {
+        "count": 6435
+      },
+      "/navigate_to_pose/_action/status": {
+        "count": 9
+      },
+      "/global_costmap/costmap": {
+        "count": 138
+      },
+      "/elevation_mapping_node/elevation_map": {
+        "count": 2146
+      },
+      "/cmd_vel": {
+        "count": 4291,
+        "nonzero_count": 0,
+        "zero_count": 4291,
+        "min_vx": 0.0,
+        "max_vx": 0.0,
+        "min_wz": 0.0,
+        "max_wz": 0.0,
+        "mean_rate_hz": 20.000737788427706,
+        "max_receive_gap_s": 0.06905012199999305
+      },
+      "/plan": {
+        "count": 208
+      },
+      "/follow_path/_action/status": {
+        "count": 417
+      },
+      "/aft_mapped_to_init": {
+        "count": 2147
+      },
+      "/command/cmd_twist": {
+        "count": 0
+      }
+    }
+  },
+  "nav_elevation_2026-11-01_17-09-33": {
+    "duration_s": 66.916768762,
+    "topics": {
+      "/tf_static": {
+        "count": 5
+      },
+      "/map": {
+        "count": 1
+      },
+      "/local_costmap/published_footprint": {
+        "count": 591
+      },
+      "/local_costmap/costmap": {
+        "count": 354
+      },
+      "/path": {
+        "count": 663
+      },
+      "/transformed_global_plan": {
+        "count": 450
+      },
+      "/trajectories": {
+        "count": 449
+      },
+      "/cloud_registered": {
+        "count": 663
+      },
+      "/global_costmap/published_footprint": {
+        "count": 59
+      },
+      "/tf": {
+        "count": 1923
+      },
+      "/navigate_to_pose/_action/status": {
+        "count": 3
+      },
+      "/global_costmap/costmap": {
+        "count": 38
+      },
+      "/elevation_mapping_node/elevation_map": {
+        "count": 592
+      },
+      "/cmd_vel": {
+        "count": 1788,
+        "nonzero_count": 1292,
+        "zero_count": 496,
+        "min_vx": -0.2541184425354004,
+        "max_vx": 0.8585272431373596,
+        "min_wz": -0.8399973511695862,
+        "max_wz": 1.2525889873504639,
+        "first_nonzero_s": 24.864638841,
+        "last_nonzero_s": 66.889567216,
+        "mean_rate_hz": 26.773448441736566,
+        "max_receive_gap_s": 0.06129602900000464
+      },
+      "/height_obstacle_layer/height_difference_map": {
+        "count": 550
+      },
+      "/plan": {
+        "count": 41
+      },
+      "/follow_path/_action/status": {
+        "count": 83
+      },
+      "/aft_mapped_to_init": {
+        "count": 664
+      },
+      "/command/cmd_twist": {
+        "count": 452,
+        "nonzero_count": 451,
+        "zero_count": 1,
+        "min_vx": -0.2541184425354004,
+        "max_vx": 0.8585272431373596,
+        "min_wz": -0.8399973511695862,
+        "max_wz": 1.2525889873504639,
+        "first_nonzero_s": 24.864435737,
+        "last_nonzero_s": 66.84264179,
+        "mean_rate_hz": 10.743670166147297,
+        "max_receive_gap_s": 0.19496967199999915
+      }
+    }
+  }
+}

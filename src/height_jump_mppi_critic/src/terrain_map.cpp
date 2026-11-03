@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <limits>
+#include <utility>
 #include <grid_map_ros/GridMapRosConverter.hpp>
 
 namespace height_jump
@@ -69,8 +70,20 @@ Sample TerrainSnapshot::query(double x, double y) const
   if (!std::isfinite(x) || !std::isfinite(y)) {return {SampleState::Outside, 0};}
   const grid_map::Position point(x, y);
   if (!map.isInside(point)) {return {SampleState::Outside, 0};}
-  const float z = map.atPosition(layer, point);
+  grid_map::Index index;
+  // At floating-point map edges, getIndex() can succeed with an index equal to
+  // the storage size. Check both dimensions before reading, even after isInside().
+  if (!map.getIndex(point, index) || (index < grid_map::Index::Zero()).any() ||
+    (index >= map.getSize()).any()) {return {SampleState::Outside, 0};}
+  const float z = map.at(layer, index);
   return {std::isfinite(z) ? SampleState::Known : SampleState::Unknown, z};
+}
+
+TerrainQuery::TerrainQuery(std::shared_ptr<const TerrainSnapshot> snapshot)
+: snapshot_(std::move(snapshot))
+{
+  if (!snapshot_) {throw std::invalid_argument("TerrainQuery requires a snapshot");}
+  elevation_ = &snapshot_->map[snapshot_->layer];
 }
 
 bool TerrainSnapshot::fresh(int64_t now_ns, double timeout_seconds) const

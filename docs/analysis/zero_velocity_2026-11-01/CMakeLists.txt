@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+project(inflation_reset_probe)
+find_package(ament_cmake REQUIRED)
+find_package(nav2_costmap_2d REQUIRED)
+add_executable(probe probe.cpp)
+ament_target_dependencies(probe nav2_costmap_2d)

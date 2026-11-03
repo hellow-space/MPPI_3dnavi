@@ -1,0 +1,127 @@
+{
+  "duration_s": 32.692236403,
+  "command_rate_hz": 11.030781188948636,
+  "command_interval_s": {
+    "min": 0.06967490899999973,
+    "median": 0.08682045000000027,
+    "p95": 0.11528508879999984,
+    "max": 0.1900978740000001
+  },
+  "missed_control_loop_warnings": 245,
+  "direct_forward_match_n": 360,
+  "direct_forward_receive_time_difference_s": {
+    "min": -0.0038630429999990668,
+    "median": 0.0011801679999985382,
+    "p95": 0.004217854999997428,
+    "max": 0.016033823999999086
+  },
+  "other_final_messages": 657,
+  "other_final_rate_hz": 20.066509877417946,
+  "other_final_wz_diff_from_latest_raw_abs": {
+    "min": 0.0,
+    "median": 0.03978040575981137,
+    "p95": 0.5387257203161716,
+    "max": 0.9060361862182613
+  },
+  "other_final_opposite_wz_count": 18,
+  "odom_twist_all_zero": true,
+  "pose_derived_wz_abs": {
+    "min": 1.3000752931464042e-06,
+    "median": 0.32969297628520744,
+    "p95": 1.0680296370758304,
+    "max": 1.2735358185093035
+  },
+  "pose_derived_forward_speed_abs": {
+    "min": 0.00051030597523946,
+    "median": 0.20637773718390456,
+    "p95": 0.6120803528221861,
+    "max": 0.8795183212441002
+  },
+  "trajectory_length_m": 8.824360737265968,
+  "net_displacement_m": 1.4529832139660757,
+  "base_xyz_start": [
+    -4.340706128507953,
+    -14.507666019097446,
+    0.003961856084936988
+  ],
+  "base_xyz_end": [
+    -3.587451795550255,
+    -15.750150678941438,
+    -0.04947152954364181
+  ],
+  "base_rpy_deg_range": [
+    [
+      -9.125094964655867,
+      6.3917613934710005
+    ],
+    [
+      -11.558785887297034,
+      3.367413704049919
+    ],
+    [
+      -177.93665556672275,
+      176.53277056643236
+    ]
+  ],
+  "yaw_unwrapped_range_deg": [
+    -106.96748691120094,
+    239.284676079888
+  ],
+  "path_error_m": {
+    "global": {
+      "min": 0.0012298633617746054,
+      "median": 0.05214374835766281,
+      "p95": 0.3252532831008169,
+      "max": 0.6530098884822698
+    },
+    "controller": {
+      "min": 0.0012298633617746054,
+      "median": 0.071489872871849,
+      "p95": 0.37219508971683435,
+      "max": 0.8046141667743653
+    }
+  },
+  "lidar_callback_minus_stamp_s": {
+    "min": 0.11466598510742188,
+    "median": 0.17780041694641113,
+    "p95": 0.24726855754852295,
+    "max": 0.3126258850097656
+  },
+  "imu_callback_minus_stamp_s": {
+    "min": 2.003053903579712,
+    "median": 3.588217258453369,
+    "p95": 4.5318141937255865,
+    "max": 4.653677940368652
+  },
+  "imu_lidar_mismatch_s": {
+    "min": 1.795698,
+    "median": 3.4147594999999997,
+    "p95": 4.346286050000001,
+    "max": 4.506019
+  },
+  "imu_lidar_mismatch_warning_count": 6140,
+  "imu_callback_n": 6140,
+  "imu_callback_rate_hz": 188.23641887942946,
+  "imu_stamp_rate_vs_wall": 0.9187637921172904,
+  "response_lag_estimate": {
+    "best_lag_s": 4.14,
+    "correlation_at_best": 0.6987967488213317,
+    "correlation_at_zero_lag": -0.2214855701468045,
+    "rmse_at_zero": 0.9592112635483541,
+    "rmse_at_best": 0.5112618068259507,
+    "note": "command to localization pose derivative, not a direct chassis actuation latency measurement"
+  },
+  "nav_error_or_recovery_events_in_bag": [],
+  "local_maps_all_zero": true,
+  "inferred_state_age_lower_bound_s_from_latest_imu": {
+    "min": 2.0457379817962646,
+    "median": 3.6133832931518555,
+    "p95": 4.545363903045654,
+    "max": 4.618480443954468
+  },
+  "cumulative_abs_yaw_deg": 781.4584532974333,
+  "goal_distance_start_end_m": [
+    5.156845588341787,
+    3.760046742822706
+  ]
+}

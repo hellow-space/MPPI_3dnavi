@@ -1,0 +1,72 @@
+{
+  "teleop_flat_2026-10-19_20-05-51": [
+    {
+      "phase_before": [
+        45,
+        55
+      ],
+      "phase_after": [
+        65,
+        80
+      ],
+      "body_z_change_m": -0.23881130710477022,
+      "common_ground_cells": 213,
+      "ground_z_change_median_m": -0.0030524699771193875,
+      "ground_z_change_abs_p95_m": 0.014419086881822682,
+      "map_cells": 213,
+      "map_z_change_median_m": -0.0015831738710403442,
+      "map_z_change_abs_p95_m": 0.5238961994647979,
+      "body_ground_clearance_before_m": 0.2571578624431853,
+      "body_ground_clearance_after_m": 0.0173447653857646,
+      "body_ground_clearance_change_m": -0.23981309705742068,
+      "map_delta_within_2cm_fraction": 0.863849765258216,
+      "map_delta_over_10cm_cells": 25
+    }
+  ],
+  "teleop_flat_2026-10-19_20-47-37": [
+    {
+      "phase_before": [
+        0,
+        10
+      ],
+      "phase_after": [
+        45,
+        70
+      ],
+      "body_z_change_m": -0.32214215530077767,
+      "common_ground_cells": 49,
+      "ground_z_change_median_m": 0.0026054726164709274,
+      "ground_z_change_abs_p95_m": 0.012163482013253176,
+      "map_cells": 49,
+      "map_z_change_median_m": 0.0006066113710403442,
+      "map_z_change_abs_p95_m": 0.3515198111534118,
+      "body_ground_clearance_before_m": 0.23579227906472333,
+      "body_ground_clearance_after_m": 0.0115861608842187,
+      "body_ground_clearance_change_m": -0.22420611818050462,
+      "map_delta_within_2cm_fraction": 0.673469387755102,
+      "map_delta_over_10cm_cells": 10
+    },
+    {
+      "phase_before": [
+        45,
+        70
+      ],
+      "phase_after": [
+        80,
+        85
+      ],
+      "body_z_change_m": 0.19817797790212788,
+      "common_ground_cells": 353,
+      "ground_z_change_median_m": 0.004306384009262865,
+      "ground_z_change_abs_p95_m": 0.009419993755362887,
+      "map_cells": 353,
+      "map_z_change_median_m": 0.001376420259475708,
+      "map_z_change_abs_p95_m": 0.004649305343627929,
+      "body_ground_clearance_before_m": 0.0115861608842187,
+      "body_ground_clearance_after_m": 0.2089953874965332,
+      "body_ground_clearance_change_m": 0.1974092266123145,
+      "map_delta_within_2cm_fraction": 1.0,
+      "map_delta_over_10cm_cells": 0
+    }
+  ]
+}

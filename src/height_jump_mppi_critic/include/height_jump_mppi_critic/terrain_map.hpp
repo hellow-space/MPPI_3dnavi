@@ -22,6 +22,35 @@ struct TerrainSnapshot
   bool fresh(int64_t now_ns, double timeout_seconds) const;
 };
 
+// Prepared once per score call. Own the immutable snapshot so cached matrix
+// access stays valid even when the source publishes a replacement map.
+class TerrainQuery
+{
+public:
+  explicit TerrainQuery(std::shared_ptr<const TerrainSnapshot> snapshot);
+
+  Sample operator()(double x, double y) const
+  {
+    if (!std::isfinite(x) || !std::isfinite(y)) {return {SampleState::Outside, 0};}
+    const auto & map = snapshot_->map;
+    const grid_map::Position point(x, y);
+    // Keep this precheck: getIndex converts to integer before checking containment.
+    if (!map.isInside(point)) {return {SampleState::Outside, 0};}
+    grid_map::Index index;
+    if (!map.getIndex(point, index) ||
+      (index < grid_map::Index::Zero()).any() || (index >= map.getSize()).any())
+    {
+      return {SampleState::Outside, 0};
+    }
+    const float z = (*elevation_)(index.x(), index.y());
+    return {std::isfinite(z) ? SampleState::Known : SampleState::Unknown, z};
+  }
+
+private:
+  std::shared_ptr<const TerrainSnapshot> snapshot_;
+  const grid_map::Matrix * elevation_;
+};
+
 class TerrainMapSource
 {
 public:

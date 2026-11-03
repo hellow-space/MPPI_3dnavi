@@ -1,0 +1,108 @@
+/**:
+  ros__parameters:
+    FollowPath:
+      AckermannConstrains:
+        min_turning_r: 0.2
+      ConstraintCritic:
+        cost_power: 1
+        cost_weight: 4.0
+        enabled: true
+      GoalAngleCritic:
+        cost_power: 1
+        cost_weight: 10.0
+        enabled: true
+        threshold_to_consider: 0.4
+      GoalCritic:
+        cost_power: 1
+        cost_weight: 5.0
+        enabled: true
+        threshold_to_consider: 1.0
+      HeightJumpCritic:
+        elevation_layer: elevation
+        enabled: true
+        fixed_frame: map
+        jump_radius: 0.1
+        map_timeout: 1.0
+        map_topic: /elevation_mapping_node/elevation_map
+        max_height_jump: 0.3
+        startup_unknown_enabled: true
+        unknown_ignore_radius: 1.0
+        unknown_is_traversable: true
+      PathAlignCritic:
+        cost_weight: 15.0
+        enabled: true
+        max_path_occupancy_ratio: 0.05
+        offset_from_furthest: 10
+        threshold_to_consider: 0.4
+        trajectory_point_step: 3
+      PathFollowCritic:
+        cost_power: 1
+        cost_weight: 15.0
+        enabled: true
+        offset_from_furthest: 5
+        threshold_to_consider: 0.4
+      PreferForwardCritic:
+        cost_power: 1
+        cost_weight: 8.0
+        enabled: true
+        threshold_to_consider: 0.4
+      TrajectoryVisualizer:
+        time_step: 3
+        trajectory_step: 5
+      TwirlingCritic:
+        enabled: false
+        twirling_cost_power: 1
+        twirling_cost_weight: 2.0
+      batch_size: 1000
+      critics:
+      - ConstraintCritic
+      - GoalCritic
+      - GoalAngleCritic
+      - PathFollowCritic
+      - PreferForwardCritic
+      - TwirlingCritic
+      - PathAlignCritic
+      - HeightJumpCritic
+      current_goal_checker: precise_goal_checker
+      gamma: 0.02
+      iteration_count: 1
+      model_dt: 0.05
+      motion_model: DiffDrive
+      plugin: nav2_mppi_controller::MPPIController
+      prune_distance: 1.7
+      reset_period: 1.0
+      temperature: 0.15
+      time_steps: 56
+      transform_tolerance: 0.1
+      visualize: true
+      vx_max: 1.0
+      vx_min: -0.2
+      vx_std: 0.5
+      vy_max: 0.0
+      vy_min: 0.0
+      vy_std: 0.0
+      wz_max: 1.2
+      wz_min: -1.2
+      wz_std: 0.4
+    controller_frequency: 20.0
+    controller_plugins:
+    - FollowPath
+    failure_tolerance: 0.3
+    goal_checker_plugins:
+    - precise_goal_checker
+    min_theta_velocity_threshold: 0.001
+    min_x_velocity_threshold: 0.001
+    min_y_velocity_threshold: 0.001
+    odom_topic: /aft_mapped_to_init
+    precise_goal_checker:
+      plugin: nav2_controller::SimpleGoalChecker
+      stateful: true
+      xy_goal_tolerance: 0.2
+      yaw_goal_tolerance: 0.15
+    progress_checker:
+      movement_time_allowance: 20.0
+      plugin: nav2_controller::SimpleProgressChecker
+      required_movement_radius: 0.2
+    progress_checker_plugin: progress_checker
+    transform_tolerance: 0.2
+    use_sim_time: false

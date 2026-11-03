@@ -13,6 +13,7 @@
 #include <pluginlib/class_list_macros.hpp>
 
 #include "height_obstacle_layer/height_difference.hpp"
+#include "height_obstacle_layer/neighborhood_sampler.hpp"
 #include "height_obstacle_layer/snapshot_policy.hpp"
 
 namespace height_obstacle_layer
@@ -206,10 +207,7 @@ void HeightObstacleLayer::mapCallback(
     difference_map.setTimestamp(elevation_map.getTimestamp());
   }
 
-  const std::array<std::pair<int, int>, 9> offsets{{
-    {-1, -1}, {-1, 0}, {-1, 1},
-    {0, -1}, {0, 0}, {0, 1},
-    {1, -1}, {1, 0}, {1, 1}}};
+  const NeighborhoodSampler sampler(elevation_map, elevation_layer_, jump_radius_);
 
   for (grid_map::GridMapIterator iterator(elevation_map); !iterator.isPastEnd(); ++iterator) {
     grid_map::Position center;
@@ -217,16 +215,7 @@ void HeightObstacleLayer::mapCallback(
       continue;
     }
 
-    std::array<float, 9> samples;
-    samples.fill(std::numeric_limits<float>::quiet_NaN());
-    for (size_t i = 0; i < offsets.size(); ++i) {
-      const grid_map::Position position(
-        center.x() + offsets[i].first * jump_radius_,
-        center.y() + offsets[i].second * jump_radius_);
-      if (elevation_map.isInside(position)) {
-        samples[i] = elevation_map.atPosition(elevation_layer_, position);
-      }
-    }
+    const auto samples = sampler.sample(center);
 
     auto result = classifyNeighborhood(samples, max_height_jump_);
     if (unknown_as_obstacle_ && !result.has_known_height) {
