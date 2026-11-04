@@ -1,0 +1,178 @@
+{
+  "bag": "/home/nvidia/MPPI_3dnavi/nav_experiment_toolkit/bags/nav_elevation/nav_elevation_2026-11-02_20-19-46",
+  "total_frames": 651,
+  "sampled_frames": 48,
+  "compared_frames": 46,
+  "frames_without_exact_tf": [
+    {
+      "frame_index": 0,
+      "reason": "Lookup would require extrapolation into the past.  Requested time 1793621987.507706 but the earliest data is at time 1793621987.532054, when looking up transform from frame [camera_init] to frame [map]"
+    },
+    {
+      "frame_index": 650,
+      "reason": "Lookup would require extrapolation into the future.  Requested time 1793622079.685025 but the latest data is at time 1793622079.632310, when looking up transform from frame [camera_init] to frame [map]"
+    }
+  ],
+  "ignored_empty_frame_transforms": 919,
+  "map_frame": "map",
+  "sensor_frame": "livox_frame",
+  "roi_size_m": 7.0,
+  "parameters": {
+    "sensor_noise_factor": 0.05,
+    "min_valid_distance": 0.1,
+    "max_height_range": 10.5,
+    "ramped_height_range_a": 0.3,
+    "ramped_height_range_b": 1.0,
+    "ramped_height_range_c": 0.2
+  },
+  "stats": {
+    "input_points": {
+      "min": 15877.0,
+      "p50": 17650.0,
+      "p95": 18225.5,
+      "max": 19586.0
+    },
+    "roi_points": {
+      "min": 5024.0,
+      "p50": 6119.0,
+      "p95": 7048.25,
+      "max": 8961.0
+    },
+    "sensor_origin_error_before_m": {
+      "min": 0.004087100736796856,
+      "p50": 0.010795229114592075,
+      "p95": 11.388020992279053,
+      "max": 14.01087474822998
+    },
+    "sensor_origin_error_after_m": {
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "world_geometry_max_change_m": {
+      "min": 6.031566044839565e-06,
+      "p50": 8.616055765742203e-06,
+      "p95": 1.1479424983917852e-05,
+      "max": 1.21007706184173e-05
+    },
+    "gate_passed_before_in_roi": {
+      "min": 2671.0,
+      "p50": 3485.0,
+      "p95": 5611.0,
+      "max": 6656.0
+    },
+    "gate_passed_after_in_roi": {
+      "min": 2671.0,
+      "p50": 3485.0,
+      "p95": 4374.0,
+      "max": 5145.0
+    },
+    "gate_decisions_changed_in_roi": {
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 1424.75,
+      "max": 1580.0
+    },
+    "both_gate_passed_in_roi": {
+      "min": 2671.0,
+      "p50": 3485.0,
+      "p95": 4374.0,
+      "max": 5145.0
+    },
+    "mean_measurement_variance_before_m2": {
+      "min": 0.2547604441642761,
+      "p50": 0.2906852662563324,
+      "p95": 7.893131971359253,
+      "max": 11.424295425415039
+    },
+    "mean_measurement_variance_after_m2": {
+      "min": 0.20849616825580597,
+      "p50": 0.28898124396800995,
+      "p95": 0.335168793797493,
+      "max": 0.35594794154167175
+    },
+    "mean_variance_ratio_before_to_after": {
+      "min": 0.9884795546531677,
+      "p50": 1.003972589969635,
+      "p95": 25.311279773712158,
+      "max": 38.35042190551758
+    }
+  },
+  "frames_with_origin_displacement_over_1m": 17,
+  "displaced_frame_stats": {
+    "input_points": {
+      "min": 15953.0,
+      "p50": 17798.0,
+      "p95": 18502.0,
+      "max": 19586.0
+    },
+    "roi_points": {
+      "min": 5227.0,
+      "p50": 6444.0,
+      "p95": 8203.4,
+      "max": 8961.0
+    },
+    "sensor_origin_error_before_m": {
+      "min": 1.0715047121047974,
+      "p50": 5.207057952880859,
+      "p95": 13.070341300964355,
+      "max": 14.01087474822998
+    },
+    "sensor_origin_error_after_m": {
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "world_geometry_max_change_m": {
+      "min": 7.64428114052862e-06,
+      "p50": 8.996945325634442e-06,
+      "p95": 1.160716165031772e-05,
+      "max": 1.21007706184173e-05
+    },
+    "gate_passed_before_in_roi": {
+      "min": 3681.0,
+      "p50": 5224.0,
+      "p95": 5914.4,
+      "max": 6656.0
+    },
+    "gate_passed_after_in_roi": {
+      "min": 3579.0,
+      "p50": 4145.0,
+      "p95": 4827.4,
+      "max": 5145.0
+    },
+    "gate_decisions_changed_in_roi": {
+      "min": 43.0,
+      "p50": 962.0,
+      "p95": 1524.8,
+      "max": 1580.0
+    },
+    "both_gate_passed_in_roi": {
+      "min": 3579.0,
+      "p50": 4145.0,
+      "p95": 4827.4,
+      "max": 5145.0
+    },
+    "mean_measurement_variance_before_m2": {
+      "min": 0.3927127420902252,
+      "p50": 2.1364543437957764,
+      "p95": 10.011950302124022,
+      "max": 11.424295425415039
+    },
+    "mean_measurement_variance_after_m2": {
+      "min": 0.20849616825580597,
+      "p50": 0.30011895298957825,
+      "p95": 0.349443382024765,
+      "max": 0.35594794154167175
+    },
+    "mean_variance_ratio_before_to_after": {
+      "min": 1.8641835451126099,
+      "p50": 7.44869327545166,
+      "p95": 31.40857315063476,
+      "max": 38.35042190551758
+    }
+  },
+  "scope": "Offline CPU reproduction of existing distance/height gates and noise formula with recorded TF. Full-bag TF available; no live timestamp rejection, GPU map replay, terrain ground truth, or navigation validation. Variance means model measurement uncertainty, not measured height error."
+}
