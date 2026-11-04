@@ -1,0 +1,18 @@
+phase=map_conversion scene=0 samples=100 p50_ms=0.016128 p95_ms=0.018753 p99_ms=0.021985 checksum=110000
+phase=baseline_rollout scene=0 samples=100 p50_ms=41.2138 p95_ms=41.3128 p99_ms=41.3355 checksum=110000
+phase=prepared_rollout scene=0 samples=100 p50_ms=25.8001 p95_ms=25.9422 p99_ms=25.955 checksum=110000
+phase=batched_rollout scene=0 samples=100 p50_ms=3.94792 p95_ms=3.96501 p99_ms=3.97554 checksum=110000
+phase=map_conversion scene=1 samples=100 p50_ms=0.015744 p95_ms=0.021953 p99_ms=0.024512 checksum=17490
+phase=baseline_rollout scene=1 samples=100 p50_ms=19.1807 p95_ms=19.252 p99_ms=19.2905 checksum=17490
+phase=prepared_rollout scene=1 samples=100 p50_ms=12.0452 p95_ms=12.1041 p99_ms=12.123 checksum=17490
+phase=batched_rollout scene=1 samples=100 p50_ms=1.86354 p95_ms=1.94335 p99_ms=1.95622 checksum=17490
+phase=map_conversion scene=3 samples=100 p50_ms=0.002464 p95_ms=0.004865 p99_ms=0.007424 checksum=0
+phase=baseline_rollout scene=3 samples=100 p50_ms=0.714133 p95_ms=0.721269 p99_ms=0.724917 checksum=0
+phase=prepared_rollout scene=3 samples=100 p50_ms=0.444973 p95_ms=0.452013 p99_ms=0.45723 checksum=0
+phase=batched_rollout scene=3 samples=100 p50_ms=0.05933 p95_ms=0.060322 p99_ms=0.060706 checksum=0
+phase=map_conversion scene=4 samples=100 p50_ms=0.015521 p95_ms=0.018465 p99_ms=0.020705 checksum=110000
+phase=baseline_rollout scene=4 samples=100 p50_ms=39.8599 p95_ms=39.9291 p99_ms=39.9856 checksum=110000
+phase=prepared_rollout scene=4 samples=100 p50_ms=24.8117 p95_ms=24.8798 p99_ms=24.889 checksum=110000
+phase=batched_rollout scene=4 samples=100 p50_ms=3.30989 p95_ms=3.34368 p99_ms=3.39562 checksum=110000
+seed=20261018 map_length=7x5 resolution=0.10 scene0=flat scene1=step scene3=unknown_blocked scene4=unknown_traversable trajectories=1000 steps=56 warmup=10 measured=100
+Actual TerrainSnapshot query/evaluate and early exit; random synthetic positions, not motion-model rollouts. Excludes TF, ROS transport and full MPPI.

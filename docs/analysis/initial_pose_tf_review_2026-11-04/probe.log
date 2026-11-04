@@ -1,0 +1,41 @@
+{
+  "random_rigid_transform_cases": 2000,
+  "max_composition_error": 8.881784197001252e-16,
+  "max_quaternion_roundtrip_error": 1.1934897514720433e-15,
+  "non_map_initialpose_accepted_unchanged": true,
+  "pose_time_100s_and_tf_time_1s_accepted": true,
+  "tilt_example": {
+    "body_pitch_at_click_deg": 10.0,
+    "floor_height_change_over_2m": 0.3472963553338607,
+    "base_rpy_after_level_deg": [
+      0.0,
+      -10.000000000000002,
+      0.0
+    ]
+  },
+  "latest_common_time_demo": {
+    "latest_moving_stamp": 10,
+    "constant_edge_stamp": 9,
+    "result_stamp": 9
+  },
+  "old_bag": {
+    "map_camera_translation_span": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "map_camera_quaternion_span": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "recorder_estimated_extra_common_time_age_s": {
+      "p50": 0.0,
+      "p95": 0.05334925651550292,
+      "max": 0.0869288444519043
+    },
+    "caveat": "Recorder reception approximation, not exact controller buffer contents; excludes internal sensor processing age."
+  },
+  "no_ros_nodes_or_publishers_created": true
+}

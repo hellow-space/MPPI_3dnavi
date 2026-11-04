@@ -1,0 +1,13 @@
+Starting >>> height_jump_mppi_critic
+--- stderr: height_jump_mppi_critic
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/src/height_jump_critic.cpp: In member function ‘std::pair<double, double> mppi::critics::{anonymous}::PlanarTransform::apply(double, double) const’:
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/src/height_jump_critic.cpp:33:3: note: parameter passing for argument of type ‘std::pair<double, double>’ when C++17 is enabled changed to match C++14 in GCC 10.1
+   33 |   {
+      |   ^
+---
+[Processing: height_jump_mppi_critic]
+[Processing: height_jump_mppi_critic]
+Finished <<< height_jump_mppi_critic [1min 11s]
+
+Summary: 1 package finished [1min 12s]
+  1 package had stderr output: height_jump_mppi_critic

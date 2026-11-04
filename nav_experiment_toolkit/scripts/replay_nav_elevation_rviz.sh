@@ -53,7 +53,7 @@ cleanup() {
 trap cleanup EXIT INT TERM
 
 echo "Starting RViz navigation replay (ROS_DOMAIN_ID=$ROS_DOMAIN_ID)..."
-echo "Half speed, loop playback. Space: pause/resume. Ctrl-C: stop replay and close RViz."
+echo "2x speed, loop playback. Space: pause/resume. Ctrl-C: stop replay and close RViz."
 rviz2 -d "$RVIZ" --ros-args -p use_sim_time:=true &
 RVIZ_PID=$!
 "$ROBOT_STATE_PUBLISHER" --ros-args \
@@ -75,10 +75,11 @@ if ! kill -0 "$ROBOT_STATE_PUBLISHER_PID" 2>/dev/null; then
 fi
 
 # 只播放显示所需数据；路径/足迹等不存在于旧包时不影响其他显示。
-ros2 bag play "$BAG" --clock --rate 0.5 --loop --topics \
+ros2 bag play "$BAG" --clock --rate 2.0 --loop --topics \
   /cloud_registered /elevation_mapping_node/elevation_map \
   /height_obstacle_layer/height_difference_map \
   /tf /tf_static /map /aft_mapped_to_init \
+  /cmd_vel \
   /local_costmap/costmap /global_costmap/costmap \
   /plan /transformed_global_plan /path /trajectories \
   /local_costmap/published_footprint /global_costmap/published_footprint \

@@ -180,6 +180,14 @@ void correctness()
                 const auto optimized_result = height_jump::evaluate(point.x(), point.y(), config,
                   [&prepared](double px, double py) {return prepared(px, py);},
                   [&](double px, double py) {return exempt && startup.contains(px, py, 1.0);});
+                const auto batched = height_jump::evaluateNeighborhood(
+                  point.x(), point.y(), config,
+                  prepared.neighborhood(point.x(), point.y(), radius),
+                  [&](double px, double py) {return exempt && startup.contains(px, py, 1.0);});
+                require(batched.decision == wanted.decision &&
+                  batched.unknown_count == wanted.unknown_count &&
+                  batched.observed_jump == wanted.observed_jump,
+                  "batched evaluation mismatch" + context);
                 require(wanted.decision == got.decision && wanted.unknown_count == got.unknown_count &&
                   wanted.observed_jump == got.observed_jump, "evaluation mismatch" + context);
                 require(optimized_result.decision == got.decision &&
@@ -216,15 +224,14 @@ void printTiming(const char * phase, int scene, std::vector<double> times, size_
             << " p99_ms=" << times[98] << " checksum=" << checksum << '\n';
 }
 
-template<class Query>
-std::vector<Decision> scoreBatch(const std::vector<grid_map::Position> & points, Query query)
+template<class Score>
+std::vector<Decision> scoreBatch(const std::vector<grid_map::Position> & points, Score score)
 {
   std::vector<Decision> decisions(kCount, Decision::Pass);
   for (size_t k = 0; k < kCount; ++k) {
     for (size_t t = 0; t < kSteps; ++t) {
       const auto & p = points[k * kSteps + t];
-      decisions[k] = height_jump::evaluate(p.x(), p.y(), height_jump::Config{}, query,
-        [](double, double) {return false;}).decision;
+      decisions[k] = score(p).decision;
       if (decisions[k] != Decision::Pass) {break;}
     }
   }
@@ -237,13 +244,14 @@ void benchmark()
   std::uniform_real_distribution<double> x(-2.8, 3.4), y(-2.4, 1.8);
   std::vector<grid_map::Position> points;
   for (size_t i = 0; i < kCount * kSteps; ++i) {points.emplace_back(x(random), y(random));}
-  for (int scene : {0, 1, 3}) {
-    const auto original = makeMap(0.10, scene, false);
+  for (int scene : {0, 1, 3, 4}) {
+    const auto original = makeMap(0.10, scene == 4 ? 3 : scene, false);
+    const height_jump::Config config{0.10, 0.30f, scene == 4};
     const auto message = grid_map::GridMapRosConverter::toMessage(original);
     auto map = snapshot(original);
     std::vector<double> conversions;
-    std::array<std::vector<double>, 2> scores;
-    std::array<size_t, 2> checksums{};
+    std::array<std::vector<double>, 3> scores;
+    std::array<size_t, 3> checksums{};
     for (int round = 0; round < 110; ++round) {
       std::string error;
       auto start = std::chrono::steady_clock::now();
@@ -252,30 +260,48 @@ void benchmark()
       require(next != nullptr, error);
       if (round >= 10) {conversions.push_back(std::chrono::duration<double, std::milli>(end - start).count());}
       map = std::move(next);
-      std::array<std::vector<Decision>, 2> decisions;
+      std::array<std::vector<Decision>, 3> decisions;
       // Alternate order to reduce first-run and cache bias in the paired measurement.
-      for (int mode : {round % 2, 1 - round % 2}) {
+      for (int mode : {round % 3, (round + 1) % 3, (round + 2) % 3}) {
         start = std::chrono::steady_clock::now();
         if (mode == 0) {
-          decisions[mode] = scoreBatch(points, [&map](double px, double py) {return map->query(px, py);});
+          decisions[mode] = scoreBatch(points, [&](const auto & p) {
+              return height_jump::evaluate(p.x(), p.y(), config,
+                [&map](double px, double py) {return map->query(px, py);},
+                [](double, double) {return false;});
+            });
         } else {
           const height_jump::TerrainQuery prepared(map);
-          decisions[mode] = scoreBatch(points, [&prepared](double px, double py) {return prepared(px, py);});
+          if (mode == 1) {
+            decisions[mode] = scoreBatch(points, [&](const auto & p) {
+                return height_jump::evaluate(p.x(), p.y(), config,
+                  [&prepared](double px, double py) {return prepared(px, py);},
+                  [](double, double) {return false;});
+              });
+          } else {
+            decisions[mode] = scoreBatch(points, [&](const auto & p) {
+                return height_jump::evaluateNeighborhood(p.x(), p.y(), config,
+                  prepared.neighborhood(p.x(), p.y(), config.jump_radius),
+                  [](double, double) {return false;});
+              });
+          }
         }
         end = std::chrono::steady_clock::now();
         const size_t passed = std::count(decisions[mode].begin(), decisions[mode].end(), Decision::Pass);
         checksums[mode] += passed;
-        if (scene == 0) {require(passed == kCount, "flat benchmark must pass all trajectories");}
+        if (scene == 0 || scene == 4) {require(passed == kCount, "traversable benchmark must pass all trajectories");}
         if (scene == 3) {require(passed == 0, "unknown benchmark must reject all trajectories");}
         if (round >= 10) {scores[mode].push_back(std::chrono::duration<double, std::milli>(end - start).count());}
       }
-      require(decisions[0] == decisions[1], "baseline/prepared trajectory decisions differ");
+      require(decisions[0] == decisions[1] && decisions[0] == decisions[2],
+        "reference/scalar/batched trajectory decisions differ");
     }
     printTiming("map_conversion", scene, conversions, checksums[0]);
     printTiming("baseline_rollout", scene, scores[0], checksums[0]);
     printTiming("prepared_rollout", scene, scores[1], checksums[1]);
+    printTiming("batched_rollout", scene, scores[2], checksums[2]);
   }
-  std::cout << "seed=" << kSeed << " map_length=7x5 resolution=0.10 scene0=flat scene1=step scene3=unknown"
+  std::cout << "seed=" << kSeed << " map_length=7x5 resolution=0.10 scene0=flat scene1=step scene3=unknown_blocked scene4=unknown_traversable"
             << " trajectories=" << kCount << " steps=" << kSteps
             << " warmup=10 measured=100\n"
             << "Actual TerrainSnapshot query/evaluate and early exit; random synthetic positions, "

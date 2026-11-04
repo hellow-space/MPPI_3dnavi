@@ -1,0 +1,25 @@
+PASS fixture resolution=0.05 rolling=0 scene=0 queries=1530 evaluations=12240
+PASS fixture resolution=0.05 rolling=0 scene=1 queries=3060 evaluations=24480
+PASS fixture resolution=0.05 rolling=0 scene=2 queries=4590 evaluations=36720
+PASS fixture resolution=0.05 rolling=0 scene=3 queries=6120 evaluations=48960
+PASS fixture resolution=0.05 rolling=1 scene=0 queries=7650 evaluations=61200
+PASS fixture resolution=0.05 rolling=1 scene=1 queries=9180 evaluations=73440
+PASS fixture resolution=0.05 rolling=1 scene=2 queries=10710 evaluations=85680
+PASS fixture resolution=0.05 rolling=1 scene=3 queries=12240 evaluations=97920
+PASS fixture resolution=0.1 rolling=0 scene=0 queries=13410 evaluations=107280
+PASS fixture resolution=0.1 rolling=0 scene=1 queries=14580 evaluations=116640
+PASS fixture resolution=0.1 rolling=0 scene=2 queries=15750 evaluations=126000
+PASS fixture resolution=0.1 rolling=0 scene=3 queries=16920 evaluations=135360
+PASS fixture resolution=0.1 rolling=1 scene=0 queries=18090 evaluations=144720
+PASS fixture resolution=0.1 rolling=1 scene=1 queries=19260 evaluations=154080
+PASS fixture resolution=0.1 rolling=1 scene=2 queries=20430 evaluations=163440
+PASS fixture resolution=0.1 rolling=1 scene=3 queries=21600 evaluations=172800
+PASS fixture resolution=0.13 rolling=0 scene=0 queries=22686 evaluations=181488
+PASS fixture resolution=0.13 rolling=0 scene=1 queries=23772 evaluations=190176
+PASS fixture resolution=0.13 rolling=0 scene=2 queries=24858 evaluations=198864
+PASS fixture resolution=0.13 rolling=0 scene=3 queries=25944 evaluations=207552
+PASS fixture resolution=0.13 rolling=1 scene=0 queries=27030 evaluations=216240
+PASS fixture resolution=0.13 rolling=1 scene=1 queries=28116 evaluations=224928
+PASS fixture resolution=0.13 rolling=1 scene=2 queries=29202 evaluations=233616
+PASS fixture resolution=0.13 rolling=1 scene=3 queries=30288 evaluations=242304
+seed=20261018 queries=30288 evaluations=242304 rounded_outside_queries=200 failed_fixtures=0

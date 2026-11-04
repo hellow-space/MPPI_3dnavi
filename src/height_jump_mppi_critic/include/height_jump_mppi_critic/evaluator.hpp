@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <array>
 #include <cmath>
 #include <stdexcept>
 
@@ -70,7 +71,9 @@ Result evaluate(double x, double y, const Config & cfg, Query query, AllowUnknow
       if (sample.state == SampleState::Outside) {outside = true;}
       if (sample.state != SampleState::Known || !std::isfinite(sample.elevation)) {
         ++result.unknown_count;
-        all_unknown_exempt = all_unknown_exempt && allow_unknown(px, py);
+        if (!cfg.unknown_is_traversable) {
+          all_unknown_exempt = all_unknown_exempt && allow_unknown(px, py);
+        }
         continue;
       }
       if (!have_height) {lo = hi = sample.elevation; have_height = true;}
@@ -90,5 +93,16 @@ Result evaluate(double x, double y, const Config & cfg, Query query, AllowUnknow
     result.decision = Decision::Pass;
   }
   return result;
+}
+
+// Preserve the evaluator's full statistics and ordering while consuming samples
+// whose coordinate-to-buffer conversion has already been batched.
+template<class AllowUnknown>
+Result evaluateNeighborhood(double x, double y, const Config & cfg,
+  const std::array<Sample, 9> & samples, AllowUnknown allow_unknown)
+{
+  size_t index = 0;
+  return evaluate(x, y, cfg,
+    [&](double, double) {return samples[index++];}, allow_unknown);
 }
 }  // namespace height_jump

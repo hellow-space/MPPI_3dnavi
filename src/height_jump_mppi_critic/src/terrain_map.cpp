@@ -84,6 +84,18 @@ TerrainQuery::TerrainQuery(std::shared_ptr<const TerrainSnapshot> snapshot)
 {
   if (!snapshot_) {throw std::invalid_argument("TerrainQuery requires a snapshot");}
   elevation_ = &snapshot_->map[snapshot_->layer];
+  center_ = snapshot_->map.getPosition();
+  length_ = snapshot_->map.getLength();
+  half_length_ = 0.5 * length_;
+  size_ = snapshot_->map.getSize();
+  start_ = snapshot_->map.getStartIndex();
+  resolution_ = snapshot_->map.getResolution();
+  // GridMap wraps BOTH axes if EITHER start index is nonzero. With (0,0),
+  // its unwrapped index can round to size and must remain Outside.
+  wrap_indices_ = (start_ != 0).any();
+  geometry_valid_ = center_.allFinite() && length_.isFinite().all() &&
+    (length_ > 0).all() && (size_ > 0).all() &&
+    std::isfinite(resolution_) && resolution_ > 0;
 }
 
 bool TerrainSnapshot::fresh(int64_t now_ns, double timeout_seconds) const

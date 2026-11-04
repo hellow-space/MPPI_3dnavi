@@ -1,0 +1,21 @@
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = Evaluator.TraversableUnknownDoesNotNeedStartupExemption
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Evaluator
+[ RUN      ] Evaluator.TraversableUnknownDoesNotNeedStartupExemption
+src/height_jump_mppi_critic/test/test_evaluator.cpp:104: Failure
+Expected equality of these values:
+  exemptions
+    Which is: 9
+  0
+[  FAILED  ] Evaluator.TraversableUnknownDoesNotNeedStartupExemption (0 ms)
+[----------] 1 test from Evaluator (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Evaluator.TraversableUnknownDoesNotNeedStartupExemption
+
+ 1 FAILED TEST

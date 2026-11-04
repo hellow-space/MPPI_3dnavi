@@ -144,8 +144,6 @@ void HeightJumpCritic::score(CriticData & data)
       fixed_frame_.c_str(), p.first, p.second, startup_radius_);
   }
   const height_jump::TerrainQuery terrain_query(map);
-  // evaluate copies its callable: capture a reference to avoid shared_ptr copies per point.
-  const auto query = [&terrain_query](double x, double y) {return terrain_query(x, y);};
   const auto exempt = [&](double x, double y) {
       if (!startup_enabled_) {return false;}
       const auto p = to_map.inverse(x, y);
@@ -157,7 +155,9 @@ void HeightJumpCritic::score(CriticData & data)
     auto decision = height_jump::Decision::Pass;
     for (size_t t = 0; t < steps; ++t) {
       const auto p = to_map.apply(trajectories.x(k, t), trajectories.y(k, t));
-      decision = height_jump::evaluate(p.first, p.second, config_, query, exempt).decision;
+      const auto samples = terrain_query.neighborhood(p.first, p.second, config_.jump_radius);
+      decision = height_jump::evaluateNeighborhood(
+        p.first, p.second, config_, samples, exempt).decision;
       if (decision != height_jump::Decision::Pass) {break;}
     }
     ++decisions[static_cast<size_t>(decision)];

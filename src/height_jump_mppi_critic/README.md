@@ -15,6 +15,12 @@
 
 Nav2 接线沿用原实现的固定二值编码：PASS 加 0；REJECT 加固定 `1e6` 一次；全部 REJECT 时设置 `CriticData.fail_flag`。这个数与高度差大小无关，也不表示数学上的硬掩码淘汰。最终控制指令、二维碰撞检查、停车与恢复行为仍由 Nav2/运控链路执行和验证。
 
+## 九点查询实现
+
+评分内层使用批量九点查询：每个连续位置分别转换三个 x 和三个 y，再按原顺序读取九格。地图几何仅在每轮准备查询时缓存；没有按中心格复用地形判断，不减少 rollout 点或更改阈值。标量查询保留作差分参考。
+
+索引计算遵循本机 GridMap 2.0.1 的浮点运算顺序、循环缓冲规则与边界检查。`unknown_is_traversable=true` 时只跳过不影响结果的起步区豁免计算；已知高度突变、地图外和地图失效仍按原规则拒绝。更换 GridMap 版本后应重新运行差分测试。
+
 ## 复制和构建
 
 将整个 `height_jump_mppi_critic/` 目录复制到 Jetson 的 `~/MPPI_3dnavi/src/` 下，与其他 ROS2 包平级。不要复制本机 `.so`、build、install，也不要将源码放进 CuPy 仓库。
@@ -71,7 +77,7 @@ critics: ["ConstraintCritic", "ObstaclesCritic", "GoalCritic", "GoalAngleCritic"
 
 ## 测试
 
-2026-09-20 已在目标 Jetson ARM64 / Ubuntu 22.04 / Humble 完成 Release 构建：Nav2 MPPI `1.1.20-1jammy.20260318.083257`、GridMap ROS `2.0.1-1jammy.20260426.030724`。编译命令确认使用 `-O3 -DNDEBUG -fno-fast-math`，生成 ARM aarch64 共享库且 `ldd -r` 无缺失符号。当前有22个GTest用例（6个算法、5个地图、11个插件用例）；CTest有3个测试入口。插件测试由本机 Nav2 `CriticManager` 通过 pluginlib 加载，并实际完成 ROS2 GridMap 发布/订阅和 rollout 评分。
+2026-09-20 已在目标 Jetson ARM64 / Ubuntu 22.04 / Humble 完成 Release 构建：Nav2 MPPI `1.1.20-1jammy.20260318.083257`、GridMap ROS `2.0.1-1jammy.20260426.030724`。编译命令确认使用 `-O3 -DNDEBUG -fno-fast-math`，生成 ARM aarch64 共享库且 `ldd -r` 无缺失符号。当前有30个GTest用例（8个算法、11个地图、11个插件用例）；CTest有3个测试入口。插件测试由本机 Nav2 `CriticManager` 通过 pluginlib 加载，并实际完成 ROS2 GridMap 发布/订阅和 rollout 评分。
 
 先停止该测试环境中的实际导航，或使用独立 ROS_DOMAIN_ID。以下测试只发布合成高程，不下发运动命令：
 

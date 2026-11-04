@@ -1,0 +1,295 @@
+{
+  "operator_context": "User sends navigation goal in manual mode, waits tens of seconds, then switches to navigation; mode switch timestamp was not recorded. Static pose before handover is not evidence of stale localization.",
+  "bag": "/home/nvidia/MPPI_3dnavi/nav_experiment_toolkit/bags/nav_elevation/nav_elevation_2026-11-02_20-19-46",
+  "duration_s": 92.228584598,
+  "bag_start_ns": 1793621987485435924,
+  "active_mppi_interval_s": {
+    "min": 0.06772287399999755,
+    "p50": 0.09011828999999949,
+    "p95": 0.11175262400000037,
+    "p99": 0.11758860099999482,
+    "max": 0.1775908899999905
+  },
+  "active_mppi_rate_hz": 10.864366000882185,
+  "trajectory_gaps_over_half_second_s": [
+    0.582595064,
+    15.189228995
+  ],
+  "nav_log": "/home/nvidia/.ros/log/component_container_isolated_14850_1793621885194.log",
+  "lidar_log": "/home/nvidia/.ros/log/fastlivo_mapping_14348_1793621870425.log",
+  "nav_log_counts": {
+    "Control loop missed": 570,
+    "Failed to make progress": 3,
+    "[ERROR]": 3,
+    "Aborting handle": 4,
+    "Running spin": 1,
+    "Running wait": 1
+  },
+  "segments": [
+    {
+      "name": "tracking_1",
+      "start_s": 0,
+      "end_s": 20.888,
+      "pose_samples": 149,
+      "xy_span_m": [
+        0.010231304397492202,
+        0.009836066183119385
+      ],
+      "xy_displacement_m": 0.0006425078573677088,
+      "xy_path_length_m": 0.23902727071111135,
+      "yaw_delta_deg": 0.0021263243555204063,
+      "yaw_span_deg": 0.054418346001117314,
+      "yaw_abs_travel_deg": 1.8747246251872964,
+      "command_count": 219,
+      "command_mean_vx_wz": [
+        0.5296631992271502,
+        0.6951685360033218
+      ],
+      "trajectory_count": 218,
+      "trajectory_rate_hz": 10.46708091874912,
+      "trajectory_intervals_s": {
+        "min": 0.07648969899999969,
+        "p50": 0.09111662799999998,
+        "p95": 0.11139082659999992,
+        "p99": 0.12174183499999947,
+        "max": 0.582595064
+      }
+    },
+    {
+      "name": "tracking_2",
+      "start_s": 20.888,
+      "end_s": 40.954,
+      "pose_samples": 145,
+      "xy_span_m": [
+        0.010088155055303805,
+        0.009138557988102036
+      ],
+      "xy_displacement_m": 0.005893457495885605,
+      "xy_path_length_m": 0.2224562299565025,
+      "yaw_delta_deg": 0.055988825971944475,
+      "yaw_span_deg": 0.07782342054020447,
+      "yaw_abs_travel_deg": 1.563778107331209,
+      "command_count": 216,
+      "command_mean_vx_wz": [
+        0.49449594629307586,
+        0.6842955265332151
+      ],
+      "trajectory_count": 215,
+      "trajectory_rate_hz": 10.720994903413416,
+      "trajectory_intervals_s": {
+        "min": 0.0758497420000026,
+        "p50": 0.09285004650000062,
+        "p95": 0.11140095169999906,
+        "p99": 0.11685613273000009,
+        "max": 0.1299609540000013
+      }
+    },
+    {
+      "name": "spin_recovery",
+      "start_s": 40.978,
+      "end_s": 50.986,
+      "pose_samples": 77,
+      "xy_span_m": [
+        0.054040728542052996,
+        0.20266356006995778
+      ],
+      "xy_displacement_m": 0.15047859947131453,
+      "xy_path_length_m": 0.4672662640042622,
+      "yaw_delta_deg": 19.40679948405437,
+      "yaw_span_deg": 19.811647022350318,
+      "yaw_abs_travel_deg": 25.09790394301461,
+      "command_count": 101,
+      "command_mean_vx_wz": [
+        0.0,
+        0.9900990099009901
+      ],
+      "trajectory_count": 0,
+      "trajectory_rate_hz": null,
+      "trajectory_intervals_s": {}
+    },
+    {
+      "name": "wait_recovery",
+      "start_s": 50.999,
+      "end_s": 56.061,
+      "pose_samples": 36,
+      "xy_span_m": [
+        0.40971047799116733,
+        0.5769232953178225
+      ],
+      "xy_displacement_m": 0.6997485889724997,
+      "xy_path_length_m": 0.8939903040757761,
+      "yaw_delta_deg": 7.279557758862659,
+      "yaw_span_deg": 48.294686874786564,
+      "yaw_abs_travel_deg": 94.09632252852727,
+      "command_count": 0,
+      "command_mean_vx_wz": null,
+      "trajectory_count": 0,
+      "trajectory_rate_hz": null,
+      "trajectory_intervals_s": {}
+    },
+    {
+      "name": "tracking_3",
+      "start_s": 56.061,
+      "end_s": 92.228584598,
+      "pose_samples": 243,
+      "xy_span_m": [
+        8.26915671608593,
+        11.808582917690671
+      ],
+      "xy_displacement_m": 14.313627922512062,
+      "xy_path_length_m": 15.553872915835356,
+      "yaw_delta_deg": -37.607237531332196,
+      "yaw_span_deg": 111.86980205969743,
+      "yaw_abs_travel_deg": 416.972350017733,
+      "command_count": 400,
+      "command_mean_vx_wz": [
+        0.2301335444767028,
+        0.14407761549460701
+      ],
+      "trajectory_count": 399,
+      "trajectory_rate_hz": 11.032152966114493,
+      "trajectory_intervals_s": {
+        "min": 0.06772287399999755,
+        "p50": 0.08829182800000268,
+        "p95": 0.11311431724999324,
+        "p99": 0.11629031377999124,
+        "max": 0.1775908899999905
+      }
+    }
+  ],
+  "command_forward_matches": 937,
+  "command_total": 937,
+  "recorder_forward_difference_s": {
+    "min": 5.984000001291179e-06,
+    "p50": 0.0011315260000088756,
+    "p95": 0.0038724770000015916,
+    "p99": 0.0067897128799994984,
+    "max": 0.015261252999998476
+  },
+  "remaining_final_stream_count": 1858,
+  "remaining_final_stream_rate_hz": 20.162121800838026,
+  "other_final_wz_difference_abs": {
+    "min": 0.0,
+    "p50": 0.0,
+    "p95": 0.31226672244071885,
+    "p99": 0.6166115118026735,
+    "max": 0.94
+  },
+  "other_final_opposite_wz_count": 15,
+  "imu_raw_callback_age_s": {
+    "min": 26.888758659362793,
+    "p50": 39.528968811035156,
+    "p95": 52.276940774917605,
+    "p99": 53.83078519821167,
+    "max": 54.153257608413696
+  },
+  "lidar_callback_age_s": {
+    "min": 0.11441659927368164,
+    "p50": 0.19188666343688965,
+    "p95": 0.264093804359436,
+    "p99": 0.3078521394729613,
+    "max": 0.32258081436157227
+  },
+  "imu_callback_count": 13019,
+  "imu_callback_rate_hz": 141.21459079491575,
+  "imu_header_time_advance_s": 65.09943294525146,
+  "imu_callback_wall_advance_s": 92.18594145774841,
+  "imu_header_seconds_per_wall_second": 0.7131239024145356,
+  "imu_source_timestamp_intervals_s": {
+    "min": 2.09808349609375e-05,
+    "p50": 0.004937529563903809,
+    "p95": 0.007338190078735351,
+    "p99": 0.010825002193450927,
+    "max": 0.03137516975402832
+  },
+  "imu_lidar_mismatch_warning_count": 13019,
+  "imu_lidar_mismatch_s": {
+    "min": 26.696102,
+    "p50": 39.34473,
+    "p95": 52.081039700000005,
+    "p99": 53.674882620000005,
+    "max": 54.001287
+  },
+  "hard_sync_log_s": {
+    "min": -54.1044921875,
+    "p50": -39.715429306,
+    "p95": -28.30211179258,
+    "p99": -27.199830317476,
+    "max": -26.8957417011
+  },
+  "odom_twist_all_zero": true,
+  "odom_receipt_minus_header_s": {
+    "min": 0.0019719600677490234,
+    "p50": 0.005049943923950195,
+    "p95": 0.06630229949951172,
+    "p99": 0.0855262279510498,
+    "max": 0.09788656234741211
+  },
+  "recorder_available_terrain_age_at_mppi_s": {
+    "min": 0.03444288873937751,
+    "p50": 0.1374192313034026,
+    "p95": 0.22645459914700308,
+    "p99": 0.2601836947956483,
+    "max": 0.29684629824681963
+  },
+  "pose_xy_path_length_m": 17.48716822225561,
+  "pose_xy_displacement_m": 15.221076009371146,
+  "pose_total_abs_yaw_deg": 547.0536657253226,
+  "pose_start_end_xyz": [
+    [
+      1.6739779672489634,
+      -21.135201189425,
+      3.16819941068025e-05
+    ],
+    [
+      10.162434810458558,
+      -8.500833167872752,
+      -0.45598354205764086
+    ]
+  ],
+  "path_error_global_m": {
+    "min": 0.0026250014417607504,
+    "p50": 0.03165036799093967,
+    "p95": 0.419027360236558,
+    "p99": 0.5923714206749302,
+    "max": 0.6904589234852517
+  },
+  "path_error_local_m": {
+    "min": 0.0026250014417607504,
+    "p50": 0.031722732942451065,
+    "p95": 0.4815817522435304,
+    "p99": 0.6485701303190419,
+    "max": 0.7637463228619175
+  },
+  "response_lag_exploratory": [
+    {
+      "start": 0,
+      "end": 40,
+      "best_lag_s": 9.9,
+      "best_correlation": 0.14676167860005115,
+      "zero_correlation": -0.050746205029395516
+    },
+    {
+      "start": 56.5,
+      "end": 92,
+      "best_lag_s": 1.92,
+      "best_correlation": 0.6011897525598973,
+      "zero_correlation": 0.2991328161926394
+    },
+    {
+      "start": 60,
+      "end": 75,
+      "best_lag_s": 2.0,
+      "best_correlation": 0.7225046714147582,
+      "zero_correlation": 0.3305346267959459
+    },
+    {
+      "start": 75,
+      "end": 92,
+      "best_lag_s": 10.0,
+      "best_correlation": 0.7725730324206468,
+      "zero_correlation": 0.4115416586310503
+    }
+  ],
+  "response_lag_caveat": "Changing windows changes best lag; this is command-to-localization correlation, not hardware delay."
+}

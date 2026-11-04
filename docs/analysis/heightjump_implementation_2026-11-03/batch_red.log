@@ -1,0 +1,40 @@
+[ 66%] Building CXX object CMakeFiles/test_terrain_map.dir/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/src/terrain_map.cpp.o
+[ 66%] Building CXX object CMakeFiles/test_terrain_map.dir/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp.o
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp: In member function ‘virtual void TerrainMap_BatchedNeighborhoodPreservesContinuousSamplingAndCircularIndices_Test::TestBody()’:
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp:209:32: warning: loop variable ‘start’ creates a copy from type ‘const Index’ {aka ‘const Eigen::Array<int, 2, 1>’} [-Wrange-loop-construct]
+  209 |     for (const grid_map::Index start : {grid_map::Index(0, 0), grid_map::Index(0, 7),
+      |                                ^~~~~
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp:209:32: note: use reference type to prevent copying
+  209 |     for (const grid_map::Index start : {grid_map::Index(0, 0), grid_map::Index(0, 7),
+      |                                ^~~~~
+      |                                &
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp: In lambda function:
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp:222:40: error: ‘const class height_jump::TerrainQuery’ has no member named ‘neighborhood’
+  222 |             const auto samples = query.neighborhood(point.x(), point.y(), radius);
+      |                                        ^~~~~~~~~~~~
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp: In member function ‘virtual void TerrainMap_BatchedNeighborhoodRejectsUnsafeCoordinatesBeforeIntegerConversion_Test::TestBody()’:
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp:268:21: warning: loop variable ‘point’ creates a copy from type ‘const Eigen::Matrix<double, 2, 1>’ [-Wrange-loop-construct]
+  268 |     for (const auto point : {grid_map::Position(value, -2), grid_map::Position(4, value)}) {
+      |                     ^~~~~
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp:268:21: note: use reference type to prevent copying
+  268 |     for (const auto point : {grid_map::Position(value, -2), grid_map::Position(4, value)}) {
+      |                     ^~~~~
+      |                     &
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp:270:34: error: ‘const class height_jump::TerrainQuery’ has no member named ‘neighborhood’
+  270 |       const auto samples = query.neighborhood(point.x(), point.y(), 0.1);
+      |                                  ^~~~~~~~~~~~
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp:278:38: error: ‘const class height_jump::TerrainQuery’ has no member named ‘neighborhood’
+  278 |     for (const auto & sample : query.neighborhood(4, -2, radius)) {
+      |                                      ^~~~~~~~~~~~
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp: In member function ‘virtual void TerrainMap_BatchedNeighborhoodRetainsItsOriginalSnapshot_Test::TestBody()’:
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp:295:36: error: ‘const class height_jump::TerrainQuery’ has no member named ‘neighborhood’
+  295 |   for (const auto & sample : query.neighborhood(4, -2, 0.1)) {
+      |                                    ^~~~~~~~~~~~
+/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp:299:42: error: ‘const class height_jump::TerrainQuery’ has no member named ‘neighborhood’
+  299 |   for (const auto & sample : replacement.neighborhood(4, -2, 0.1)) {
+      |                                          ^~~~~~~~~~~~
+gmake[3]: *** [CMakeFiles/test_terrain_map.dir/build.make:76：CMakeFiles/test_terrain_map.dir/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/test/test_map.cpp.o] 错误 1
+gmake[3]: *** 正在等待未完成的任务....
+gmake[2]: *** [CMakeFiles/Makefile2:165：CMakeFiles/test_terrain_map.dir/all] 错误 2
+gmake[1]: *** [CMakeFiles/Makefile2:172：CMakeFiles/test_terrain_map.dir/rule] 错误 2
+gmake: *** [Makefile:173：test_terrain_map] 错误 2

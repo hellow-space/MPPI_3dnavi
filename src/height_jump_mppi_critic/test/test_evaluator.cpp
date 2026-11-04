@@ -90,3 +90,38 @@ TEST(Evaluator, RejectsInvalidCoordinatesAndConfiguration)
       return Sample{SampleState::Known, 0};
     }, [](double, double) {return true;}).decision, Decision::Invalid);
 }
+
+TEST(Evaluator, TraversableUnknownDoesNotNeedStartupExemption)
+{
+  int exemptions = 0;
+  const Config cfg{0.1, 0.3f, true};
+  const auto unknown = [](double, double) {return Sample{SampleState::Unknown, 0};};
+  const auto result = evaluate(0, 0, cfg, unknown,
+    [&](double, double) {++exemptions; return true;});
+  EXPECT_EQ(result.decision, Decision::Pass);
+  EXPECT_EQ(result.unknown_count, 9);
+  EXPECT_FLOAT_EQ(result.observed_jump, 0);
+  EXPECT_EQ(exemptions, 0);
+}
+
+TEST(Evaluator, PreparedNeighborhoodPreservesStatisticsAndRejectionPriority)
+{
+  std::array<Sample, 9> samples;
+  samples.fill({SampleState::Known, 0});
+  samples[1] = {SampleState::Unknown, 0};
+  samples[2] = {SampleState::Outside, 0};
+  samples[8] = {SampleState::Known, 0.3f};
+  for (bool unknown_pass : {false, true}) {
+    const auto result = evaluateNeighborhood(0, 0, Config{0.1, 0.3f, unknown_pass}, samples,
+      [](double, double) {return true;});
+    EXPECT_EQ(result.decision, Decision::HeightJump);
+    EXPECT_EQ(result.unknown_count, 2);
+    EXPECT_FLOAT_EQ(result.observed_jump, 0.3f);
+    samples[8].elevation = 0;
+    EXPECT_EQ(evaluateNeighborhood(0, 0, Config{0.1, 0.3f, unknown_pass}, samples,
+        [](double, double) {return true;}).decision, Decision::Outside);
+    samples[8].elevation = 0.3f;
+  }
+  EXPECT_EQ(evaluateNeighborhood(std::numeric_limits<double>::quiet_NaN(), 0,
+      Config{}, samples, [](double, double) {return true;}).decision, Decision::Invalid);
+}

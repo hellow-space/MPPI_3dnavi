@@ -1,0 +1,18 @@
+SCOPE centers=56000 neighbors=504000 warmup=5 measured=30; components measured separately, not additive
+TIMING prepared_query_504k p50_ms=26.5304 p95_ms=26.5507 max_ms=26.5848
+TIMING is_inside_504k p50_ms=10.3431 p95_ms=10.3861 max_ms=10.4215
+TIMING get_index_and_storage_guard_504k p50_ms=16.3938 p95_ms=16.4166 max_ms=16.4304
+TIMING matrix_fetch_preindexed_504k p50_ms=0.557652 p95_ms=0.670168 max_ms=0.748731
+QUERY_COUNT 504000
+TIMING nine_point_evaluate_56k p50_ms=26.902 p95_ms=26.9211 max_ms=27.001
+TIMING unknown_pass_with_startup_checks_56k p50_ms=27.5154 p95_ms=27.5348 max_ms=27.5445
+TIMING unknown_pass_without_startup_checks_56k p50_ms=26.489 p95_ms=26.5218 max_ms=26.5243
+BOUNDARY resolution=0.1 cells=69 center_cells_with_multiple_neighborhoods=15 max_variants_per_cell=4
+BOUNDARY resolution=0.13 cells=53 center_cells_with_multiple_neighborhoods=52 max_variants_per_cell=3
+REUSE frame=0 points=3800 inside=3800 unique_center_cells=92 unique_neighborhoods=92 center_cells_with_multiple_neighborhoods=0
+REUSE frame=1 points=3800 inside=3800 unique_center_cells=123 unique_neighborhoods=123 center_cells_with_multiple_neighborhoods=0
+REUSE frame=2 points=3800 inside=3800 unique_center_cells=113 unique_neighborhoods=113 center_cells_with_multiple_neighborhoods=0
+REUSE frame=3 points=3800 inside=3800 unique_center_cells=40 unique_neighborhoods=40 center_cells_with_multiple_neighborhoods=0
+REUSE frame=4 points=3800 inside=3800 unique_center_cells=34 unique_neighborhoods=34 center_cells_with_multiple_neighborhoods=0
+REUSE frame=5 points=3800 inside=3800 unique_center_cells=27 unique_neighborhoods=27 center_cells_with_multiple_neighborhoods=0
+CHECKSUM 1.27692e+09

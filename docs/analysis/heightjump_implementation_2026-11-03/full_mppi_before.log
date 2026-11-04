@@ -1,0 +1,8 @@
+1793710442.283554 [142]      probe: selected interface "lo" is not multicast-capable: disabling multicast
+[WARN] [1793710442.349201288] [controller_server]: Parameter controller_server.verbose not found
+RESULT completion_interval n=60 p50_ms=40.9861 p95_ms=41.459 max_ms=41.5379
+RESULT optimizer n=60 p50_ms=33.9746 p95_ms=34.2362 max_ms=34.3298
+RESULT visualizer_build n=60 p50_ms=0.237031 p95_ms=0.277768 max_ms=0.488366
+RESULT visualizer_publish n=60 p50_ms=6.12174 p95_ms=6.23714 max_ms=6.23855
+RESULT compute_plus_visualization n=60 p50_ms=40.3308 p95_ms=40.6127 max_ms=40.8758
+RESULT received_marker_arrays=70 visualize=1 periodic=0

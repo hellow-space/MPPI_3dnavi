@@ -1,0 +1,309 @@
+Starting >>> height_jump_mppi_critic
+--- output: height_jump_mppi_critic
+UpdateCTestConfiguration  from :/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/CTestConfiguration.ini
+Parse Config file:/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/CTestConfiguration.ini
+   Site: nvidia-desktop
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+Create new tag: 20261103-1256 - Experimental
+UpdateCTestConfiguration  from :/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/CTestConfiguration.ini
+Parse Config file:/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/CTestConfiguration.ini
+Test project /home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: test_evaluator
+
+1: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_evaluator.gtest.xml" "--package-name" "height_jump_mppi_critic" "--output-file" "/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/ament_cmake_gtest/test_evaluator.txt" "--command" "/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_evaluator" "--gtest_output=xml:/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_evaluator.gtest.xml"
+1: Test timeout computed to be: 90
+1: -- run_test.py: invoking following command in '/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic':
+1:  - /home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_evaluator --gtest_output=xml:/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_evaluator.gtest.xml
+1: Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+1: [==========] Running 8 tests from 2 test suites.
+1: [----------] Global test environment set-up.
+1: [----------] 7 tests from Evaluator
+1: [ RUN      ] Evaluator.BinaryThresholdHasNoPreferenceWithinPassableRange
+1: [       OK ] Evaluator.BinaryThresholdHasNoPreferenceWithinPassableRange (0 ms)
+1: [ RUN      ] Evaluator.SparseHolesAreToleratedButThreeRequireExemption
+1: [       OK ] Evaluator.SparseHolesAreToleratedButThreeRequireExemption (0 ms)
+1: [ RUN      ] Evaluator.KnownDangerTakesPriorityOverStartupUnknown
+1: [       OK ] Evaluator.KnownDangerTakesPriorityOverStartupUnknown (0 ms)
+1: [ RUN      ] Evaluator.OutsideMapCannotBeExemptedAndNonFiniteHeightsAreUnknown
+1: [       OK ] Evaluator.OutsideMapCannotBeExemptedAndNonFiniteHeightsAreUnknown (0 ms)
+1: [ RUN      ] Evaluator.RejectsInvalidCoordinatesAndConfiguration
+1: [       OK ] Evaluator.RejectsInvalidCoordinatesAndConfiguration (0 ms)
+1: [ RUN      ] Evaluator.TraversableUnknownDoesNotNeedStartupExemption
+1: [       OK ] Evaluator.TraversableUnknownDoesNotNeedStartupExemption (0 ms)
+1: [ RUN      ] Evaluator.PreparedNeighborhoodPreservesStatisticsAndRejectionPriority
+1: [       OK ] Evaluator.PreparedNeighborhoodPreservesStatisticsAndRejectionPriority (0 ms)
+1: [----------] 7 tests from Evaluator (0 ms total)
+1: 
+1: [----------] 1 test from StartupRegion
+1: [ RUN      ] StartupRegion.FixedCenterAndEachUnknownSampleMustStayInside
+1: [       OK ] StartupRegion.FixedCenterAndEachUnknownSampleMustStayInside (0 ms)
+1: [----------] 1 test from StartupRegion (0 ms total)
+1: 
+1: [----------] Global test environment tear-down
+1: [==========] 8 tests from 2 test suites ran. (0 ms total)
+1: [  PASSED  ] 8 tests.
+1: -- run_test.py: return code 0
+1: -- run_test.py: inject classname prefix into gtest result file '/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_evaluator.gtest.xml'
+1: -- run_test.py: verify result file '/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_evaluator.gtest.xml'
+1/3 Test #1: test_evaluator ...................   Passed    0.14 sec
+test 2
+    Start 2: test_map
+
+2: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_map.gtest.xml" "--package-name" "height_jump_mppi_critic" "--output-file" "/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/ament_cmake_gtest/test_map.txt" "--command" "/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_map" "--gtest_output=xml:/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_map.gtest.xml"
+2: Test timeout computed to be: 90
+2: -- run_test.py: invoking following command in '/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic':
+2:  - /home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_map --gtest_output=xml:/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_map.gtest.xml
+2: Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+2: [==========] Running 11 tests from 1 test suite.
+2: [----------] Global test environment set-up.
+2: [----------] 11 tests from TerrainMap
+2: [ RUN      ] TerrainMap.ReadsWorldCoordinatesAndPreservesUnknown
+2: [       OK ] TerrainMap.ReadsWorldCoordinatesAndPreservesUnknown (0 ms)
+2: [ RUN      ] TerrainMap.RejectsMalformedOrMissingLayersAndNonHorizontalGeometry
+2: [       OK ] TerrainMap.RejectsMalformedOrMissingLayersAndNonHorizontalGeometry (0 ms)
+2: [ RUN      ] TerrainMap.ChecksObservationTimestampAsWellAsReceiptAge
+2: [       OK ] TerrainMap.ChecksObservationTimestampAsWellAsReceiptAge (0 ms)
+2: [ RUN      ] TerrainMap.RollingBufferQueriesStayAtTheSameWorldPosition
+2: [       OK ] TerrainMap.RollingBufferQueriesStayAtTheSameWorldPosition (0 ms)
+2: [ RUN      ] TerrainMap.NonSquareColumnMajorLayoutDoesNotTransposeAxes
+2: [       OK ] TerrainMap.NonSquareColumnMajorLayoutDoesNotTransposeAxes (0 ms)
+2: [ RUN      ] TerrainMap.RejectsRoundedIndicesBeyondStorageAtMapEdges
+2: [       OK ] TerrainMap.RejectsRoundedIndicesBeyondStorageAtMapEdges (0 ms)
+2: [ RUN      ] TerrainMap.PreparedQueryRetainsOriginalSnapshotAndUnknownState
+2: [       OK ] TerrainMap.PreparedQueryRetainsOriginalSnapshotAndUnknownState (0 ms)
+2: [ RUN      ] TerrainMap.PreparedQueryRejectsHugeFiniteCoordinatesBeforeIntegerConversion
+2: [       OK ] TerrainMap.PreparedQueryRejectsHugeFiniteCoordinatesBeforeIntegerConversion (0 ms)
+2: [ RUN      ] TerrainMap.BatchedNeighborhoodPreservesContinuousSamplingAndCircularIndices
+2: [       OK ] TerrainMap.BatchedNeighborhoodPreservesContinuousSamplingAndCircularIndices (66 ms)
+2: [ RUN      ] TerrainMap.BatchedNeighborhoodRejectsUnsafeCoordinatesBeforeIntegerConversion
+2: [       OK ] TerrainMap.BatchedNeighborhoodRejectsUnsafeCoordinatesBeforeIntegerConversion (0 ms)
+2: [ RUN      ] TerrainMap.BatchedNeighborhoodRetainsItsOriginalSnapshot
+2: [       OK ] TerrainMap.BatchedNeighborhoodRetainsItsOriginalSnapshot (0 ms)
+2: [----------] 11 tests from TerrainMap (69 ms total)
+2: 
+2: [----------] Global test environment tear-down
+2: [==========] 11 tests from 1 test suite ran. (69 ms total)
+2: [  PASSED  ] 11 tests.
+2: -- run_test.py: return code 0
+2: -- run_test.py: inject classname prefix into gtest result file '/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_map.gtest.xml'
+2: -- run_test.py: verify result file '/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_map.gtest.xml'
+2/3 Test #2: test_map .........................   Passed    0.39 sec
+test 3
+    Start 3: test_plugin
+
+3: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_plugin.gtest.xml" "--package-name" "height_jump_mppi_critic" "--output-file" "/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/ament_cmake_gtest/test_plugin.txt" "--command" "/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_plugin" "--gtest_output=xml:/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_plugin.gtest.xml"
+3: Test timeout computed to be: 90
+3: -- run_test.py: invoking following command in '/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic':
+3:  - /home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_plugin --gtest_output=xml:/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_plugin.gtest.xml
+3: Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+3: [==========] Running 11 tests from 4 test suites.
+3: [----------] Global test environment set-up.
+3: [----------] 8 tests from PluginTest
+3: [ RUN      ] PluginTest.Nav2LoadsPluginAndFlatTerrainLeavesCostsUnchanged
+3: 1793710605.063661 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710605.082039811] [test_costmap.test_costmap]: 
+3: 	test_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710605.084391334] [test_costmap.test_costmap]: Creating Costmap
+3: [INFO] [1793710605.085469477] [test_costmap.test_costmap]: Configuring
+3: [INFO] [1793710605.105404608] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=blocked startup_exemption=enabled
+3: [INFO] [1793710605.105501922] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [WARN] [1793710605.105542755] [height_jump_test]: Parameter height_jump_test.verbose not found
+3: [WARN] [1793710605.105939951] [height_jump_test]: HeightJump unavailable: missing/invalid/stale map or clock reset; startup exemption not applied
+3: [INFO] [1793710605.186620757] [height_jump_test]: HeightJump fixed startup region: frame=odom x=0.000 y=0.000 radius=0.700
+3: [INFO] [1793710605.187771382] [test_costmap.test_costmap]: Cleaning up
+3: [INFO] [1793710605.193597948] [test_costmap.test_costmap]: Destroying
+3: [       OK ] PluginTest.Nav2LoadsPluginAndFlatTerrainLeavesCostsUnchanged (153 ms)
+3: [ RUN      ] PluginTest.BinaryRejectAndAllFailed
+3: 1793710605.212508 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710605.218967091] [test_costmap.test_costmap]: 
+3: 	test_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710605.219717256] [test_costmap.test_costmap]: Creating Costmap
+3: [INFO] [1793710605.220147828] [test_costmap.test_costmap]: Configuring
+3: [INFO] [1793710605.224503217] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=blocked startup_exemption=enabled
+3: [INFO] [1793710605.224570995] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [WARN] [1793710605.224600916] [height_jump_test]: Parameter height_jump_test.verbose not found
+3: [INFO] [1793710605.306214356] [height_jump_test]: HeightJump fixed startup region: frame=odom x=0.000 y=0.000 radius=0.700
+3: [INFO] [1793710605.306730691] [test_costmap.test_costmap]: Cleaning up
+3: [INFO] [1793710605.310001249] [test_costmap.test_costmap]: Destroying
+3: [       OK ] PluginTest.BinaryRejectAndAllFailed (113 ms)
+3: [ RUN      ] PluginTest.UnknownRegionStaysFixedAcrossRobotMotionAndParameterUpdates
+3: 1793710605.325011 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710605.331696462] [test_costmap.test_costmap]: 
+3: 	test_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710605.332483940] [test_costmap.test_costmap]: Creating Costmap
+3: [INFO] [1793710605.332869615] [test_costmap.test_costmap]: Configuring
+3: [INFO] [1793710605.337811293] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=blocked startup_exemption=enabled
+3: [INFO] [1793710605.337903007] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [WARN] [1793710605.337934144] [height_jump_test]: Parameter height_jump_test.verbose not found
+3: [INFO] [1793710605.420368408] [height_jump_test]: HeightJump fixed startup region: frame=odom x=0.000 y=0.000 radius=0.700
+3: [INFO] [1793710605.421220561] [test_costmap.test_costmap]: Cleaning up
+3: [INFO] [1793710605.425780883] [test_costmap.test_costmap]: Destroying
+3: [       OK ] PluginTest.UnknownRegionStaysFixedAcrossRobotMotionAndParameterUpdates (118 ms)
+3: [ RUN      ] PluginTest.StaleFutureMissingLayerAndOutOfMapDoNotGetStartupExemption
+3: 1793710605.443713 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710605.450770879] [test_costmap.test_costmap]: 
+3: 	test_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710605.451556373] [test_costmap.test_costmap]: Creating Costmap
+3: [INFO] [1793710605.451945984] [test_costmap.test_costmap]: Configuring
+3: [INFO] [1793710605.455951795] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=blocked startup_exemption=enabled
+3: [INFO] [1793710605.456015765] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [WARN] [1793710605.456044022] [height_jump_test]: Parameter height_jump_test.verbose not found
+3: [INFO] [1793710605.538491278] [height_jump_test]: HeightJump fixed startup region: frame=odom x=0.000 y=0.000 radius=0.700
+3: [INFO] [1793710605.867558170] [test_costmap.test_costmap]: Cleaning up
+3: [INFO] [1793710605.878593526] [test_costmap.test_costmap]: Destroying
+3: [       OK ] PluginTest.StaleFutureMissingLayerAndOutOfMapDoNotGetStartupExemption (452 ms)
+3: [ RUN      ] PluginTest.TransformsMapAndStartupRegionAndFailsWhenTfIsMissing
+3: 1793710605.895968 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710605.904380633] [test_costmap.test_costmap]: 
+3: 	test_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710605.905167791] [test_costmap.test_costmap]: Creating Costmap
+3: [INFO] [1793710605.906011463] [test_costmap.test_costmap]: Configuring
+3: [INFO] [1793710605.911878319] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=blocked startup_exemption=enabled
+3: [INFO] [1793710605.911956081] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [WARN] [1793710605.911992946] [height_jump_test]: Parameter height_jump_test.verbose not found
+3: [WARN] [1793710605.994791317] [height_jump_test]: HeightJump TF: "terrain" passed to lookupTransform argument target_frame does not exist. 
+3: [INFO] [1793710605.995060189] [height_jump_test]: HeightJump fixed startup region: frame=odom x=0.000 y=0.000 radius=0.700
+3: [INFO] [1793710605.995664334] [test_costmap.test_costmap]: Cleaning up
+3: [INFO] [1793710605.999723170] [test_costmap.test_costmap]: Destroying
+3: [       OK ] PluginTest.TransformsMapAndStartupRegionAndFailsWhenTfIsMissing (122 ms)
+3: [ RUN      ] PluginTest.RotatedMapQueriesTheCorrectPhysicalObstacle
+3: 1793710606.017671 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710606.025072664] [test_costmap.test_costmap]: 
+3: 	test_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710606.025843246] [test_costmap.test_costmap]: Creating Costmap
+3: [INFO] [1793710606.026218232] [test_costmap.test_costmap]: Configuring
+3: [INFO] [1793710606.030381072] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=blocked startup_exemption=enabled
+3: [INFO] [1793710606.030447154] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [WARN] [1793710606.030475410] [height_jump_test]: Parameter height_jump_test.verbose not found
+3: [INFO] [1793710606.110999795] [height_jump_test]: HeightJump fixed startup region: frame=odom x=0.000 y=0.000 radius=0.700
+3: [INFO] [1793710606.111597893] [test_costmap.test_costmap]: Cleaning up
+3: [INFO] [1793710606.114057131] [test_costmap.test_costmap]: Destroying
+3: [       OK ] PluginTest.RotatedMapQueriesTheCorrectPhysicalObstacle (115 ms)
+3: [ RUN      ] PluginTest.ClockRollbackRequiresExplicitReinitialization
+3: 1793710606.133143 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710606.140558978] [test_costmap.test_costmap]: 
+3: 	test_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710606.141343896] [test_costmap.test_costmap]: Creating Costmap
+3: [INFO] [1793710606.141713859] [test_costmap.test_costmap]: Configuring
+3: [INFO] [1793710606.146054495] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=blocked startup_exemption=enabled
+3: [INFO] [1793710606.146128193] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [WARN] [1793710606.146157410] [height_jump_test]: Parameter height_jump_test.verbose not found
+3: [INFO] [1793710606.226640738] [height_jump_test]: HeightJump fixed startup region: frame=odom x=0.000 y=0.000 radius=0.700
+3: [WARN] [1793710606.226861608] [height_jump_test]: Parameter use_sim_time not found
+3: [WARN] [1793710606.233812847] [height_jump_test]: Parameter qos_overrides./clock.subscription.durability not found
+3: [WARN] [1793710606.233995060] [height_jump_test]: Parameter qos_overrides./clock.subscription.history not found
+3: [WARN] [1793710606.234093303] [height_jump_test]: Parameter qos_overrides./clock.subscription.depth not found
+3: [WARN] [1793710606.234183098] [height_jump_test]: Parameter qos_overrides./clock.subscription.reliability not found
+3: [WARN] [1793710606.308685390] [height_jump_test]: Parameter use_sim_time not found
+3: [INFO] [1793710606.472452030] [test_costmap.test_costmap]: Cleaning up
+3: [INFO] [1793710606.475721564] [test_costmap.test_costmap]: Destroying
+3: [       OK ] PluginTest.ClockRollbackRequiresExplicitReinitialization (360 ms)
+3: [ RUN      ] PluginTest.NewConfiguredInstanceRecapturesOrigin
+3: 1793710606.493019 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710606.501324921] [test_costmap.test_costmap]: 
+3: 	test_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710606.502113040] [test_costmap.test_costmap]: Creating Costmap
+3: [INFO] [1793710606.502483258] [test_costmap.test_costmap]: Configuring
+3: [INFO] [1793710606.506764245] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=blocked startup_exemption=enabled
+3: [INFO] [1793710606.506838295] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [WARN] [1793710606.506866680] [height_jump_test]: Parameter height_jump_test.verbose not found
+3: [INFO] [1793710606.589203661] [height_jump_test]: HeightJump fixed startup region: frame=odom x=0.000 y=0.000 radius=0.700
+3: [INFO] [1793710606.591298185] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=blocked startup_exemption=enabled
+3: [INFO] [1793710606.591362250] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [INFO] [1793710606.673151728] [height_jump_test]: HeightJump fixed startup region: frame=odom x=2.000 y=0.000 radius=0.700
+3: [INFO] [1793710606.673801954] [test_costmap.test_costmap]: Cleaning up
+3: [INFO] [1793710606.677963194] [test_costmap.test_costmap]: Destroying
+3: [       OK ] PluginTest.NewConfiguredInstanceRecapturesOrigin (201 ms)
+3: [----------] 8 tests from PluginTest (1634 ms total)
+3: 
+3: [----------] 1 test from WithoutStartupTest
+3: [ RUN      ] WithoutStartupTest.UnknownRejectsWithoutExplicitSafeStartupOptIn
+3: 1793710606.695651 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710606.703035303] [test_costmap.test_costmap]: 
+3: 	test_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710606.703834526] [test_costmap.test_costmap]: Creating Costmap
+3: [INFO] [1793710606.704208969] [test_costmap.test_costmap]: Configuring
+3: [INFO] [1793710606.708448514] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=blocked startup_exemption=disabled
+3: [INFO] [1793710606.708522724] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [WARN] [1793710606.708553157] [height_jump_test]: Parameter height_jump_test.verbose not found
+3: [INFO] [1793710606.870629125] [test_costmap.test_costmap]: Cleaning up
+3: [INFO] [1793710606.874532053] [test_costmap.test_costmap]: Destroying
+3: [       OK ] WithoutStartupTest.UnknownRejectsWithoutExplicitSafeStartupOptIn (196 ms)
+3: [----------] 1 test from WithoutStartupTest (196 ms total)
+3: 
+3: [----------] 1 test from TraversableUnknownTest
+3: [ RUN      ] TraversableUnknownTest.UnknownPassesButKnownHeightOutsideAndStaleMapStillReject
+3: 1793710606.891713 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710606.898147033] [test_costmap.test_costmap]: 
+3: 	test_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710606.898999089] [test_costmap.test_costmap]: Creating Costmap
+3: [INFO] [1793710606.899405885] [test_costmap.test_costmap]: Configuring
+3: [INFO] [1793710606.904055618] [height_jump_test]: HeightJump binary feasibility: layer=elevation threshold=0.300 unknown=traversable startup_exemption=disabled
+3: [INFO] [1793710606.904151524] [height_jump_test]: Critic loaded : mppi::critics::HeightJumpCritic
+3: [WARN] [1793710606.904184357] [height_jump_test]: Parameter height_jump_test.verbose not found
+3: [WARN] [1793710607.229308576] [height_jump_test]: HeightJump unavailable: missing/invalid/stale map or clock reset; startup exemption not applied
+3: [INFO] [1793710607.230419968] [test_costmap.test_costmap]: Cleaning up
+3: [INFO] [1793710607.236583568] [test_costmap.test_costmap]: Destroying
+3: [       OK ] TraversableUnknownTest.UnknownPassesButKnownHeightOutsideAndStaleMapStillReject (362 ms)
+3: [----------] 1 test from TraversableUnknownTest (362 ms total)
+3: 
+3: [----------] 1 test from StartupRadiusConfigurationTest
+3: [ RUN      ] StartupRadiusConfigurationTest.EnabledExemptionRequiresExplicitPositiveRadius
+3: 1793710607.255584 [142] test_plugi: selected interface "lo" is not multicast-capable: disabling multicast
+3: [INFO] [1793710607.262836288] [missing_radius_costmap.missing_radius_costmap]: 
+3: 	missing_radius_costmap lifecycle node launched. 
+3: 	Waiting on external lifecycle transitions to activate
+3: 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+3: [INFO] [1793710607.263630007] [missing_radius_costmap.missing_radius_costmap]: Creating Costmap
+3: [INFO] [1793710607.264024834] [missing_radius_costmap.missing_radius_costmap]: Configuring
+3: [INFO] [1793710607.268393823] [missing_radius_costmap.missing_radius_costmap]: Cleaning up
+3: [INFO] [1793710607.270096464] [missing_radius_costmap.missing_radius_costmap]: Destroying
+3: [       OK ] StartupRadiusConfigurationTest.EnabledExemptionRequiresExplicitPositiveRadius (26 ms)
+3: [----------] 1 test from StartupRadiusConfigurationTest (26 ms total)
+3: 
+3: [----------] Global test environment tear-down
+3: [==========] 11 tests from 4 test suites ran. (2223 ms total)
+3: [  PASSED  ] 11 tests.
+3: -- run_test.py: return code 0
+3: -- run_test.py: inject classname prefix into gtest result file '/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_plugin.gtest.xml'
+3: -- run_test.py: verify result file '/home/nvidia/MPPI_3dnavi/build/height_jump_mppi_critic/test_results/height_jump_mppi_critic/test_plugin.gtest.xml'
+3/3 Test #3: test_plugin ......................   Passed    2.54 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Label Time Summary:
+gtest    =   3.07 sec*proc (3 tests)
+
+Total Test time (real) =   3.07 sec
+---
+Finished <<< height_jump_mppi_critic [3.14s]
+
+Summary: 1 package finished [3.78s]

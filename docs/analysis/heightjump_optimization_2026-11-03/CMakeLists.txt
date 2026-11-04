@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(heightjump_kernel_analysis LANGUAGES CXX)
+find_package(ament_cmake REQUIRED)
+find_package(height_jump_mppi_critic REQUIRED)
+add_executable(kernel_analysis kernel_analysis.cpp)
+target_compile_features(kernel_analysis PRIVATE cxx_std_17)
+target_compile_options(kernel_analysis PRIVATE -O3 -fno-fast-math -Wall -Wextra)
+ament_target_dependencies(kernel_analysis height_jump_mppi_critic)

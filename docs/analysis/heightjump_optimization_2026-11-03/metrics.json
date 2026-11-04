@@ -1,0 +1,112 @@
+{
+  "timings": {
+    "prepared_query_504k": {
+      "p50_ms": 26.5304,
+      "p95_ms": 26.5507,
+      "max_ms": 26.5848
+    },
+    "is_inside_504k": {
+      "p50_ms": 10.3431,
+      "p95_ms": 10.3861,
+      "max_ms": 10.4215
+    },
+    "get_index_and_storage_guard_504k": {
+      "p50_ms": 16.3938,
+      "p95_ms": 16.4166,
+      "max_ms": 16.4304
+    },
+    "matrix_fetch_preindexed_504k": {
+      "p50_ms": 0.557652,
+      "p95_ms": 0.670168,
+      "max_ms": 0.748731
+    },
+    "nine_point_evaluate_56k": {
+      "p50_ms": 26.902,
+      "p95_ms": 26.9211,
+      "max_ms": 27.001
+    },
+    "unknown_pass_with_startup_checks_56k": {
+      "p50_ms": 27.5154,
+      "p95_ms": 27.5348,
+      "max_ms": 27.5445
+    },
+    "unknown_pass_without_startup_checks_56k": {
+      "p50_ms": 26.489,
+      "p95_ms": 26.5218,
+      "max_ms": 26.5243
+    }
+  },
+  "reuse": [
+    {
+      "frame": 0,
+      "points": 3800,
+      "inside": 3800,
+      "unique_center_cells": 92,
+      "unique_neighborhoods": 92,
+      "center_cells_with_multiple_neighborhoods": 0
+    },
+    {
+      "frame": 1,
+      "points": 3800,
+      "inside": 3800,
+      "unique_center_cells": 123,
+      "unique_neighborhoods": 123,
+      "center_cells_with_multiple_neighborhoods": 0
+    },
+    {
+      "frame": 2,
+      "points": 3800,
+      "inside": 3800,
+      "unique_center_cells": 113,
+      "unique_neighborhoods": 113,
+      "center_cells_with_multiple_neighborhoods": 0
+    },
+    {
+      "frame": 3,
+      "points": 3800,
+      "inside": 3800,
+      "unique_center_cells": 40,
+      "unique_neighborhoods": 40,
+      "center_cells_with_multiple_neighborhoods": 0
+    },
+    {
+      "frame": 4,
+      "points": 3800,
+      "inside": 3800,
+      "unique_center_cells": 34,
+      "unique_neighborhoods": 34,
+      "center_cells_with_multiple_neighborhoods": 0
+    },
+    {
+      "frame": 5,
+      "points": 3800,
+      "inside": 3800,
+      "unique_center_cells": 27,
+      "unique_neighborhoods": 27,
+      "center_cells_with_multiple_neighborhoods": 0
+    }
+  ],
+  "boundaries": [
+    {
+      "resolution": 0.1,
+      "cells": 69,
+      "multiple_neighborhood_cells": 15,
+      "max_variants_per_cell": 4
+    },
+    {
+      "resolution": 0.13,
+      "cells": 53,
+      "multiple_neighborhood_cells": 52,
+      "max_variants_per_cell": 3
+    }
+  ],
+  "query_count": 504000,
+  "scope": "Offline component microbenchmarks, synthetic interiors and six recorded visualization frames; not measured optimized controller performance.",
+  "sha256": {
+    "/home/nvidia/MPPI_3dnavi/docs/analysis/heightjump_optimization_2026-11-03/kernel_analysis.cpp": "6ae1f562cf30cbd68c551bdaac2f200ff81709899a80eb748375d1b9f3b406f0",
+    "/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/include/height_jump_mppi_critic/terrain_map.hpp": "a679f3a20c5fdb1db87e537992d84d518ca0cb5e84f60f228a3aac0b2b373799",
+    "/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/include/height_jump_mppi_critic/evaluator.hpp": "bed268ae1a4493d13695267f53703ee2d7616f7110c534ae7c5462fa17af4c4a",
+    "/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/src/height_jump_critic.cpp": "b6d6fbdb5d45999267454013a95595c68d659c272a215febfd5b703d135202c4",
+    "/home/nvidia/MPPI_3dnavi/install/height_jump_mppi_critic/lib/libheight_jump_mppi_critic.so": "ca4200ae74e55a756078a2f5d4ada4571c30620c523e9502fd64174b329ec823"
+  }
+}

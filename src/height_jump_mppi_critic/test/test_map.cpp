@@ -189,3 +189,119 @@ TEST(TerrainMap, PreparedQueryRejectsHugeFiniteCoordinatesBeforeIntegerConversio
   }
   std::feclearexcept(FE_ALL_EXCEPT);
 }
+
+TEST(TerrainMap, BatchedNeighborhoodPreservesContinuousSamplingAndCircularIndices)
+{
+  // Distinct heights make every wrong axis, wrap, or off-by-one observable.
+  for (double resolution : {0.05, 0.10, 0.13}) {
+    grid_map::GridMap original({"elevation"});
+    original.setGeometry(grid_map::Length(7, 5), resolution, grid_map::Position(0.4, -0.3));
+    original.setFrameId("terrain");
+    original.setTimestamp(10000000000ULL);
+    auto & matrix = original["elevation"];
+    for (int i = 0; i < matrix.rows(); ++i) {
+      for (int j = 0; j < matrix.cols(); ++j) {
+        const int n = i * matrix.cols() + j;
+        matrix(i, j) = n % 11 == 0 ? std::numeric_limits<float>::quiet_NaN() :
+          n % 17 == 0 ? std::numeric_limits<float>::infinity() : n * 0.001f;
+      }
+    }
+    for (const grid_map::Position & origin : {grid_map::Position(0.4, -0.3),
+        grid_map::Position(-4.2, -17.8), grid_map::Position(1e9, -1e9)})
+    {
+      original.setPosition(origin);
+      for (const grid_map::Index & start : {grid_map::Index(0, 0), grid_map::Index(0, 7),
+          grid_map::Index(3, 0), grid_map::Index(3, 7)})
+      {
+        original.setStartIndex(start);
+        std::string error;
+        const auto map = TerrainSnapshot::fromMessage(
+          *grid_map::GridMapRosConverter::toMessage(original), "elevation", error);
+        ASSERT_NE(map, nullptr) << error;
+        const TerrainQuery query(map);
+        const auto center = map->map.getPosition();
+        const auto length = map->map.getLength();
+        for (double radius : {0.10, 0.17}) {
+          const auto check = [&](const grid_map::Position & point) {
+              const auto samples = query.neighborhood(point.x(), point.y(), radius);
+              size_t n = 0;
+              for (int x = -1; x <= 1; ++x) {
+                for (int y = -1; y <= 1; ++y, ++n) {
+                  const auto expected = map->query(point.x() + x * radius, point.y() + y * radius);
+                  ASSERT_EQ(samples[n].state, expected.state)
+                    << "resolution=" << resolution << " radius=" << radius << " start="
+                    << start.transpose() << " point=" << point.transpose() << " sample=" << n;
+                  if (expected.state == SampleState::Known) {
+                    ASSERT_FLOAT_EQ(samples[n].elevation, expected.elevation);
+                  }
+                }
+              }
+            };
+          // Probe internal grid lines as well as all map edges, including adjacent doubles.
+          for (int axis = 0; axis < 2; ++axis) {
+            for (int cell = 0; cell <= map->map.getSize()[axis]; ++cell) {
+              const double edge = center[axis] + length[axis] / 2 - cell * resolution;
+              for (double value : {std::nextafter(edge, -INFINITY), edge,
+                  std::nextafter(edge, INFINITY), edge - resolution * 0.37})
+              {
+                auto point = center;
+                point[axis] = value;
+                check(point);
+              }
+            }
+          }
+          for (int n = 0; n < 300; ++n) {
+            check(center + grid_map::Position(
+              ((n * 17) % 809 - 404) * 0.01, ((n * 31) % 613 - 306) * 0.01));
+          }
+        }
+      }
+    }
+  }
+}
+
+TEST(TerrainMap, BatchedNeighborhoodRejectsUnsafeCoordinatesBeforeIntegerConversion)
+{
+  std::string error;
+  auto map = TerrainSnapshot::fromMessage(message(), "elevation", error);
+  ASSERT_NE(map, nullptr);
+  const TerrainQuery query(map);
+  for (double value : {1e20, -1e20, std::numeric_limits<double>::max(),
+      -std::numeric_limits<double>::max(), std::numeric_limits<double>::quiet_NaN(),
+      std::numeric_limits<double>::infinity()})
+  {
+    for (const auto & point : {grid_map::Position(value, -2), grid_map::Position(4, value)}) {
+      std::feclearexcept(FE_ALL_EXCEPT);
+      const auto samples = query.neighborhood(point.x(), point.y(), 0.1);
+      EXPECT_EQ(std::fetestexcept(FE_INVALID), 0) << point.transpose();
+      for (const auto & sample : samples) {EXPECT_EQ(sample.state, SampleState::Outside);}
+    }
+  }
+  for (double radius : {0.0, -0.1, std::numeric_limits<double>::quiet_NaN(),
+      std::numeric_limits<double>::infinity()})
+  {
+    for (const auto & sample : query.neighborhood(4, -2, radius)) {
+      EXPECT_EQ(sample.state, SampleState::Outside);
+    }
+  }
+  std::feclearexcept(FE_ALL_EXCEPT);
+}
+
+TEST(TerrainMap, BatchedNeighborhoodRetainsItsOriginalSnapshot)
+{
+  std::string error;
+  auto msg = message();
+  auto original = TerrainSnapshot::fromMessage(msg, "elevation", error);
+  const TerrainQuery query(original);
+  original.reset();
+  std::fill(msg.data[0].data.begin(), msg.data[0].data.end(),
+    std::numeric_limits<float>::quiet_NaN());
+  const TerrainQuery replacement(TerrainSnapshot::fromMessage(msg, "elevation", error));
+  for (const auto & sample : query.neighborhood(4, -2, 0.1)) {
+    EXPECT_EQ(sample.state, SampleState::Known);
+    EXPECT_FLOAT_EQ(sample.elevation, 0.2f);
+  }
+  for (const auto & sample : replacement.neighborhood(4, -2, 0.1)) {
+    EXPECT_EQ(sample.state, SampleState::Unknown);
+  }
+}

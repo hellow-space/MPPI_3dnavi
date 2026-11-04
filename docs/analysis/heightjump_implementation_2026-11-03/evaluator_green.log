@@ -1,0 +1,26 @@
+Running main() from ./googletest/src/gtest_main.cc
+[==========] Running 7 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 6 tests from Evaluator
+[ RUN      ] Evaluator.BinaryThresholdHasNoPreferenceWithinPassableRange
+[       OK ] Evaluator.BinaryThresholdHasNoPreferenceWithinPassableRange (0 ms)
+[ RUN      ] Evaluator.SparseHolesAreToleratedButThreeRequireExemption
+[       OK ] Evaluator.SparseHolesAreToleratedButThreeRequireExemption (0 ms)
+[ RUN      ] Evaluator.KnownDangerTakesPriorityOverStartupUnknown
+[       OK ] Evaluator.KnownDangerTakesPriorityOverStartupUnknown (0 ms)
+[ RUN      ] Evaluator.OutsideMapCannotBeExemptedAndNonFiniteHeightsAreUnknown
+[       OK ] Evaluator.OutsideMapCannotBeExemptedAndNonFiniteHeightsAreUnknown (0 ms)
+[ RUN      ] Evaluator.RejectsInvalidCoordinatesAndConfiguration
+[       OK ] Evaluator.RejectsInvalidCoordinatesAndConfiguration (0 ms)
+[ RUN      ] Evaluator.TraversableUnknownDoesNotNeedStartupExemption
+[       OK ] Evaluator.TraversableUnknownDoesNotNeedStartupExemption (0 ms)
+[----------] 6 tests from Evaluator (0 ms total)
+
+[----------] 1 test from StartupRegion
+[ RUN      ] StartupRegion.FixedCenterAndEachUnknownSampleMustStayInside
+[       OK ] StartupRegion.FixedCenterAndEachUnknownSampleMustStayInside (0 ms)
+[----------] 1 test from StartupRegion (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 7 tests from 2 test suites ran. (0 ms total)
+[  PASSED  ] 7 tests.

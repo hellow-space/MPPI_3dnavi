@@ -1,0 +1,10 @@
+Internal ctest changing into directory: /tmp/mppi_heightjump_batched_build
+Test project /tmp/mppi_heightjump_batched_build
+    Start 1: offline_terrain_correctness
+1/2 Test #1: offline_terrain_correctness ......   Passed    0.74 sec
+    Start 2: terrain_map_regression
+2/2 Test #2: terrain_map_regression ...........   Passed    0.23 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.97 sec
