@@ -1,0 +1,118 @@
+EFF.FFFFF
+======================================================================
+ERROR: test_clock_backwards_invalidates_alignment (test_initial_pose_tf.InitialPoseCallbackTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_tf.py", line 107, in test_clock_backwards_invalidates_alignment
+    f.publish_tf()
+  File "/home/nvidia/MPPI_3dnavi/scripts/initial_pose_tf.py", line 158, in publish_tf
+    self.tf_broadcaster.sendTransform(tf)
+AttributeError: 'types.SimpleNamespace' object has no attribute 'tf_broadcaster'
+
+======================================================================
+FAIL: test_invalid_pose_preserves_previous_good_alignment (test_initial_pose_tf.InitialPoseCallbackTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_tf.py", line 101, in test_invalid_pose_preserves_previous_good_alignment
+    np.testing.assert_array_equal(f.map_to_camera,previous)
+  File "/home/nvidia/.local/lib/python3.10/site-packages/numpy/testing/_private/utils.py", line 934, in assert_array_equal
+    assert_array_compare(operator.__eq__, x, y, err_msg=err_msg,
+  File "/home/nvidia/.local/lib/python3.10/site-packages/numpy/testing/_private/utils.py", line 768, in assert_array_compare
+    flagged = func_assert_same_pos(x, y, func=isnan, hasval='nan')
+  File "/home/nvidia/.local/lib/python3.10/site-packages/numpy/testing/_private/utils.py", line 745, in func_assert_same_pos
+    raise AssertionError(msg)
+AssertionError:
+Arrays are not equal
+
+x and y nan location mismatch:
+ x: array([[      nan,       nan,       nan,       nan],
+       [ 0.      ,  1.      ,  0.      ,  4.      ],
+       [ 0.173648,  0.      ,  0.984808, -0.492404],
+       [ 0.      ,  0.      ,  0.      ,  1.      ]])
+ y: array([[ 0.984808,  0.      , -0.173648,  3.086824],
+       [ 0.      ,  1.      ,  0.      ,  4.      ],
+       [ 0.173648,  0.      ,  0.984808, -0.492404],
+       [ 0.      ,  0.      ,  0.      ,  1.      ]])
+
+======================================================================
+FAIL: test_missing_imu_is_rejected (test_initial_pose_tf.InitialPoseCallbackTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_tf.py", line 80, in test_missing_imu_is_rejected
+    self.assertIsNone(f.map_to_camera)
+AssertionError: array([[ 0.98480775,  0.        , -0.17364818,  3.08682409],
+       [ 0.        ,  1.        ,  0.        ,  4.        ],
+       [ 0.17364818,  0.        ,  0.98480775, -0.49240388],
+       [ 0.        ,  0.        ,  0.        ,  1.        ]]) is not None
+
+======================================================================
+FAIL: test_non_map_pose_is_rejected (test_initial_pose_tf.InitialPoseCallbackTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_tf.py", line 72, in test_non_map_pose_is_rejected
+    self.assertIsNone(f.map_to_camera)
+AssertionError: array([[ 0.98480775,  0.        , -0.17364818,  3.08682409],
+       [ 0.        ,  1.        ,  0.        ,  4.        ],
+       [ 0.17364818,  0.        ,  0.98480775, -0.49240388],
+       [ 0.        ,  0.        ,  0.        ,  1.        ]]) is not None
+
+======================================================================
+FAIL: test_pitched_body_preserves_horizontal_map (test_initial_pose_tf.InitialPoseCallbackTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_tf.py", line 68, in test_pitched_body_preserves_horizontal_map
+    np.testing.assert_allclose(f.map_to_camera[:3,:3],np.eye(3),atol=1e-10)
+  File "/home/nvidia/.local/lib/python3.10/site-packages/numpy/testing/_private/utils.py", line 1527, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/home/nvidia/.local/lib/python3.10/site-packages/numpy/testing/_private/utils.py", line 844, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError:
+Not equal to tolerance rtol=1e-07, atol=1e-10
+
+Mismatched elements: 4 / 9 (44.4%)
+Max absolute difference: 0.17364818
+Max relative difference: 0.01519225
+ x: array([[ 0.984808,  0.      , -0.173648],
+       [ 0.      ,  1.      ,  0.      ],
+       [ 0.173648,  0.      ,  0.984808]])
+ y: array([[1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.]])
+
+======================================================================
+FAIL: test_rotating_robot_is_rejected (test_initial_pose_tf.InitialPoseCallbackTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_tf.py", line 86, in test_rotating_robot_is_rejected
+    self.assertIsNone(f.map_to_camera)
+AssertionError: array([[ 0.98480775,  0.        , -0.17364818,  3.08682409],
+       [ 0.        ,  1.        ,  0.        ,  4.        ],
+       [ 0.17364818,  0.        ,  0.98480775, -0.49240388],
+       [ 0.        ,  0.        ,  0.        ,  1.        ]]) is not None
+
+======================================================================
+FAIL: test_stale_tf_is_rejected (test_initial_pose_tf.InitialPoseCallbackTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_tf.py", line 76, in test_stale_tf_is_rejected
+    self.assertIsNone(f.map_to_camera)
+AssertionError: array([[ 0.98480775,  0.        , -0.17364818,  3.08682409],
+       [ 0.        ,  1.        ,  0.        ,  4.        ],
+       [ 0.17364818,  0.        ,  0.98480775, -0.49240388],
+       [ 0.        ,  0.        ,  0.        ,  1.        ]]) is not None
+
+======================================================================
+FAIL: test_tf_translation_motion_is_rejected (test_initial_pose_tf.InitialPoseCallbackTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_tf.py", line 91, in test_tf_translation_motion_is_rejected
+    self.assertIsNone(f.map_to_camera)
+AssertionError: array([[ 0.98480775,  0.        , -0.17364818,  2.88986254],
+       [ 0.        ,  1.        ,  0.        ,  4.        ],
+       [ 0.17364818,  0.        ,  0.98480775, -0.52713351],
+       [ 0.        ,  0.        ,  0.        ,  1.        ]]) is not None
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.085s
+
+FAILED (failures=7, errors=1)

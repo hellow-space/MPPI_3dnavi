@@ -1,0 +1,18 @@
+{
+  "branch": "feat/location",
+  "base_head": "daf64a0cb6530022586f0947129ef918632284d3",
+  "python_tests_passed": 52,
+  "focused_tests_passed": 28,
+  "ros_smoke_domain": 143,
+  "source_sha256": {
+    "scripts/initial_pose_tf.py": "7fca50c7afd6236d77eb8b579a69a2f4c01a8dbd22f2e562c9eeedfe60e19748",
+    "scripts/initial_pose_alignment.py": "5eac98f1cbb4cf0903dac2c7fd43e47e2e9fda724c6c301b06e517879da82f23",
+    "tests/test_initial_pose_alignment.py": "b6ce1a4746cb01e2cf15660ce490a2e21817a4d39e3d83e77e18a2146944a35f",
+    "tests/test_initial_pose_tf.py": "86273bcbcac88f079de20c3d328000cbd636f119f7faba32c839d75f95ae2b2b",
+    "tests/test_nav_recording_profiles.py": "9dc59bc77ee41309386d109b7e1832456e38193f045145e084c405bd995036d4",
+    "scripts/README_initial_pose.md": "f8b19071f2250b635081ea7325267d371fd3accd015d1710d53daab7ac693d1d",
+    "docs/analysis/initial_pose_tf_fix_2026-11-04/smoke.py": "db8d6c58a38ab0a92701df279bade1ef11572413a7d7a23a558380ff3f352ade"
+  },
+  "field_navigation_tested": false,
+  "external_fast_livo_modified": false
+}

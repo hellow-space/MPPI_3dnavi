@@ -1,0 +1,11 @@
+1793784868.981412 [143]    python3: selected interface "lo" is not multicast-capable: disabling multicast
+[INFO] [1793784869.083880466] [initial_pose_tf]: Waiting for initial pose in review_map; remain still for 1.0s with fresh /review/imu and TF. Map up comes from gravity, not the current body pitch.
+[INFO] [1793784871.103170630] [initial_pose_tf]: Initial pose accepted: x=3.000, y=4.000, yaw=35.0deg; gravity-aligned map, full body roll/pitch retained
+PASS: ROS IMU/TF/initialpose -> gravity alignment -> published map TF; body pitch retained
+PASS: body pitch changes propagate without redefining map up
+[WARN] [1793784872.228005892] [initial_pose_tf]: Alignment reset: explicit reset requested; stop navigation and initialize again
+PASS: reset service invalidates initialization
+[ERROR] [1793784873.536735428] [initial_pose_tf]: Initial pose rejected: raw IMU age 2.00s is invalid; need 0..0.50s (check driver timestamps and queues)
+PASS: stale raw IMU prevents calibration despite fresh pose TF
+[INFO] [1793784875.346433142] [initial_pose_tf]: Initial pose accepted: x=3.000, y=4.000, yaw=35.0deg; gravity-aligned map, full body roll/pitch retained
+PASS: fresh stationary data restores ability to initialize

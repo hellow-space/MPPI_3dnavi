@@ -308,12 +308,12 @@ class NavigationRecordingProfilesTest(unittest.TestCase):
         play = next(shlex.split(line) for line in calls.splitlines()
                     if line.startswith("ros2 bag play "))
         self.assertIn("--loop", play)
-        self.assertEqual(play[play.index("--rate") + 1], "0.5")
+        self.assertEqual(play[play.index("--rate") + 1], "2.0")
         topics = set(play[play.index("--topics") + 1:])
         self.assertTrue({"/map", "/tf", "/tf_static", ELEVATION_TOPIC,
                          LOCAL_COSTMAP, GLOBAL_COSTMAP, "/plan",
                          "/transformed_global_plan", "/cloud_registered"} <= topics)
-        self.assertNotIn("/cmd_vel", topics)
+        self.assertIn("/cmd_vel", topics)
         self.assertNotIn("/command/cmd_twist", topics)
 
 

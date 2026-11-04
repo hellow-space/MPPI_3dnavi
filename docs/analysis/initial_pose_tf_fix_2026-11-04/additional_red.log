@@ -1,0 +1,29 @@
+....F.................F..F
+======================================================================
+FAIL: test_large_imu_gap_does_not_count_as_continuous_stationary_window (test_initial_pose_alignment.AlignmentTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_alignment.py", line 113, in test_large_imu_gap_does_not_count_as_continuous_stationary_window
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_stale_raw_imu_reports_age_instead_of_silently_disappearing (test_initial_pose_tf.InitialPoseCallbackTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_tf.py", line 123, in test_stale_raw_imu_reports_age_instead_of_silently_disappearing
+    self.assertTrue(any('raw IMU' in line and '9.10' in line for line in f.logs),f.logs)
+AssertionError: False is not true : ['Initial pose rejected: not enough IMU samples; remain still for the gravity window']
+
+======================================================================
+FAIL: test_tilted_camera_is_compensated_without_removing_body_pitch (test_initial_pose_tf.InitialPoseCallbackTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/nvidia/MPPI_3dnavi/tests/test_initial_pose_tf.py", line 128, in test_tilted_camera_is_compensated_without_removing_body_pitch
+    f.initial_pose_callback(initial_pose());self.assertIsNotNone(f.map_to_camera,f.logs)
+AssertionError: unexpectedly None : ['Initial pose rejected: robot attitude is changing; remain still before initialization']
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.074s
+
+FAILED (failures=3)

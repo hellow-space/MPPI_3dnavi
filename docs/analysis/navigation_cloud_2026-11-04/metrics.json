@@ -1,0 +1,131 @@
+{
+  "bag": "/home/nvidia/MPPI_3dnavi/nav_experiment_toolkit/bags/nav_elevation/nav_elevation_2026-11-02_20-19-46",
+  "sampled_frames": 48,
+  "total_registered_frames": 651,
+  "frame_rate_hz": 7.051658117468184,
+  "stats": {
+    "points": {
+      "min": 15877.0,
+      "p50": 17650.0,
+      "p95": 18817.949999999997,
+      "max": 19586.0
+    },
+    "finite_points": {
+      "min": 15877.0,
+      "p50": 17650.0,
+      "p95": 18817.949999999997,
+      "max": 19586.0
+    },
+    "inside_7m_square": {
+      "min": 5024.0,
+      "p50": 6119.5,
+      "p95": 7129.8,
+      "max": 8961.0
+    },
+    "outside_fraction": {
+      "min": 0.5424793219646686,
+      "p50": 0.6555024698731036,
+      "p95": 0.6827396633551824,
+      "max": 0.6981862292051756
+    },
+    "inside_above_1_5m": {
+      "min": 1507.0,
+      "p50": 1946.0,
+      "p95": 2618.4,
+      "max": 3226.0
+    },
+    "inside_below_minus_0_5m": {
+      "min": 0.0,
+      "p50": 177.0,
+      "p95": 256.34999999999997,
+      "max": 278.0
+    },
+    "candidate_height_band_points": {
+      "min": 2893.0,
+      "p50": 3920.5,
+      "p95": 4775.0,
+      "max": 5735.0
+    },
+    "occupied_10cm_xy_cells": {
+      "min": 1423.0,
+      "p50": 1766.5,
+      "p95": 1972.45,
+      "max": 2026.0
+    },
+    "near_zero_band_points": {
+      "min": 197.0,
+      "p50": 424.0,
+      "p95": 2252.299999999998,
+      "max": 3511.0
+    },
+    "near_zero_band_xy_cells": {
+      "min": 34.0,
+      "p50": 108.0,
+      "p95": 582.6499999999996,
+      "max": 887.0
+    },
+    "candidate_voxel_5cm_points": {
+      "min": 1870.0,
+      "p50": 2423.0,
+      "p95": 3159.15,
+      "max": 3580.0
+    },
+    "candidate_voxel_10cm_points": {
+      "min": 968.0,
+      "p50": 1194.5,
+      "p95": 1588.65,
+      "max": 1708.0
+    },
+    "raw_bytes": {
+      "min": 762096.0,
+      "p50": 847200.0,
+      "p95": 903261.6,
+      "max": 940128.0
+    },
+    "nearest_pose_receipt_difference_s": {
+      "min": -0.15749721599999944,
+      "p50": -0.014771829000000736,
+      "p95": -0.005623429150005781,
+      "max": 0.010402593000000002
+    }
+  },
+  "range_bin_labels": [
+    "0-.5m",
+    ".5-1m",
+    "1-2m",
+    "2-3m",
+    "3-5m",
+    "5-10m",
+    ">10m"
+  ],
+  "range_bin_mean_points": [
+    189.20833333333334,
+    150.83333333333334,
+    1515.7291666666667,
+    1740.2916666666667,
+    5055.479166666667,
+    4451.791666666667,
+    4613.125
+  ],
+  "height_bin_labels": [
+    "<-.5m",
+    "-.5 to .2m",
+    ".2 to 1.5m",
+    "1.5 to 2.5m",
+    ">2.5m"
+  ],
+  "height_bin_mean_points": [
+    516.8958333333334,
+    4058.2291666666665,
+    1936.4166666666667,
+    1662.4166666666667,
+    9542.5
+  ],
+  "caveats": [
+    "Cloud after LIO preprocessing, not raw packets; cannot establish packet loss.",
+    "7m square is centered at reconstructed base, approximating rolling-map ROI.",
+    "Height bands are relative to base, not measured ground; candidate band is illustrative, not a recommended safety limit.",
+    "Projected occupied cells include walls and obstacles, not proven ground/free-space coverage.",
+    "Single-frame decimation cannot establish scene completeness or thin obstacle detection."
+  ]
+}
