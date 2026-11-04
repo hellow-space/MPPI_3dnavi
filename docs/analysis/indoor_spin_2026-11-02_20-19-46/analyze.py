@@ -247,6 +247,11 @@ for ax in axes:
     ax.grid(alpha=.2)
     ax.legend(loc='upper left',fontsize=8)
     ax.set_xlim(0,duration)
+# twinx() keeps a separate legend: explicitly merge yaw with the left-axis lines.
+position_lines, position_labels = axes[2].get_legend_handles_labels()
+yaw_lines, yaw_labels = ax_yaw.get_legend_handles_labels()
+axes[2].legend(position_lines + yaw_lines, position_labels + yaw_labels,
+               loc='upper left', fontsize=8)
 fig.suptitle('Old bag 2026-11-02 20:19:46: navigation output before manual handover may be blocked\nOrange: spin recovery; gray: wait recovery; purple: progress failures; mode switch time unknown')
 fig.savefig(OUT/'timing_and_motion.png',dpi=160)
 plt.close(fig)
