@@ -1,0 +1,269 @@
+{
+  "paired": {
+    "0": {
+      "map_conversion": {
+        "samples": 100,
+        "p50_ms": 0.016128,
+        "p95_ms": 0.018753,
+        "p99_ms": 0.021985,
+        "checksum": 110000
+      },
+      "baseline_rollout": {
+        "samples": 100,
+        "p50_ms": 41.2138,
+        "p95_ms": 41.3128,
+        "p99_ms": 41.3355,
+        "checksum": 110000
+      },
+      "prepared_rollout": {
+        "samples": 100,
+        "p50_ms": 25.8001,
+        "p95_ms": 25.9422,
+        "p99_ms": 25.955,
+        "checksum": 110000
+      },
+      "batched_rollout": {
+        "samples": 100,
+        "p50_ms": 3.94792,
+        "p95_ms": 3.96501,
+        "p99_ms": 3.97554,
+        "checksum": 110000
+      }
+    },
+    "1": {
+      "map_conversion": {
+        "samples": 100,
+        "p50_ms": 0.015744,
+        "p95_ms": 0.021953,
+        "p99_ms": 0.024512,
+        "checksum": 17490
+      },
+      "baseline_rollout": {
+        "samples": 100,
+        "p50_ms": 19.1807,
+        "p95_ms": 19.252,
+        "p99_ms": 19.2905,
+        "checksum": 17490
+      },
+      "prepared_rollout": {
+        "samples": 100,
+        "p50_ms": 12.0452,
+        "p95_ms": 12.1041,
+        "p99_ms": 12.123,
+        "checksum": 17490
+      },
+      "batched_rollout": {
+        "samples": 100,
+        "p50_ms": 1.86354,
+        "p95_ms": 1.94335,
+        "p99_ms": 1.95622,
+        "checksum": 17490
+      }
+    },
+    "3": {
+      "map_conversion": {
+        "samples": 100,
+        "p50_ms": 0.002464,
+        "p95_ms": 0.004865,
+        "p99_ms": 0.007424,
+        "checksum": 0
+      },
+      "baseline_rollout": {
+        "samples": 100,
+        "p50_ms": 0.714133,
+        "p95_ms": 0.721269,
+        "p99_ms": 0.724917,
+        "checksum": 0
+      },
+      "prepared_rollout": {
+        "samples": 100,
+        "p50_ms": 0.444973,
+        "p95_ms": 0.452013,
+        "p99_ms": 0.45723,
+        "checksum": 0
+      },
+      "batched_rollout": {
+        "samples": 100,
+        "p50_ms": 0.05933,
+        "p95_ms": 0.060322,
+        "p99_ms": 0.060706,
+        "checksum": 0
+      }
+    },
+    "4": {
+      "map_conversion": {
+        "samples": 100,
+        "p50_ms": 0.015521,
+        "p95_ms": 0.018465,
+        "p99_ms": 0.020705,
+        "checksum": 110000
+      },
+      "baseline_rollout": {
+        "samples": 100,
+        "p50_ms": 39.8599,
+        "p95_ms": 39.9291,
+        "p99_ms": 39.9856,
+        "checksum": 110000
+      },
+      "prepared_rollout": {
+        "samples": 100,
+        "p50_ms": 24.8117,
+        "p95_ms": 24.8798,
+        "p99_ms": 24.889,
+        "checksum": 110000
+      },
+      "batched_rollout": {
+        "samples": 100,
+        "p50_ms": 3.30989,
+        "p95_ms": 3.34368,
+        "p99_ms": 3.39562,
+        "checksum": 110000
+      }
+    }
+  },
+  "full_mppi": {
+    "before": {
+      "completion_interval": {
+        "n": 60,
+        "p50_ms": 40.9861,
+        "p95_ms": 41.459,
+        "max_ms": 41.5379
+      },
+      "optimizer": {
+        "n": 60,
+        "p50_ms": 33.9746,
+        "p95_ms": 34.2362,
+        "max_ms": 34.3298
+      },
+      "visualizer_build": {
+        "n": 60,
+        "p50_ms": 0.237031,
+        "p95_ms": 0.277768,
+        "max_ms": 0.488366
+      },
+      "visualizer_publish": {
+        "n": 60,
+        "p50_ms": 6.12174,
+        "p95_ms": 6.23714,
+        "max_ms": 6.23855
+      },
+      "compute_plus_visualization": {
+        "n": 60,
+        "p50_ms": 40.3308,
+        "p95_ms": 40.6127,
+        "max_ms": 40.8758
+      }
+    },
+    "after": {
+      "completion_interval": {
+        "n": 60,
+        "p50_ms": 15.7035,
+        "p95_ms": 16.1072,
+        "max_ms": 16.3884
+      },
+      "optimizer": {
+        "n": 60,
+        "p50_ms": 8.69644,
+        "p95_ms": 9.0049,
+        "max_ms": 9.05856
+      },
+      "visualizer_build": {
+        "n": 60,
+        "p50_ms": 0.237031,
+        "p95_ms": 0.267304,
+        "max_ms": 0.288616
+      },
+      "visualizer_publish": {
+        "n": 60,
+        "p50_ms": 6.05601,
+        "p95_ms": 6.15582,
+        "max_ms": 6.19826
+      },
+      "compute_plus_visualization": {
+        "n": 60,
+        "p50_ms": 15.0005,
+        "p95_ms": 15.2253,
+        "max_ms": 15.3715
+      }
+    },
+    "periodic_before": {
+      "completion_interval": {
+        "n": 60,
+        "p50_ms": 50.1174,
+        "p95_ms": 51.971,
+        "max_ms": 53.1366
+      },
+      "optimizer": {
+        "n": 60,
+        "p50_ms": 33.819,
+        "p95_ms": 35.7736,
+        "max_ms": 36.6231
+      },
+      "visualizer_build": {
+        "n": 60,
+        "p50_ms": 0.240711,
+        "p95_ms": 0.28084,
+        "max_ms": 0.484334
+      },
+      "visualizer_publish": {
+        "n": 60,
+        "p50_ms": 6.12143,
+        "p95_ms": 6.27868,
+        "max_ms": 7.6527
+      },
+      "compute_plus_visualization": {
+        "n": 60,
+        "p50_ms": 40.2018,
+        "p95_ms": 42.2696,
+        "max_ms": 43.086
+      }
+    },
+    "periodic_after": {
+      "completion_interval": {
+        "n": 60,
+        "p50_ms": 50.3237,
+        "p95_ms": 56.4623,
+        "max_ms": 58.7171
+      },
+      "optimizer": {
+        "n": 60,
+        "p50_ms": 14.1692,
+        "p95_ms": 16.9046,
+        "max_ms": 17.5939
+      },
+      "visualizer_build": {
+        "n": 60,
+        "p50_ms": 0.380523,
+        "p95_ms": 0.618162,
+        "max_ms": 0.756405
+      },
+      "visualizer_publish": {
+        "n": 60,
+        "p50_ms": 10.2036,
+        "p95_ms": 11.4716,
+        "max_ms": 12.9506
+      },
+      "compute_plus_visualization": {
+        "n": 60,
+        "p50_ms": 24.7723,
+        "p95_ms": 27.9763,
+        "max_ms": 29.4121
+      }
+    }
+  },
+  "tests": {
+    "native_gtest": 30,
+    "python_unittest": 24,
+    "standalone_ctest": 2,
+    "differential_cases": 242304,
+    "differential_fixtures": 24
+  },
+  "sha256": {
+    "/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/include/height_jump_mppi_critic/evaluator.hpp": "1f3e1ca68e6970b3b282599882e557eda847ff319511bed3d839ba53a05a6429",
+    "/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/include/height_jump_mppi_critic/terrain_map.hpp": "72f71b6edac078fef540de3c87faee0cde0899665526db518be41f7d4b52138e",
+    "/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/src/terrain_map.cpp": "6a7b1b523ddc75aa299591ea84be1f5b57c1b7040d296619bf86b17936a7736b",
+    "/home/nvidia/MPPI_3dnavi/src/height_jump_mppi_critic/src/height_jump_critic.cpp": "4f61e3b91530516451f4b1591a595c65f470da863af7e9a2ca1c7f2a97a1cf50",
+    "/home/nvidia/MPPI_3dnavi/install/height_jump_mppi_critic/lib/libheight_jump_mppi_critic.so": "cc740b5295166dec3e896e5422202121a30b073f91f6cff2fe3ba0d01aec4649"
+  },
+  "field_verified": false
+}

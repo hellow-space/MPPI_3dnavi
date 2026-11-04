@@ -1,0 +1,200 @@
+{
+  "current_visualization": {
+    "stages": {
+      "completion_interval": {
+        "n": 60,
+        "p50_ms": 73.0893,
+        "p95_ms": 73.6264,
+        "max_ms": 74.4313
+      },
+      "optimizer": {
+        "n": 60,
+        "p50_ms": 33.8359,
+        "p95_ms": 34.0021,
+        "max_ms": 34.1383
+      },
+      "visualizer_build": {
+        "n": 60,
+        "p50_ms": 1.08377,
+        "p95_ms": 1.35204,
+        "max_ms": 1.82383
+      },
+      "visualizer_publish": {
+        "n": 60,
+        "p50_ms": 35.3661,
+        "p95_ms": 35.6953,
+        "max_ms": 35.742
+      },
+      "compute_plus_visualization": {
+        "n": 60,
+        "p50_ms": 70.291,
+        "p95_ms": 70.7702,
+        "max_ms": 71.6574
+      }
+    },
+    "received_marker_arrays": 70,
+    "visualize": true,
+    "periodic": false
+  },
+  "sparse_visualization": {
+    "stages": {
+      "completion_interval": {
+        "n": 60,
+        "p50_ms": 40.6078,
+        "p95_ms": 41.0388,
+        "max_ms": 41.066
+      },
+      "optimizer": {
+        "n": 60,
+        "p50_ms": 33.6377,
+        "p95_ms": 33.8871,
+        "max_ms": 33.9473
+      },
+      "visualizer_build": {
+        "n": 60,
+        "p50_ms": 0.238727,
+        "p95_ms": 0.293864,
+        "max_ms": 0.371242
+      },
+      "visualizer_publish": {
+        "n": 60,
+        "p50_ms": 6.05821,
+        "p95_ms": 6.20254,
+        "max_ms": 6.44942
+      },
+      "compute_plus_visualization": {
+        "n": 60,
+        "p50_ms": 39.9304,
+        "p95_ms": 40.3007,
+        "max_ms": 40.3924
+      }
+    },
+    "received_marker_arrays": 70,
+    "visualize": true,
+    "periodic": false
+  },
+  "no_visualization": {
+    "stages": {
+      "completion_interval": {
+        "n": 60,
+        "p50_ms": 34.2266,
+        "p95_ms": 34.7598,
+        "max_ms": 34.9155
+      },
+      "optimizer": {
+        "n": 60,
+        "p50_ms": 33.9407,
+        "p95_ms": 34.4512,
+        "max_ms": 34.5879
+      },
+      "visualizer_build": {
+        "n": 60,
+        "p50_ms": 0.000352,
+        "p95_ms": 0.000672,
+        "max_ms": 0.001056
+      },
+      "visualizer_publish": {
+        "n": 60,
+        "p50_ms": 3.2e-05,
+        "p95_ms": 6.4e-05,
+        "max_ms": 6.4e-05
+      },
+      "compute_plus_visualization": {
+        "n": 60,
+        "p50_ms": 33.9411,
+        "p95_ms": 34.4516,
+        "max_ms": 34.5886
+      }
+    },
+    "received_marker_arrays": 0,
+    "visualize": false,
+    "periodic": false
+  },
+  "no_height_diagnostic": {
+    "stages": {
+      "completion_interval": {
+        "n": 60,
+        "p50_ms": 4.66051,
+        "p95_ms": 5.2372,
+        "max_ms": 5.48565
+      },
+      "optimizer": {
+        "n": 60,
+        "p50_ms": 4.39017,
+        "p95_ms": 4.90656,
+        "max_ms": 5.14363
+      },
+      "visualizer_build": {
+        "n": 60,
+        "p50_ms": 0.000128,
+        "p95_ms": 0.00064,
+        "max_ms": 0.000672
+      },
+      "visualizer_publish": {
+        "n": 60,
+        "p50_ms": 3.2e-05,
+        "p95_ms": 9.6e-05,
+        "max_ms": 0.000352
+      },
+      "compute_plus_visualization": {
+        "n": 60,
+        "p50_ms": 4.39084,
+        "p95_ms": 4.90666,
+        "max_ms": 5.14372
+      }
+    },
+    "received_marker_arrays": 0,
+    "visualize": false,
+    "periodic": false
+  },
+  "sparse_periodic_20hz": {
+    "stages": {
+      "completion_interval": {
+        "n": 60,
+        "p50_ms": 50.1147,
+        "p95_ms": 53.3198,
+        "max_ms": 55.0138
+      },
+      "optimizer": {
+        "n": 60,
+        "p50_ms": 34.1376,
+        "p95_ms": 36.7088,
+        "max_ms": 39.1363
+      },
+      "visualizer_build": {
+        "n": 60,
+        "p50_ms": 0.234983,
+        "p95_ms": 0.28836,
+        "max_ms": 0.539407
+      },
+      "visualizer_publish": {
+        "n": 60,
+        "p50_ms": 6.12685,
+        "p95_ms": 8.23994,
+        "max_ms": 8.43104
+      },
+      "compute_plus_visualization": {
+        "n": 60,
+        "p50_ms": 40.4767,
+        "p95_ms": 44.951,
+        "max_ms": 45.5103
+      }
+    },
+    "received_marker_arrays": 70,
+    "visualize": true,
+    "periodic": true
+  },
+  "summary": {
+    "p50_saved_ms": 30.360599999999998,
+    "p50_reduction_percent": 43.192727376193254,
+    "offline_only": true,
+    "sensor_pipeline_and_field_control_rate_measured": false
+  },
+  "sha256": {
+    "/home/nvidia/MPPI_3dnavi/docs/analysis/mppi_frequency_2026-11-03/probe.cpp": "4ee4ec0a0643e10913d45716cd1ed53af5ab11779bdfa81ef7de51aeec3e77a6",
+    "/home/nvidia/MPPI_3dnavi/docs/analysis/mppi_frequency_2026-11-03/CMakeLists.txt": "0d6317c4e2b1cc72ef6a9f48b5abb33db89bfcec115777a006629cc42001c55e",
+    "/home/nvidia/MPPI_3dnavi/docs/analysis/mppi_frequency_2026-11-03/baseline_controller.yaml": "9dae528e8a7073b66c8b4d735f36e278a2c65299deeea5416a7c4bb86e55b321",
+    "/opt/ros/humble/lib/libmppi_controller.so": "9782827f73aa4e100fbe60f84c2b49c70a4f47c18e8a7cda2b1289f56dec6c7e",
+    "/home/nvidia/MPPI_3dnavi/install/height_jump_mppi_critic/lib/libheight_jump_mppi_critic.so": "ca4200ae74e55a756078a2f5d4ada4571c30620c523e9502fd64174b329ec823"
+  }
+}

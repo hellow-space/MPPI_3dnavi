@@ -1,0 +1,119 @@
+{
+  "period": [
+    "2026-11-03",
+    "2026-11-04"
+  ],
+  "pages": [
+    {
+      "name": "01_overview",
+      "title": "工作总览",
+      "takeaway": "计算效率与空间几何分别改进；现场导航仍需复测。",
+      "evidence": [
+        "heightjump",
+        "origin",
+        "gravity"
+      ]
+    },
+    {
+      "name": "02_diagnosis",
+      "title": "旧包问题定位",
+      "takeaway": "确认存在计算降频和无进展后的旋转恢复；不能唯一归因于底盘延迟。",
+      "evidence": [
+        "old_bag"
+      ]
+    },
+    {
+      "name": "03_visualization",
+      "title": "轨迹显示降载",
+      "takeaway": "显示 stride 调整使离线优化加显示 P50 从70.29降至39.93 ms。",
+      "evidence": [
+        "visualization"
+      ]
+    },
+    {
+      "name": "04_heightjump",
+      "title": "HeightJump 批量查询",
+      "takeaway": "平地评分25.80→3.95 ms；24张地图242304组差分评估一致。",
+      "evidence": [
+        "heightjump"
+      ]
+    },
+    {
+      "name": "05_full_mppi",
+      "title": "完整 MPPI 对照",
+      "takeaway": "完整优化加显示耗时下降；完成间隔抖动没有同步改善证据。",
+      "evidence": [
+        "heightjump"
+      ]
+    },
+    {
+      "name": "06_gravity_alignment",
+      "title": "重力初始化修正",
+      "takeaway": "避免将点击瞬间机身姿态固化为地图倾斜；静止与时间校验成为初始化条件。",
+      "evidence": [
+        "gravity"
+      ]
+    },
+    {
+      "name": "07_sensor_origin",
+      "title": "物理传感器原点修正",
+      "takeaway": "原点跟随雷达运动，同时保持点在map中的几何位置。",
+      "evidence": [
+        "origin"
+      ]
+    },
+    {
+      "name": "08_elevation_results",
+      "title": "高程前后对照",
+      "takeaway": "分别展示旧包模型变化和合成GPU收敛结果，避免把方差当高度真值误差。",
+      "evidence": [
+        "origin",
+        "gpu"
+      ]
+    },
+    {
+      "name": "09_cloud_coverage",
+      "title": "点云密度与视场",
+      "takeaway": "总点量约1.76万，但近场点约6119.5；不能仅减小LIO体素就宣称补盲。",
+      "evidence": [
+        "cloud"
+      ]
+    },
+    {
+      "name": "10_configuration_tools",
+      "title": "配置与工具整理",
+      "takeaway": "地图大小、frame、回放与入口统一管理；格数变化不能当成整机性能提升。",
+      "evidence": []
+    },
+    {
+      "name": "11_validation",
+      "title": "验证覆盖与已知阻断",
+      "takeaway": "回归与独立ROS链路已有证据；完整高程测试尚未全绿。",
+      "evidence": [
+        "heightjump"
+      ]
+    },
+    {
+      "name": "12_handover",
+      "title": "交付与实机复测",
+      "takeaway": "先按正确交接流程重测，再判断真实控制频率、地形覆盖和执行效果。",
+      "evidence": []
+    }
+  ],
+  "image_size": [
+    2560,
+    1440
+  ],
+  "aspect_ratio": "16:9",
+  "field_navigation_improvement_verified": false,
+  "source_sha256": {
+    "mppi_frequency_2026-11-03/metrics.json": "c38a7d8b50f89e9d32fb5e367de62677e2bfce7305540a810faed2e90fb2445f",
+    "heightjump_implementation_2026-11-03/metrics.json": "16406bf2e11ee3ee6350cee1f2318116ea43695f04a73ac769bf769313543c93",
+    "indoor_spin_2026-11-02_20-19-46/metrics.json": "05df261241e526b89defdcf6058ad1569daa76adb241e7d6dcd510ee284a508d",
+    "initial_pose_tf_review_2026-11-04/metrics.json": "1f19f70224cd42e0780b50dbd44865efc2fe17319b02d2841007a041911ca07e",
+    "navigation_cloud_2026-11-04/metrics.json": "36a9382d0e97233d1b05e3a96ebe2f662e7af823d0c0dcd1e4290f2ce0bf2b79",
+    "elevation_sensor_origin_2026-11-04/bag_comparison.json": "1290ff22f3dbef67db29d48198d7c08f6ce28825e95cb29c24c20857681fa3a8",
+    "elevation_sensor_origin_2026-11-04/gpu_comparison.json": "109e6564ecb7a6e82d33aa1609a99e4634c806e40bcf16c9d38854b9203d96e5"
+  },
+  "origin_csv_sha256": "1dfe130fa75b9eea614e96fa775b80dacdeda9e14e35936640fbe986d2f4fea0"
+}

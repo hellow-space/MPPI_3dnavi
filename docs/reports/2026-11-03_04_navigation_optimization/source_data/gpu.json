@@ -1,0 +1,59 @@
+{
+  "scope": "Synthetic real-GPU fusion using unchanged kernels; no field navigation or real-world height truth.",
+  "geometry": {
+    "physical_sensor_map_xyz": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "cloud_frame_map_xyz": [
+      10.0,
+      0.0,
+      0.0
+    ],
+    "input_points_per_frame": 88,
+    "repeated_observations": 13,
+    "plane_height_m": -0.5,
+    "map_length_m": 4.0,
+    "resolution_m": 0.1,
+    "visibility_cleanup": false,
+    "overlap_clearance": false,
+    "mahalanobis_thresh": 100000.0,
+    "sensor_noise_factor": 0.05,
+    "max_variance": 100.0,
+    "other_parameters": "Parameter defaults; same across all three maps"
+  },
+  "plane": {
+    "common_valid_cells": 88,
+    "mean_variance_before_m2": 0.3067825436592102,
+    "mean_variance_after_m2": 0.0015574514400213957,
+    "mean_variance_reference_m2": 0.0015574514400213957,
+    "height_mae_to_synthetic_truth_before_m": 0.015339141711592674,
+    "height_mae_to_synthetic_truth_after_m": 7.787685171933845e-05,
+    "max_height_difference_to_native_reference_before_m": 0.01687261462211609,
+    "max_height_difference_to_native_reference_after_m": 0.0,
+    "max_variance_difference_to_native_reference_after_m2": 0.0
+  },
+  "gates": {
+    "inside_minimum_distance": {
+      "world_point_m": [
+        1.05,
+        0.0,
+        0.0
+      ],
+      "expected_retained_cells": 0,
+      "retained_cells_before": 1,
+      "retained_cells_after": 0
+    },
+    "above_ramped_height_limit": {
+      "world_point_m": [
+        1.5,
+        0.0,
+        0.8
+      ],
+      "expected_retained_cells": 0,
+      "retained_cells_before": 1,
+      "retained_cells_after": 0
+    }
+  }
+}
