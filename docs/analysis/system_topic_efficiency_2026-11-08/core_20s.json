@@ -1,0 +1,60 @@
+{
+  "duration_s": 20.00068488600664,
+  "observer_cpu_percent_one_core": 17.009922467106414,
+  "topics": {
+    "/cloud_registered": {
+      "count": 200,
+      "hz": 10.017086780675779,
+      "p95_interval_ms": 119.1339880169835,
+      "max_interval_ms": 202.50561699504033,
+      "gaps_over_150ms": 4,
+      "gaps_over_300ms": 0,
+      "mean_age_ms": 7.029012785,
+      "max_age_ms": 19.62272
+    },
+    "/aft_mapped_to_init": {
+      "count": 200,
+      "hz": 10.016031589692794,
+      "p95_interval_ms": 118.4849780111108,
+      "max_interval_ms": 200.54354300373234,
+      "gaps_over_150ms": 4,
+      "gaps_over_300ms": 0,
+      "mean_age_ms": 6.852505735,
+      "max_age_ms": 118.693688
+    },
+    "/elevation_mapping_node/elevation_map": {
+      "count": 200,
+      "hz": 9.987858736827556,
+      "p95_interval_ms": 123.52182902395725,
+      "max_interval_ms": 140.1870539993979,
+      "gaps_over_150ms": 0,
+      "gaps_over_300ms": 0,
+      "mean_age_ms": 97.52699408,
+      "max_age_ms": 213.1258
+    },
+    "/command/cmd_twist": {
+      "count": 0
+    },
+    "/command/cmd_twist_smoothed": {
+      "count": 0
+    },
+    "/cmd_vel": {
+      "count": 400,
+      "hz": 20.000176247161228,
+      "p95_interval_ms": 52.88855900289491,
+      "max_interval_ms": 59.22359201940708,
+      "gaps_over_150ms": 0,
+      "gaps_over_300ms": 0
+    },
+    "/local_costmap/published_footprint": {
+      "count": 200,
+      "hz": 10.00015364758327,
+      "p95_interval_ms": 105.4687240102794,
+      "max_interval_ms": 111.99230700731277,
+      "gaps_over_150ms": 0,
+      "gaps_over_300ms": 0,
+      "mean_age_ms": 98.555306805,
+      "max_age_ms": 231.005589
+    }
+  }
+}

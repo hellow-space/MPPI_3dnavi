@@ -37,6 +37,7 @@ def generate_launch_description():
             description='Full path to the custom path executor parameter YAML'),
         GroupAction([
             SetRemap(src='/cmd_vel', dst='/command/cmd_twist'),
+            SetRemap(src='/cmd_vel_smoothed', dst='/command/cmd_twist_smoothed'),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'bringup_launch.py')),
                 launch_arguments={

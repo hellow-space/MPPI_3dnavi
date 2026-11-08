@@ -66,7 +66,8 @@ run sleep "$LIVO_WAIT_SECONDS"
 echo '[2/3] 启动高程图（独立 Elevation Map 窗口）'
 run bash -c 'docker start elevation_env >/dev/null'
 ELEVATION_COMMAND=$(cat <<'COMMAND'
-docker exec -it elevation_env bash -lc '
+# 直接让 Docker 客户端接管终端；停止容器后进程退出，窗口随之关闭。
+exec docker exec -it elevation_env bash -lc '
 cd /root/elevation_map &&
 source /opt/ros/humble/setup.bash &&
 source install/setup.bash &&
@@ -74,9 +75,6 @@ export ROS_DOMAIN_ID=42 &&
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp &&
 exec ros2 launch elevation_mapping_cupy raw_elevation.launch.py
 '
-status=$?
-printf '\n高程图进程已退出，退出码：%s。窗口保留供查看日志。\n' "$status"
-exec bash
 COMMAND
 )
 run gnome-terminal --window --title='Elevation Map' -- bash -c "$ELEVATION_COMMAND"

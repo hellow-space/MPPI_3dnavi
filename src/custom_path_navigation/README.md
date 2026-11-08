@@ -27,7 +27,7 @@ ros2 launch fishbot_navigation2 navigation_draw_path.launch.py \
   use_sim_time:=false
 ```
 
-launch 还提供 `map` 参数，默认地图与现有导航相同。Nav2 的 `/cmd_vel` 保持重映射到 `/command/cmd_twist`。自定义工具与 executor 自身不发布速度或零速度；集成脚本保留的 `keep_zero.py` 按原有逻辑向 `/cmd_vel` 转发指令，并在指令中断时补发零速度。
+launch 还提供 `map` 参数，默认地图与现有导航相同。Nav2 的原始速度进入 `/command/cmd_twist`，由 `velocity_smoother` 平滑后发布到 `/command/cmd_twist_smoothed`。集成脚本启动的 `keep_zero.py` 仅转发平滑后的速度，并独占最终 `/cmd_vel`；超过 0.3 秒没有有效输入时，以 20 Hz 持续补零。自定义工具与 executor 自身不发布速度或零速度。直接运行 launch 时，也需要运行 `python3 src/keep_zero.py` 才有最终速度输出。
 
 ## RViz 操作
 

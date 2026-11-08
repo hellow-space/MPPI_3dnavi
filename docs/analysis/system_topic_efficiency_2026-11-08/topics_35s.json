@@ -1,0 +1,657 @@
+{
+  "wall_start_local": "2026-11-08T10:58:22.807667",
+  "duration_s": 35.00500124701648,
+  "topics": {
+    "/livox/imu": {
+      "count": 6766,
+      "hz": 193.5227194812739,
+      "interval_ms": {
+        "min": 0.7403409981634468,
+        "p50": 4.336640005931258,
+        "p95": 12.417132005793974,
+        "p99": 19.473883003229275,
+        "max": 65.17237398657016,
+        "std": 4.0683365414932195
+      },
+      "age_ms": {
+        "min": 0.471278,
+        "mean": 5.7420687559858115,
+        "p95": 19.561437,
+        "max": 32.884004
+      },
+      "unique_stamps": 6766,
+      "stamp_regressions": 0
+    },
+    "/livox/lidar": {
+      "count": 350,
+      "hz": 9.99644875642271,
+      "interval_ms": {
+        "min": 43.53730799630284,
+        "p50": 99.74462000536732,
+        "p95": 114.75395600427873,
+        "p99": 129.7264279855881,
+        "max": 149.5630729768891,
+        "std": 10.119702097899042
+      },
+      "age_ms": {
+        "min": 117.836926,
+        "mean": 131.08584189142857,
+        "p95": 146.270752,
+        "max": 182.063545
+      },
+      "unique_stamps": 350,
+      "stamp_regressions": 0,
+      "payload_mib_per_s": 3.8145227684846557,
+      "size_mean": 400038.85714285716
+    },
+    "/cloud_registered": {
+      "count": 350,
+      "hz": 10.00179721892857,
+      "interval_ms": {
+        "min": 43.6314870021306,
+        "p50": 98.26736099785194,
+        "p95": 175.99104801774956,
+        "p99": 202.78773698373698,
+        "max": 232.20200798823498,
+        "std": 31.01150692970867
+      },
+      "age_ms": {
+        "min": 4.070968,
+        "mean": 11.197109962857143,
+        "p95": 23.444879,
+        "max": 58.004005
+      },
+      "unique_stamps": 350,
+      "stamp_regressions": 0,
+      "payload_mib_per_s": 7.450228053678422,
+      "size_mean": 16277.597142857143
+    },
+    "/aft_mapped_to_init": {
+      "count": 350,
+      "hz": 10.003742596456117,
+      "interval_ms": {
+        "min": 41.00344199105166,
+        "p50": 96.18464301456697,
+        "p95": 188.79302198183723,
+        "p99": 201.594837999437,
+        "max": 213.16919301170856,
+        "std": 30.80429004583667
+      },
+      "age_ms": {
+        "min": 2.695087,
+        "mean": 16.95698472,
+        "p95": 87.465956,
+        "max": 150.599519
+      },
+      "unique_stamps": 350,
+      "stamp_regressions": 0,
+      "nonzero_count": 0,
+      "first_values": [
+        0.0005463635506549243,
+        0.0021511044458223847,
+        -0.006075283584883169
+      ],
+      "last_values": [
+        0.0003015543626851735,
+        0.0031500881092432556,
+        -0.0035581182375967815
+      ],
+      "axis_min": [
+        -0.0018233227952202525,
+        -0.0003257427746988364,
+        -0.009740612027137753
+      ],
+      "axis_max": [
+        0.002225204814479926,
+        0.0038102760720910614,
+        -0.002358796085092913
+      ]
+    },
+    "/LIVO2/imu_propagate": {
+      "count": 0
+    },
+    "/scan": {
+      "count": 0
+    },
+    "/elevation_mapping_node/elevation_map": {
+      "count": 350,
+      "hz": 10.006951593005216,
+      "interval_ms": {
+        "min": 40.19125801278278,
+        "p50": 99.76695699151605,
+        "p95": 122.92856400017627,
+        "p99": 135.0418470101431,
+        "max": 152.42546101217158,
+        "std": 13.99846216444934
+      },
+      "age_ms": {
+        "min": 28.762507,
+        "mean": 98.24054619714286,
+        "p95": 149.815848,
+        "max": 228.622542
+      },
+      "unique_stamps": 306,
+      "stamp_regressions": 0,
+      "payload_mib_per_s": 0.37378692058206825,
+      "map": {
+        "resolution": 0.1,
+        "length_x": 7.0,
+        "layers": [
+          "elevation",
+          "variance"
+        ],
+        "frame": "map"
+      },
+      "elevation_changes": 346
+    },
+    "/local_costmap/published_footprint": {
+      "count": 350,
+      "hz": 10.003464464589356,
+      "interval_ms": {
+        "min": 30.961643991759047,
+        "p50": 100.45155300758779,
+        "p95": 116.0880429961253,
+        "p99": 128.18785398849286,
+        "max": 170.50826200284064,
+        "std": 12.603395699597279
+      },
+      "age_ms": {
+        "min": 20.484921,
+        "mean": 116.43099907428571,
+        "p95": 155.519952,
+        "max": 321.003427
+      },
+      "unique_stamps": 342,
+      "stamp_regressions": 0
+    },
+    "/global_costmap/published_footprint": {
+      "count": 35,
+      "hz": 0.9999458364339557,
+      "interval_ms": {
+        "min": 981.5768730186392,
+        "p50": 999.8888020054437,
+        "p95": 1011.0280090011656,
+        "p99": 1013.8523149944376,
+        "max": 1017.0852099836338,
+        "std": 6.4285857540926
+      },
+      "age_ms": {
+        "min": 43.380632,
+        "mean": 72.63554834285715,
+        "p95": 148.419775,
+        "max": 178.852315
+      },
+      "unique_stamps": 35,
+      "stamp_regressions": 0
+    },
+    "/local_costmap/costmap": {
+      "count": 220,
+      "hz": 6.310279632864897,
+      "interval_ms": {
+        "min": 68.24062499799766,
+        "p50": 183.82705401745625,
+        "p95": 209.29964000242762,
+        "p99": 214.14208499481902,
+        "max": 260.30078300391324,
+        "std": 46.18198042754223
+      },
+      "age_ms": {
+        "min": 1.007902,
+        "mean": 6.795524018181818,
+        "p95": 15.130332,
+        "max": 46.948832
+      },
+      "unique_stamps": 220,
+      "stamp_regressions": 0
+    },
+    "/global_costmap/costmap": {
+      "count": 22,
+      "hz": 0.6363153668872724,
+      "interval_ms": {
+        "min": 993.793742993148,
+        "p50": 1985.830795019865,
+        "p95": 2011.6201900236774,
+        "p99": 2011.6201900236774,
+        "max": 2014.8129239969421,
+        "std": 493.9065152412975
+      },
+      "age_ms": {
+        "min": 7.072655,
+        "mean": 11.339805818181818,
+        "p95": 20.324532,
+        "max": 23.242473
+      },
+      "unique_stamps": 22,
+      "stamp_regressions": 0
+    },
+    "/command/cmd_twist": {
+      "count": 751,
+      "hz": 21.490733246767686,
+      "interval_ms": {
+        "min": 1.674000988714397,
+        "p50": 47.11837298236787,
+        "p95": 68.06106699514203,
+        "p99": 80.72383899707347,
+        "max": 888.1252049759496,
+        "std": 34.675061010883454
+      },
+      "nonzero_count": 749,
+      "first_values": [
+        -0.05000000074505806,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "last_values": [
+        0.6648212671279907,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.2700461745262146
+      ],
+      "axis_min": [
+        -0.059919290244579315,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0206114053726196
+      ],
+      "axis_max": [
+        1.0044119358062744,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    "/command/cmd_twist_smoothed": {
+      "count": 688,
+      "hz": 19.659084419876482,
+      "interval_ms": {
+        "min": 5.513632990187034,
+        "p50": 49.93445600848645,
+        "p95": 60.86920798406936,
+        "p99": 73.91461500083096,
+        "max": 648.6028549843468,
+        "std": 24.144826766837824
+      },
+      "nonzero_count": 682,
+      "first_values": [
+        -0.05000000074505806,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "last_values": [
+        0.5524766921997071,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.13288873434066772
+      ],
+      "axis_min": [
+        -0.05000000074505806,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.8671605587005615
+      ],
+      "axis_max": [
+        0.9489352679252625,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.16711126565933226
+      ]
+    },
+    "/cmd_vel": {
+      "count": 695,
+      "hz": 19.85908591327977,
+      "interval_ms": {
+        "min": 5.55926701053977,
+        "p50": 50.024122989270836,
+        "p95": 60.81288697896525,
+        "p99": 72.03260800451972,
+        "max": 308.50651700166054,
+        "std": 12.505675576261005
+      },
+      "nonzero_count": 682,
+      "first_values": [
+        -0.05000000074505806,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "last_values": [
+        0.5524766921997071,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.13288873434066772
+      ],
+      "axis_min": [
+        -0.05000000074505806,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.8671605587005615
+      ],
+      "axis_max": [
+        0.9489352679252625,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.16711126565933226
+      ]
+    },
+    "/plan": {
+      "count": 27,
+      "hz": 0.9676382104784448,
+      "interval_ms": {
+        "min": 1007.3998380103149,
+        "p50": 1032.0333279960323,
+        "p95": 1041.856080002617,
+        "p99": 1049.179142981302,
+        "max": 1076.5469209873118,
+        "std": 12.5259632240431
+      },
+      "age_ms": {
+        "min": 11.570291,
+        "mean": 18.57124085185185,
+        "p95": 29.247194,
+        "max": 51.553672
+      },
+      "unique_stamps": 27,
+      "stamp_regressions": 0,
+      "size_mean": 93
+    },
+    "/transformed_global_plan": {
+      "count": 677,
+      "hz": 19.993695758216237,
+      "interval_ms": {
+        "min": 11.225226015085354,
+        "p50": 49.433513020630926,
+        "p95": 70.16048897639848,
+        "p99": 83.02144199842587,
+        "max": 123.18783599766903,
+        "std": 12.658660714485189
+      },
+      "age_ms": {
+        "min": 38.97663,
+        "mean": 113.45196092762185,
+        "p95": 197.542463,
+        "max": 338.319295
+      },
+      "unique_stamps": 445,
+      "stamp_regressions": 0,
+      "size_mean": 67
+    },
+    "/local_plan": {
+      "count": 0
+    },
+    "/amcl_pose": {
+      "count": 0
+    },
+    "/tf": {
+      "count": 700,
+      "hz": 20.03245892161911,
+      "interval_ms": {
+        "min": 1.8346779979765415,
+        "p50": 47.85493900999427,
+        "p95": 100.28754800441675,
+        "p99": 113.54336098884232,
+        "max": 142.62536499882117,
+        "std": 33.02550458658101
+      }
+    },
+    "/trajectories": {
+      "count": 677,
+      "hz": 19.99332838306594,
+      "interval_ms": {
+        "min": 10.166505991946906,
+        "p50": 49.66571199474856,
+        "p95": 72.13129801675677,
+        "p99": 87.44688401930034,
+        "max": 123.12210601521656,
+        "std": 13.684767487847415
+      },
+      "payload_mib_per_s": 2.9925265347475074,
+      "size_mean": 162248
+    }
+  },
+  "tf": {
+    "camera_init -> aft_mapped": {
+      "count": 350,
+      "hz": 10.004131507376052,
+      "interval_ms": {
+        "min": 3.5304389894008636,
+        "p50": 94.81932397466153,
+        "p95": 187.02893902081996,
+        "p99": 201.72393001848832,
+        "max": 314.6292879828252,
+        "std": 35.15673259536574
+      },
+      "age_ms": {
+        "min": 3.447493,
+        "mean": 20.374832182857144,
+        "p95": 99.908241,
+        "max": 207.151897
+      },
+      "unique_stamps": 350,
+      "stamp_regressions": 0
+    },
+    "map -> camera_init": {
+      "count": 350,
+      "hz": 10.00248391941392,
+      "interval_ms": {
+        "min": 19.732226995984092,
+        "p50": 100.24361000978388,
+        "p95": 116.16401301580481,
+        "p99": 131.50887997471727,
+        "max": 187.0270190120209,
+        "std": 12.773487692558097
+      },
+      "age_ms": {
+        "min": 1.512652,
+        "mean": 9.626283437142858,
+        "p95": 23.555474,
+        "max": 76.482082
+      },
+      "unique_stamps": 350,
+      "stamp_regressions": 0
+    }
+  },
+  "warnings": [
+    {
+      "node": "elevation_mapping_node",
+      "level": 30,
+      "text": "Cloud TF map <- camera_init: using latest fallback 0.091s before observation",
+      "count": 1
+    },
+    {
+      "node": "behavior_server",
+      "level": 30,
+      "text": "Exceeded time allowance before reaching the DriveOnHeading goal - Exiting DriveOnHeading",
+      "count": 1
+    },
+    {
+      "node": "behavior_server",
+      "level": 30,
+      "text": "backup failed",
+      "count": 1
+    },
+    {
+      "node": "behavior_server",
+      "level": 30,
+      "text": "[backup] [ActionServer] Aborting handle.",
+      "count": 1
+    },
+    {
+      "node": "controller_server",
+      "level": 30,
+      "text": "Control loop missed its desired rate of 20.0000Hz",
+      "count": 12
+    },
+    {
+      "node": "elevation_mapping_node",
+      "level": 30,
+      "text": "Cloud TF map <- camera_init: using latest fallback 0.095s before observation",
+      "count": 1
+    },
+    {
+      "node": "elevation_mapping_node",
+      "level": 30,
+      "text": "Cloud TF map <- camera_init: using latest fallback 0.080s before observation",
+      "count": 1
+    },
+    {
+      "node": "controller_server",
+      "level": 40,
+      "text": "Failed to make progress",
+      "count": 1
+    },
+    {
+      "node": "controller_server",
+      "level": 30,
+      "text": "[follow_path] [ActionServer] Aborting handle.",
+      "count": 1
+    },
+    {
+      "node": "elevation_mapping_node",
+      "level": 30,
+      "text": "Cloud TF map <- camera_init: using latest fallback 0.078s before observation",
+      "count": 1
+    }
+  ],
+  "action_status_counts": {
+    "6": 11288,
+    "2": 76
+  },
+  "cpu_busy_percent": 81.14317019722425,
+  "processes": {
+    "71518": {
+      "comm": "livox_ros_drive",
+      "args": "/home/nvidia/wsnew/ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node --ros-args -r __node:=livox_lidar_publisher --params-file /tmp/launch_params_wq0zt0wt --params-file /tmp/launch_params_jro0omj5 --params-file /tmp/launch_params_1pahi4yc --params-file /tmp/launch_params_oltkmlqk --params-file /tmp/launch_params_y37r3e1e --params-file /tmp/launch_params_oy87srkr --params-file /tmp/launch_params_07usbuyq --params-file /tmp/launch_params_sr4iqc6a --params-file /tmp/launch_params_130cq0z3 --params-file /tmp/launch_params_yg39u5qn ",
+      "cpu_percent_one_core": 45.164974822983346,
+      "rss_mib": 42.11328125
+    },
+    "71591": {
+      "comm": "fastlivo_mappin",
+      "args": "/home/nvidia/wsnew/ws_livox/install/fast_livo/lib/fast_livo/fastlivo_mapping --ros-args -r __node:=laserMapping --params-file /home/nvidia/wsnew/ws_livox/install/fast_livo/share/fast_livo/config/nav_test.yaml --params-file /home/nvidia/wsnew/ws_livox/install/fast_livo/share/fast_livo/config/camera_pinhole.yaml -r /livox/lidar:=/livox/lidar -r /livox/imu:=/livox/imu ",
+      "cpu_percent_one_core": 65.33352145487851,
+      "rss_mib": 166.2109375
+    },
+    "71704": {
+      "comm": "pointcloud_to_l",
+      "args": "/opt/ros/humble/lib/pointcloud_to_laserscan/pointcloud_to_laserscan_node --ros-args -r __node:=pointcloud_to_laserscan --params-file /tmp/launch_params_amhvx89r -r cloud_in:=/cloud_registered -r scan:=/scan ",
+      "cpu_percent_one_core": 26.167689397756323,
+      "rss_mib": 96.609375
+    },
+    "71929": {
+      "comm": "python3",
+      "args": "python3 /root/elevation_map/install/elevation_mapping_cupy/lib/elevation_mapping_cupy/elevation_mapping_node.py --ros-args -r __node:=elevation_mapping_node --params-file /root/elevation_map/install/elevation_mapping_cupy/share/elevation_mapping_cupy/config/core/core_param.yaml --params-file /root/elevation_map/install/elevation_mapping_cupy/share/elevation_mapping_cupy/config/setups/raw/elevation.yaml --params-file /tmp/launch_params_fhspy3kf ",
+      "cpu_percent_one_core": 32.4810729751626,
+      "rss_mib": 297.3125
+    },
+    "72077": {
+      "comm": "python3",
+      "args": "python3 keep_zero.py ",
+      "cpu_percent_one_core": 5.827738686836561,
+      "rss_mib": 52.6328125
+    },
+    "72114": {
+      "comm": "python3",
+      "args": "python3 /home/nvidia/MPPI_3dnavi/scripts/initial_pose_tf.py ",
+      "cpu_percent_one_core": 37.42322392037203,
+      "rss_mib": 59.69140625
+    },
+    "72153": {
+      "comm": "component_conta",
+      "args": "/opt/ros/humble/lib/rclcpp_components/component_container_isolated --ros-args --log-level info --ros-args -r __node:=nav2_container --params-file /tmp/launch_params_fteddvlc --params-file /tmp/launch_params_0jh25t1y -r /cmd_vel:=/command/cmd_twist -r /cmd_vel_smoothed:=/command/cmd_twist_smoothed -r /tf:=tf -r /tf_static:=tf_static ",
+      "cpu_percent_one_core": 73.33237847602672,
+      "rss_mib": 198.67578125
+    },
+    "72157": {
+      "comm": "rviz2",
+      "args": "/opt/ros/humble/lib/rviz2/rviz2 -d /home/nvidia/MPPI_3dnavi/install/fishbot_navigation2/share/fishbot_navigation2/rviz/navigation.rviz --ros-args -r __node:=rviz2 --params-file /tmp/launch_params_nmf59ssf ",
+      "cpu_percent_one_core": 45.450648288024354,
+      "rss_mib": 135.77734375
+    },
+    "75033": {
+      "comm": "python3",
+      "args": "python3 /tmp/system_topic_efficiency_audit.py ",
+      "cpu_percent_one_core": 69.59005608398952,
+      "rss_mib": 63.6328125
+    }
+  },
+  "forward_observed_delay_ms": {
+    "count": 687,
+    "mean": 1.3182577077625388,
+    "p95": 5.9039169864263386,
+    "max": 99.05717600486241
+  },
+  "endpoints": {
+    "/cmd_vel": {
+      "publishers": [
+        "//keep_alive_zero"
+      ],
+      "subscribers": [
+        "//read_only_system_topic_efficiency_audit"
+      ]
+    },
+    "/command/cmd_twist": {
+      "publishers": [
+        "//controller_server",
+        "//behavior_server",
+        "//behavior_server",
+        "//behavior_server",
+        "//behavior_server",
+        "//behavior_server"
+      ],
+      "subscribers": [
+        "//read_only_system_topic_efficiency_audit",
+        "//velocity_smoother"
+      ]
+    },
+    "/command/cmd_twist_smoothed": {
+      "publishers": [
+        "//velocity_smoother"
+      ],
+      "subscribers": [
+        "//keep_alive_zero",
+        "//read_only_system_topic_efficiency_audit"
+      ]
+    },
+    "/scan": {
+      "publishers": [
+        "//pointcloud_to_laserscan"
+      ],
+      "subscribers": [
+        "//rviz2",
+        "//read_only_system_topic_efficiency_audit",
+        "//amcl"
+      ]
+    }
+  },
+  "tf_checks": {
+    "scan_level_frame": "\"scan_level_frame\" passed to lookupTransform argument source_frame does not exist. ",
+    "livox_frame": "available",
+    "base_link": "available",
+    "camera_init": "available"
+  }
+}

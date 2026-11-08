@@ -1,0 +1,95 @@
+{
+  "on": {
+    "controller": {
+      "n": 322,
+      "mean": 24.32822850621118,
+      "p50": 23.039956,
+      "p95": 35.927252,
+      "p99": 41.859434,
+      "max": 47.933386,
+      "over50": 0
+    },
+    "optimizer": {
+      "n": 322,
+      "mean": 12.519488090062111,
+      "p50": 11.229243,
+      "p95": 20.093687,
+      "p99": 25.504978,
+      "max": 32.247055,
+      "over50": 0
+    },
+    "controller_cpu_one_core": 75.51902447720252,
+    "rviz_cpu_one_core": 40.367878898612005,
+    "cmd_hz": 20.081297500223968,
+    "trajectory_count": 322,
+    "trajectory_mib_s": 3.0942687355830447,
+    "warnings": [
+      {
+        "node": "elevation_mapping_node",
+        "text": "Cloud TF map <- camera_init: using latest fallback 0.022s before observation",
+        "count": 1
+      },
+      {
+        "node": "elevation_mapping_node",
+        "text": "Cloud TF map <- camera_init: using latest fallback 0.082s before observation",
+        "count": 1
+      },
+      {
+        "node": "elevation_mapping_node",
+        "text": "Cloud TF map <- livox_frame: using latest fallback 0.009s before observation",
+        "count": 1
+      }
+    ],
+    "cancellation_statuses": [
+      5,
+      5
+    ],
+    "gpu_mean": 54.07692307692308,
+    "gpu_samples": 13,
+    "cpu_total_mean": 84.6923076923077
+  },
+  "off": {
+    "controller": {
+      "n": 323,
+      "mean": 12.709798560371517,
+      "p50": 11.363239,
+      "p95": 20.466458,
+      "p99": 25.586434,
+      "max": 35.299654,
+      "over50": 0
+    },
+    "optimizer": {
+      "n": 323,
+      "mean": 12.472906718266254,
+      "p50": 11.217151,
+      "p95": 20.118634,
+      "p99": 24.226494,
+      "max": 31.488693,
+      "over50": 0
+    },
+    "controller_cpu_one_core": 61.00136689038252,
+    "rviz_cpu_one_core": 40.2949618116435,
+    "cmd_hz": 20.066308663835997,
+    "trajectory_count": 0,
+    "trajectory_mib_s": 0.0,
+    "warnings": [
+      {
+        "node": "elevation_mapping_node",
+        "text": "Cloud TF map <- camera_init: using latest fallback 0.001s before observation",
+        "count": 1
+      },
+      {
+        "node": "elevation_mapping_node",
+        "text": "Cloud TF map <- camera_init: using latest fallback 0.086s before observation",
+        "count": 1
+      }
+    ],
+    "cancellation_statuses": [
+      5,
+      5
+    ],
+    "gpu_mean": 54.3125,
+    "gpu_samples": 16,
+    "cpu_total_mean": 82.5546875
+  }
+}

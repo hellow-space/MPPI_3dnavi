@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # 这一行表示：用系统环境里的 python3 来运行这个脚本
 
+import math
 import sys
 # sys 用来在程序出错时退出程序
 
@@ -11,6 +12,7 @@ import rclpy
 # rclpy 是 ROS2 的 Python 客户端库
 
 from rclpy.node import Node
+from rclpy.clock import Clock, ClockType
 # Node 是 ROS2 节点的基类，写 ROS2 Python 节点一般都要继承它
 
 from geometry_msgs.msg import Twist
@@ -37,42 +39,38 @@ class KeepAliveZero(Node):
 
             self.sub = self.create_subscription(
                 Twist,
-                '/command/cmd_twist',
+                '/command/cmd_twist_smoothed',
                 self.cmd_callback,
-                10
+                1
             )
             # 创建一个订阅者
-            # 订阅的话题是 /command/cmd_twist
+            # 只订阅平滑后的速度，避免原始 MPPI 指令绕过平滑器
             # 消息类型是 Twist
             # 收到消息以后，会自动调用 self.cmd_callback 这个函数
-            # 10 是队列长度，先不用管太深
+            # 深度 1：只保留最新速度，不积压旧指令
 
             self.pub = self.create_publisher(
                 Twist,
                 '/cmd_vel',
-                10
+                1
             )
             # 创建一个发布者
             # 发布的话题是 /cmd_vel
             # 消息类型也是 Twist
             # 也就是说，这个节点可以往 /cmd_vel 发速度
 
-            self.timer = self.create_timer(0.05, self.timer_callback)
+            # 超时判断和定时器都使用单调时钟，不受 ROS / 系统时间跳变影响。
+            self.watchdog_clock = Clock(clock_type=ClockType.STEADY_TIME)
+            self.last_msg_time = self.watchdog_clock.now()
+            self.timer = self.create_timer(
+                0.05, self.timer_callback, clock=self.watchdog_clock)
             # 创建一个定时器
             # 每 0.05 秒执行一次 self.timer_callback
             # 0.05 秒 = 20Hz
             # 也就是一秒执行 20 次
 
-            self.last_msg_time = self.get_clock().now()
-            # 记录“上一次收到速度指令”的时间
-            # 刚启动时，先设置为当前时间
-
-            self.has_command = False
-            # 标记是否收到过导航速度指令
-            # 这里目前没有实际使用，但可以保留
-
             self.get_logger().info("keep_alive_zero 启动成功")
-            self.get_logger().info("订阅: /command/cmd_twist")
+            self.get_logger().info("订阅: /command/cmd_twist_smoothed")
             self.get_logger().info("发布: /cmd_vel")
             # 在终端打印日志，告诉你节点启动成功
 
@@ -86,33 +84,38 @@ class KeepAliveZero(Node):
             # 把错误继续抛出去，让外层 main 也能捕获到
 
     def cmd_callback(self, msg):
-        # 这个函数会在收到 /command/cmd_twist 消息时自动执行
+        # 这个函数会在收到平滑后的速度消息时自动执行
         # msg 就是收到的速度指令
 
-        self.last_msg_time = self.get_clock().now()
-        # 更新“最后一次收到速度指令”的时间
+        values = (msg.linear.x, msg.linear.y, msg.linear.z,
+                  msg.angular.x, msg.angular.y, msg.angular.z)
+        if not all(math.isfinite(value) for value in values):
+            self.get_logger().warning(
+                '忽略包含 NaN/Inf 的速度指令；不延长补零超时',
+                throttle_duration_sec=1.0)
+            return
 
-        self.has_command = True
-        # 标记已经收到过速度指令
+        self.last_msg_time = self.watchdog_clock.now()
+        # 更新“最后一次收到速度指令”的时间
 
         self.pub.publish(msg)
         # 把收到的速度指令原封不动转发到 /cmd_vel
         # 也就是：
-        # /command/cmd_twist  ---->  /cmd_vel
+        # /command/cmd_twist_smoothed  ---->  /cmd_vel
 
     def timer_callback(self):
         # 这个函数由定时器触发
         # 每 0.05 秒执行一次
 
-        now = self.get_clock().now()
-        # 获取当前 ROS 时间
+        now = self.watchdog_clock.now()
+        # 获取当前单调时间
 
         if (now - self.last_msg_time).nanoseconds > 0.3e9:
             # 判断距离上一次收到速度指令是否超过 0.3 秒
             # 0.3e9 纳秒 = 0.3 秒
             #
-            # 如果超过 0.3 秒没收到新速度，
-            # 就认为导航已经不再发速度了，
+            # 如果超过 0.3 秒没收到有效的平滑速度，
+            # 就认为平滑器的输出已经中断，
             # 这时候主动发零速度，防止底盘继续动
 
             zero_msg = Twist()

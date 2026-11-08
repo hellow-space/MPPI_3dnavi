@@ -26,6 +26,8 @@ def generate_launch_description():
     nav2_group = GroupAction([
         # 🟢 核心修正：在这里进行话题重映射
         SetRemap(src='/cmd_vel', dst='/command/cmd_twist'),
+        # 显式覆盖 Nav2 的默认输出映射，由 keep_zero 独占最终 /cmd_vel。
+        SetRemap(src='/cmd_vel_smoothed', dst='/command/cmd_twist_smoothed'),
         
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(

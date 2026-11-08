@@ -1,0 +1,437 @@
+{
+  "poses": {
+    "start": {
+      "x": 0.6387861275304746,
+      "y": -0.2537031362856434,
+      "yaw": -2.2320478834801225
+    },
+    "goal_candidates": [
+      {
+        "x": 0.17941068254462,
+        "y": -1.6816296752028415,
+        "yaw": -1.8820478834801224,
+        "distance": 1.5,
+        "delta": 0.35
+      },
+      {
+        "x": 0.6968942489607987,
+        "y": -1.752577195779582,
+        "yaw": -1.5320478834801226,
+        "distance": 1.5,
+        "delta": 0.7
+      }
+    ]
+  },
+  "parameters": {
+    "batch_size": 1000,
+    "time_steps": 56,
+    "model_dt": 0.05,
+    "height_critic_enabled": true
+  },
+  "trials": [
+    {
+      "trial": 1,
+      "visualize": true,
+      "start_monotonic": 226830.111693676,
+      "end_monotonic": 226838.161772371,
+      "wall_start": 1794107621.8784637,
+      "wall_end": 1794107629.9285436,
+      "duration_s": 8.050078694999684,
+      "goal_result_status": 5,
+      "observer_cpu_one_core": 44.88128527543719,
+      "controller": {
+        "count": 161,
+        "failed": 0,
+        "mean_ms": 25.008430695652173,
+        "p50_ms": 24.180494,
+        "p95_ms": 37.162775,
+        "p99_ms": 41.859434,
+        "max_ms": 47.933386,
+        "over_50ms": 0,
+        "cycle_p95_ms": 51.56889301724732,
+        "cycle_max_ms": 58.42685999232344,
+        "cycle_over_60ms": 0
+      },
+      "optimizer": {
+        "count": 161,
+        "failed": 0,
+        "mean_ms": 12.55542695031056,
+        "p50_ms": 11.231658,
+        "p95_ms": 21.200723,
+        "p99_ms": 27.054823,
+        "max_ms": 28.36458,
+        "over_50ms": 0,
+        "cycle_p95_ms": 51.5779490233399,
+        "cycle_max_ms": 58.42852499336004,
+        "cycle_over_60ms": 0
+      },
+      "topics": {
+        "/command/cmd_twist": {
+          "count": 161,
+          "hz": 20.049097226753318,
+          "interval_p95_ms": 65.8941300061997,
+          "interval_max_ms": 75.36534799146466,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/command/cmd_twist_smoothed": {
+          "count": 161,
+          "hz": 20.109886424742776,
+          "interval_p95_ms": 55.83901298814453,
+          "interval_max_ms": 71.62246402003802,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/cmd_vel": {
+          "count": 161,
+          "hz": 20.108563222120708,
+          "interval_p95_ms": 57.06957299844362,
+          "interval_max_ms": 67.54996298695914,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/transformed_global_plan": {
+          "count": 161,
+          "hz": 20.044607796385954,
+          "interval_p95_ms": 64.92626701947302,
+          "interval_max_ms": 98.19351797341369,
+          "nonzero": 0,
+          "mib_s": 0.0
+        },
+        "/trajectories": {
+          "count": 161,
+          "hz": 20.067751742562244,
+          "interval_p95_ms": 65.52931200712919,
+          "interval_max_ms": 111.67457400006242,
+          "nonzero": 0,
+          "mib_s": 3.094604757601598
+        }
+      },
+      "warnings": [
+        {
+          "node": "elevation_mapping_node",
+          "text": "Cloud TF map <- camera_init: using latest fallback 0.022s before observation",
+          "count": 1
+        }
+      ],
+      "process_cpu_one_core": {
+        "82519": {
+          "comm": "component_conta",
+          "cpu": 75.65143436153998
+        },
+        "82523": {
+          "comm": "rviz2",
+          "cpu": 40.24805374899664
+        },
+        "83246": {
+          "comm": "python3",
+          "cpu": 44.720059721107376
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "visualize": false,
+      "start_monotonic": 226841.77239138,
+      "end_monotonic": 226849.821783675,
+      "wall_start": 1794107633.5391607,
+      "wall_end": 1794107641.5885534,
+      "duration_s": 8.049392295011785,
+      "goal_result_status": 5,
+      "observer_cpu_one_core": 37.76169351174045,
+      "controller": {
+        "count": 161,
+        "failed": 0,
+        "mean_ms": 11.969708639751552,
+        "p50_ms": 10.758606,
+        "p95_ms": 17.585455,
+        "p99_ms": 22.776445,
+        "max_ms": 35.299654,
+        "over_50ms": 0,
+        "cycle_p95_ms": 51.58115900121629,
+        "cycle_max_ms": 60.332563996780664,
+        "cycle_over_60ms": 1
+      },
+      "optimizer": {
+        "count": 161,
+        "failed": 0,
+        "mean_ms": 11.730862844720496,
+        "p50_ms": 10.588869,
+        "p95_ms": 17.412934,
+        "p99_ms": 22.63663,
+        "max_ms": 27.559956,
+        "over_50ms": 0,
+        "cycle_p95_ms": 51.67217500275001,
+        "cycle_max_ms": 60.33294802182354,
+        "cycle_over_60ms": 1
+      },
+      "topics": {
+        "/command/cmd_twist": {
+          "count": 161,
+          "hz": 20.106755319377285,
+          "interval_p95_ms": 60.53595899720676,
+          "interval_max_ms": 81.56585899996571,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/command/cmd_twist_smoothed": {
+          "count": 161,
+          "hz": 20.029304775724743,
+          "interval_p95_ms": 57.169519015587866,
+          "interval_max_ms": 68.86945699807256,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/cmd_vel": {
+          "count": 161,
+          "hz": 20.02603100663957,
+          "interval_p95_ms": 59.71950700040907,
+          "interval_max_ms": 67.77420098660514,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/transformed_global_plan": {
+          "count": 0,
+          "hz": 0,
+          "interval_p95_ms": null,
+          "interval_max_ms": null,
+          "nonzero": 0,
+          "mib_s": 0.0
+        },
+        "/trajectories": {
+          "count": 0,
+          "hz": 0,
+          "interval_p95_ms": null,
+          "interval_max_ms": null,
+          "nonzero": 0,
+          "mib_s": 0.0
+        }
+      },
+      "warnings": [],
+      "process_cpu_one_core": {
+        "82519": {
+          "comm": "component_conta",
+          "cpu": 61.619558573057944
+        },
+        "82523": {
+          "comm": "rviz2",
+          "cpu": 40.37571882307224
+        },
+        "83246": {
+          "comm": "python3",
+          "cpu": 37.766826222196805
+        }
+      }
+    },
+    {
+      "trial": 3,
+      "visualize": false,
+      "start_monotonic": 226853.469983018,
+      "end_monotonic": 226861.55170443,
+      "wall_start": 1794107645.236752,
+      "wall_end": 1794107653.3184743,
+      "duration_s": 8.081721411988838,
+      "goal_result_status": 5,
+      "observer_cpu_one_core": 37.79262724237318,
+      "controller": {
+        "count": 162,
+        "failed": 0,
+        "mean_ms": 13.445320024691359,
+        "p50_ms": 11.809182,
+        "p95_ms": 22.551654,
+        "p99_ms": 28.205641,
+        "max_ms": 31.594779,
+        "over_50ms": 0,
+        "cycle_p95_ms": 52.41827201098204,
+        "cycle_max_ms": 62.07381401327439,
+        "cycle_over_60ms": 2
+      },
+      "optimizer": {
+        "count": 162,
+        "failed": 0,
+        "mean_ms": 13.210370074074074,
+        "p50_ms": 11.562674,
+        "p95_ms": 22.402847,
+        "p99_ms": 25.444155,
+        "max_ms": 31.488693,
+        "over_50ms": 0,
+        "cycle_p95_ms": 52.6038609968964,
+        "cycle_max_ms": 62.07816599635407,
+        "cycle_over_60ms": 2
+      },
+      "topics": {
+        "/command/cmd_twist": {
+          "count": 162,
+          "hz": 20.226064903300006,
+          "interval_p95_ms": 63.63792798947543,
+          "interval_max_ms": 69.51464401208796,
+          "nonzero": 162,
+          "mib_s": 0.0
+        },
+        "/command/cmd_twist_smoothed": {
+          "count": 161,
+          "hz": 20.106717476148507,
+          "interval_p95_ms": 55.56508799782023,
+          "interval_max_ms": 62.05930799478665,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/cmd_vel": {
+          "count": 161,
+          "hz": 20.106586321032427,
+          "interval_p95_ms": 58.12286399304867,
+          "interval_max_ms": 62.37650802358985,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/transformed_global_plan": {
+          "count": 0,
+          "hz": 0,
+          "interval_p95_ms": null,
+          "interval_max_ms": null,
+          "nonzero": 0,
+          "mib_s": 0.0
+        },
+        "/trajectories": {
+          "count": 0,
+          "hz": 0,
+          "interval_p95_ms": null,
+          "interval_max_ms": null,
+          "nonzero": 0,
+          "mib_s": 0.0
+        }
+      },
+      "warnings": [
+        {
+          "node": "elevation_mapping_node",
+          "text": "Cloud TF map <- camera_init: using latest fallback 0.001s before observation",
+          "count": 1
+        },
+        {
+          "node": "elevation_mapping_node",
+          "text": "Cloud TF map <- camera_init: using latest fallback 0.086s before observation",
+          "count": 1
+        }
+      ],
+      "process_cpu_one_core": {
+        "82519": {
+          "comm": "component_conta",
+          "cpu": 60.3831752077071
+        },
+        "82523": {
+          "comm": "rviz2",
+          "cpu": 40.214204800214766
+        },
+        "83246": {
+          "comm": "python3",
+          "cpu": 37.739484504816936
+        }
+      }
+    },
+    {
+      "trial": 4,
+      "visualize": true,
+      "start_monotonic": 226865.18235421,
+      "end_monotonic": 226873.234181491,
+      "wall_start": 1794107656.949125,
+      "wall_end": 1794107665.0009513,
+      "duration_s": 8.05182728098589,
+      "goal_result_status": 5,
+      "observer_cpu_one_core": 45.44925389348292,
+      "controller": {
+        "count": 161,
+        "failed": 0,
+        "mean_ms": 23.648026316770185,
+        "p50_ms": 21.921373,
+        "p95_ms": 34.921335,
+        "p99_ms": 39.781162,
+        "max_ms": 45.193598,
+        "over_50ms": 0,
+        "cycle_p95_ms": 52.78028399334289,
+        "cycle_max_ms": 56.50470498949289,
+        "cycle_over_60ms": 0
+      },
+      "optimizer": {
+        "count": 161,
+        "failed": 0,
+        "mean_ms": 12.483549229813665,
+        "p50_ms": 11.229243,
+        "p95_ms": 19.812243,
+        "p99_ms": 22.030402,
+        "max_ms": 32.247055,
+        "over_50ms": 0,
+        "cycle_p95_ms": 52.78057200484909,
+        "cycle_max_ms": 56.505600980017334,
+        "cycle_over_60ms": 0
+      },
+      "topics": {
+        "/command/cmd_twist": {
+          "count": 161,
+          "hz": 20.106491342135126,
+          "interval_p95_ms": 65.8363529946655,
+          "interval_max_ms": 83.61894500558265,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/command/cmd_twist_smoothed": {
+          "count": 161,
+          "hz": 20.054280572803588,
+          "interval_p95_ms": 58.7292590062134,
+          "interval_max_ms": 76.18833897868171,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/cmd_vel": {
+          "count": 161,
+          "hz": 20.05403177832723,
+          "interval_p95_ms": 58.18811900098808,
+          "interval_max_ms": 75.71663599810563,
+          "nonzero": 161,
+          "mib_s": 0.0
+        },
+        "/transformed_global_plan": {
+          "count": 161,
+          "hz": 20.120706737909774,
+          "interval_p95_ms": 66.13638700218871,
+          "interval_max_ms": 83.85217600152828,
+          "nonzero": 0,
+          "mib_s": 0.0
+        },
+        "/trajectories": {
+          "count": 161,
+          "hz": 20.02551406691693,
+          "interval_p95_ms": 68.96222700015642,
+          "interval_max_ms": 83.42834099312313,
+          "nonzero": 0,
+          "mib_s": 3.093932713564492
+        }
+      },
+      "warnings": [
+        {
+          "node": "elevation_mapping_node",
+          "text": "Cloud TF map <- camera_init: using latest fallback 0.082s before observation",
+          "count": 1
+        },
+        {
+          "node": "elevation_mapping_node",
+          "text": "Cloud TF map <- livox_frame: using latest fallback 0.009s before observation",
+          "count": 1
+        }
+      ],
+      "process_cpu_one_core": {
+        "82519": {
+          "comm": "component_conta",
+          "cpu": 75.38661459286507
+        },
+        "82523": {
+          "comm": "rviz2",
+          "cpu": 40.48770404822737
+        },
+        "83246": {
+          "comm": "python3",
+          "cpu": 45.45552049586263
+        }
+      }
+    }
+  ]
+}

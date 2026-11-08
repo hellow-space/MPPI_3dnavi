@@ -59,6 +59,24 @@ ros2 pkg prefix height_jump_mppi_critic
 
 订阅采用 best-effort、volatile、depth 1，可连接常见 best-effort 或 reliable 持续发布者；不依赖 latched 历史消息。话题存在但收不到时，应检查实际消息类型、发布者 QoS、ROS_DOMAIN_ID 和 controller 的执行器。
 
+## 导航速度输出
+
+仓库内普通导航、HeightJump、HeightObstacle 和手绘路径脚本共用以下链路：
+
+```text
+MPPI / 恢复行为 → /command/cmd_twist → velocity_smoother
+              → /command/cmd_twist_smoothed → keep_zero → /cmd_vel
+```
+
+`keep_zero` 是 `/cmd_vel` 的唯一发布者，立即转发有效的平滑速度。
+启动超过 0.3 秒仍无输入，或有效输入中断超过 0.3 秒时，以 20 Hz 持续补零；使用单调时钟和深度为 1
+的收发队列，NaN/Inf 输入不会转发或延长超时。一次只运行一套导航启动脚本。
+两个 launch 入口单独运行时，需另启 `python3 src/keep_zero.py` 才有最终速度输出。
+
+平滑器的原始输入超时仍为 0.3 秒，超时后按配置的减速度逐步归零，
+并非 0.3 秒内已经停车。底盘应保留自身通信超时停车，以覆盖 `keep_zero`
+退出或主机断联。升级时应一起重启导航和 `keep_zero`，避免新旧话题接线混用。
+
 ## 测试
 
 2026-09-20 本机独立 Ubuntu 22.04 / Humble amd64 容器已完成 Release 构建：Nav2 MPPI `1.1.20-1jammy.20260908.012051`、GridMap ROS `2.0.1-1jammy.20260908.091310`。20个GTest用例全部通过（6个算法、5个地图、9个插件用例）；CTest有3个测试入口，colcon聚合显示23项、0失败。测试容器的构建日期与Jetson安装包不同，不表示已完成板端二进制兼容验证。

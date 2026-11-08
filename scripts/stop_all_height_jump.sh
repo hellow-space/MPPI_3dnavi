@@ -2,7 +2,7 @@
 
 # 配套 start_all_height_jump.sh：导航 -> 高程图容器 -> 雷达与定位。
 # 使用：./scripts/stop_all_height_jump.sh [--dry-run]
-# 高程图终端保留日志；elevation_env 容器会停止，下一次启动时自动开启。
+# 停止 elevation_env 后，高程图终端随 Docker 客户端退出自动关闭。
 set -uo pipefail
 
 PROJECT_ROOT=/home/nvidia/MPPI_3dnavi
@@ -60,6 +60,6 @@ if "$DRY_RUN"; then
 elif (( FAILED )); then
     echo '部分组件关闭失败，请检查上方错误。' >&2
 else
-    echo '导航、高程图容器、雷达与定位已关闭。高程图终端保留日志，可手动关闭。'
+    echo '导航、高程图容器、雷达与定位已关闭，对应终端自动退出。'
 fi
 exit "$FAILED"
